@@ -3,6 +3,7 @@
 
 <head>
     <title>Pie Chart</title>
+
     <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/style.css" />
@@ -33,13 +34,12 @@
     <label for="selectButton"> Alege un judet: </label>
 
     <select id="selectButton">
-        <option value="Bucuresti">Bucuresti</option>
-        <option value="Iasi">Iasi</option>
-        <option value="Vaslui">Vaslui</option>
     </select>
 
     <!-- Create a div where the graph will take place -->
     <div id="my_dataviz"></div>
+
+    <a href="#" id="downloadButton"> Download </a>
 
     <footer class="footer-distributed">
         <h3><span>Apax</span></h3>
@@ -56,7 +56,7 @@
         </p>
         <p class="footer-company-name">Apax &copy; 2020</p>
     </footer>
-
+    <script src="../controller/js/select.js"></script>
     <script src="../controller/js/pie-chart.js"></script>
 
 </body>

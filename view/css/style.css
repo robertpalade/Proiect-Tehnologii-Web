@@ -10,7 +10,7 @@ body {
     font-family: Lato, sans-serif;
     background-color: #f2f2f2;
     font-size: 13px;
-    line=height: 24px;
+    line-height: 24px;
 }
 
 /*Style the top navigation bar*/
@@ -287,6 +287,8 @@ path.tooltip {
     cursor: pointer;
     /* pointer-events: none; */
 }
+
+
 
 .footer-distributed .footer-links {
     color: #ffffff;

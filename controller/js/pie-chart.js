@@ -11,12 +11,14 @@
     var svg = d3
         .select('#my_dataviz')
         .append('svg')
+        .attr('id', 'svg')
         .attr('width', width)
         .attr('height', height)
         .append('g')
         .attr('transform', 'translate(' + width / 3 + ',' + height / 2 + ')')
     // Create dummy data
     // this is the model data that will be changed to data from the database
+    
     var data = [
         {
             number: 232717,
@@ -53,6 +55,9 @@
             Vaslui: 100000
         },
     ]
+
+    
+
     // set the color scale
     var color = d3.scaleOrdinal().domain(data).range(['red', 'yellow', 'orange', 'brown', 'pink'])
 
@@ -65,6 +70,7 @@
         var svg = d3
             .select('#my_dataviz')
             .append('svg')
+            .attr('id', 'svg')
             .attr('width', width)
             .attr('height', height)
             .append('g')
@@ -137,4 +143,22 @@
     }
 
     buildPie(svg)
+    
+    document.getElementById('downloadButton').addEventListener('click', () => saveSvg(document.getElementById('svg'), 'image.svg'))
+
+    function saveSvg(svgEl, name) {
+        svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        var svgData = svgEl.outerHTML;
+        var preface = '<?xml version="1.0" standalone="no"?>\r\n';
+        var svgBlob = new Blob([preface, svgData], {type:"image/svg+xml;charset=utf-8"});
+        var svgUrl = URL.createObjectURL(svgBlob);
+        var downloadLink = document.createElement("a");
+        downloadLink.href = svgUrl;
+        downloadLink.download = name;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    }
+
+
 })()

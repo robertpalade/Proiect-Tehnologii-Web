@@ -182,6 +182,8 @@ let data =
 console.log(data.length);
 console.log(data[41]);
 
+
+
 function getNumber(d, id) {
   return d[id].number;
 }

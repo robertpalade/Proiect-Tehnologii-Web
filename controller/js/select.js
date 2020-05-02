@@ -1,4 +1,5 @@
-let dataa =
+(function() {
+  let data =
   [
     {
       name: "Alba",
@@ -129,10 +130,12 @@ let dataa =
   ]
 
 
-const selectButton = document.getElementById("selectButton")
-for(let i=0;i<dataa.length;i++){
-  let option = document.createElement("option");
-  option.text = dataa[i].name;
-  option.value = dataa[i].name;
-  selectButton.add(option);
-}
+  const selectButton = document.getElementById("selectButton")
+  for(let i=0;i<data.length;i++){
+    let option = document.createElement("option");
+    option.text = data[i].name;
+    option.value = data[i].name;
+    selectButton.add(option);
+  }
+})()
+

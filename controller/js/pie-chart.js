@@ -1,4 +1,53 @@
-; (function () {
+var data = [
+    {
+        number: 232717,
+        year: 'Vehicles in 2015',
+        Bucuresti: 15342,
+        Iasi: 13343
+    },
+    {
+        number: 232714,
+        year: 'Vehicles in 2016',
+        Bucuresti: 32000,
+        Iasi: 25313,
+        Vaslui: 20000
+    },
+    {
+        number: 269284,
+        year: 'Vehicles in 2017',
+        Bucuresti: 14000,
+        Iasi: 10000,
+        Vaslui: 50000
+    },
+    {
+        number: 289927,
+        year: 'Vehicles in 2018',
+        Bucuresti: 50000,
+        Iasi: 151230,
+        Vaslui: 15000
+    },
+    {
+        number: 311523,
+        year: 'Vehicles in 2019',
+        Bucuresti: 20122,
+        Iasi: 14521,
+        Vaslui: 100000
+    }
+]
+var county = document.getElementById('selectButton').value.toUpperCase()
+        var theUrl = "http://localhost/api/masina/count_cars.php?county="
+        theUrl = theUrl.concat(county)
+        console.log(theUrl);
+        var req = new XMLHttpRequest();
+        req.overrideMimeType("application/json");
+        req.open("GET", theUrl, true);
+        req.onload  = function() {
+           var jsonResponse = JSON.parse(req.responseText);
+           buildAll(jsonResponse.records);
+        };
+    
+        req.send();
+function buildAll(data) {
     // set the dimensions and margins of the graph
     var width = 700
     height = 450
@@ -19,44 +68,6 @@
     // Create dummy data
     // this is the model data that will be changed to data from the database
     
-    var data = [
-        {
-            number: 232717,
-            year: 'Vehicles in 2015',
-            Bucuresti: 15342,
-            Iasi: 13343
-        },
-        {
-            number: 232714,
-            year: 'Vehicles in 2016',
-            Bucuresti: 32000,
-            Iasi: 25313,
-            Vaslui: 20000
-        },
-        {
-            number: 269284,
-            year: 'Vehicles in 2017',
-            Bucuresti: 14000,
-            Iasi: 10000,
-            Vaslui: 50000
-        },
-        {
-            number: 289927,
-            year: 'Vehicles in 2018',
-            Bucuresti: 50000,
-            Iasi: 151230,
-            Vaslui: 15000
-        },
-        {
-            number: 311523,
-            year: 'Vehicles in 2019',
-            Bucuresti: 20122,
-            Iasi: 14521,
-            Vaslui: 100000
-        },
-    ]
-
-    
 
     // set the color scale
     var color = d3.scaleOrdinal().domain(data).range(['red', 'yellow', 'orange', 'brown', 'pink'])
@@ -75,20 +86,28 @@
             .attr('height', height)
             .append('g')
             .attr('transform', 'translate(' + width / 3 + ',' + height / 2 + ')')
-
-        buildPie(svg)
+            var county = document.getElementById('selectButton').value.toUpperCase()
+            var theUrl = "http://localhost/api/masina/count_cars.php?county="
+            theUrl = theUrl.concat(county)
+            console.log(theUrl);
+            var req = new XMLHttpRequest();
+            req.overrideMimeType("application/json");
+            req.open("GET", theUrl, true);
+            req.onload  = function() {
+               var jsonResponse = JSON.parse(req.responseText);
+               buildPie(svg,jsonResponse.records);
+            };
+            req.send();
     }
 
     // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
-    function buildPie(svg) {
+    function buildPie(svg,data) {
         // Compute the position of each group on the pie:
         var pie = d3.pie().value(function (d) {
-            var city = document.getElementById('selectButton').value
-            return d[city]
+            return d.number_of_cars
         })
-
         var data_ready = pie(data)
-
+        console.log(data);
         svg.selectAll('whatever')
             .data(data_ready)
             .enter()
@@ -142,7 +161,7 @@
 
     }
 
-    buildPie(svg)
+    buildPie(svg,data)
     
     document.getElementById('downloadButton').addEventListener('click', () => saveSvg(document.getElementById('svg'), 'image.svg'))
 
@@ -161,4 +180,4 @@
     }
 
 
-})()
+}

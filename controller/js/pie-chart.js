@@ -18,17 +18,20 @@
         .attr('transform', 'translate(' + width / 3 + ',' + height / 2 + ')')
     // Create dummy data
     // this is the model data that will be changed to data from the database
-    
+
     var data = [
         {
             number: 232717,
             year: 'Vehicles in 2015',
+            Alba: 10000,
             Bucuresti: 15342,
-            Iasi: 13343
+            Iasi: 13343,
+            Vaslui: 35000
         },
         {
             number: 232714,
             year: 'Vehicles in 2016',
+            Alba: 15000,
             Bucuresti: 32000,
             Iasi: 25313,
             Vaslui: 20000
@@ -36,6 +39,7 @@
         {
             number: 269284,
             year: 'Vehicles in 2017',
+            Alba: 20000,
             Bucuresti: 14000,
             Iasi: 10000,
             Vaslui: 50000
@@ -43,6 +47,7 @@
         {
             number: 289927,
             year: 'Vehicles in 2018',
+            Alba: 30000,
             Bucuresti: 50000,
             Iasi: 151230,
             Vaslui: 15000
@@ -50,13 +55,15 @@
         {
             number: 311523,
             year: 'Vehicles in 2019',
+            Alba: 35000,
             Bucuresti: 20122,
             Iasi: 14521,
             Vaslui: 100000
         },
+
     ]
 
-    
+
 
     // set the color scale
     var color = d3.scaleOrdinal().domain(data).range(['red', 'yellow', 'orange', 'brown', 'pink'])
@@ -87,6 +94,7 @@
             return d[city]
         })
 
+        console.log(data[0][0])
         var data_ready = pie(data)
 
         svg.selectAll('whatever')
@@ -143,14 +151,14 @@
     }
 
     buildPie(svg)
-    
+
     document.getElementById('downloadButton').addEventListener('click', () => saveSvg(document.getElementById('svg'), 'image.svg'))
 
     function saveSvg(svgEl, name) {
         svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
         var svgData = svgEl.outerHTML;
         var preface = '<?xml version="1.0" standalone="no"?>\r\n';
-        var svgBlob = new Blob([preface, svgData], {type:"image/svg+xml;charset=utf-8"});
+        var svgBlob = new Blob([preface, svgData], { type: "image/svg+xml;charset=utf-8" });
         var svgUrl = URL.createObjectURL(svgBlob);
         var downloadLink = document.createElement("a");
         downloadLink.href = svgUrl;

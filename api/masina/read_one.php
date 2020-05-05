@@ -18,7 +18,7 @@ $db = $database->getConnection();
 $masina = new Masina($db);
   
 // set ID property of record to read
-$masina->id = isset($_GET['id']) ? $_GET['id'] : die();
+//$masina->id = isset($_GET['id']) ? $_GET['id'] : die();
   
 // read the details of product to be edited
 $masina->readOne();
@@ -29,11 +29,10 @@ if($masina->marca!=null){
         "id" =>  $masina->id,
         "judet" => $masina->judet,
         "categorie_nationala" => $masina->categorie_nationala,
-        "descriere_comunitara" => $masina->descriere_comunitara,
+        "categorie_comunitara" => $masina->categorie_comunitara,
         "marca" => $masina->marca,
         "descriere_comerciala" => $masina->descriere_comerciala,
-        "total" => $masina-> total
-
+        "total" => $masina->total
     );
   
     // set response code - 200 OK
@@ -48,6 +47,6 @@ else{
     http_response_code(404);
   
     // tell the user product does not exist
-    echo json_encode(array("message" => "Product does not exist."));
+    echo json_encode(array("message" => "Car does not exist."));
 }
 ?>

@@ -1,6 +1,7 @@
 /*csslint box-sizing: false*/
 html {
     height: 100%;
+    margin: 0;
 }
 
 body {
@@ -237,19 +238,6 @@ h2 {
     cursor: pointer;
 }
 
-.footer-distributed {
-    background-color: #292c2f;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-    box-sizing: border-box;
-    width: 100%;
-    text-align: left;
-    font-family: 'open sans', sans-serif;
-    font-size: 13px;
-    padding: 20px 22px;
-    margin-top: 0;
-}
-
-
 h3 {
     color: #ffffff;
     font: normal 36px 'Cookie', cursive;
@@ -288,7 +276,18 @@ path.tooltip {
     /* pointer-events: none; */
 }
 
-
+.footer-distributed {
+    background-color: #292c2f;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font-family: 'open sans', sans-serif;
+    font-size: 13px;
+    padding: 20px 22px;
+    margin-top: 0;
+    height: 170px;
+}
 
 .footer-distributed .footer-links {
     color: #ffffff;

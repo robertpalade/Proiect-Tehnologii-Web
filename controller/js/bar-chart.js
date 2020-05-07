@@ -58,7 +58,7 @@
         },
     ]
 
-    document.getElementById('selectButton').addEventListener('change', updateBar)
+    document.getElementById('selectCountyButton').addEventListener('change', updateBar)
 
     function updateBar() {
 
@@ -80,7 +80,7 @@
     function buildBar(svg) {
 
         var bar = function (d) {
-            var city = document.getElementById('selectButton').value
+            var city = document.getElementById('selectCountyButton').value
             return d[city]
         }
         // X axis
@@ -133,5 +133,27 @@
         document.body.appendChild(downloadLink);
         downloadLink.click();
         document.body.removeChild(downloadLink);
+    }
+
+    document.getElementById('webpDownloadButton').addEventListener('click', () => saveWebp())
+
+    function saveWebp() {
+        // the canvg call that takes the svg xml and converts it to a canvas
+        var svgData = document.getElementById("svg").outerHTML;
+        const canvas = document.createElement('canvas');
+        canvas.setAttribute('id', 'svg-canvas')
+        canvg(canvas, svgData);
+
+        // the canvas calls to output a png
+        var img = canvas.toDataURL("image/webp");
+        // do what you want with the base64, write to screen, post to server, etc...
+
+        var downloadLink = document.createElement("a");
+        downloadLink.href = img;
+        downloadLink.download = name;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        document.body.removeChild(canvas)
     }
 })()

@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/font.css">
   <link rel="stylesheet" href="css/style.css">
   <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
   <meta charset="UTF-8">
 </head>
 
@@ -35,15 +36,23 @@
 
   </header>
 
-  <label for="selectButton"> Alege un judet: </label>
+  <label for="selectCountyButton"> Alege un judet: </label>
+  <select id="selectCountyButton"></select>
 
-  <select id="selectButton">
-  </select>
+  <label for="selectBrandButton"> Alege o marca: </label>
+  <select id="selectBrandButton"></select>
+  
+  <label for="selectNationalButton"> Alege o categorie nationala: </label>
+  <select id="selectNationalButton"></Select>
+  
+  <label for="selectCommunityButton"> Alege o categorie comunitara: </label>
+  <select id="selectCommunityButton"></select>
 
   <!-- Create a div where the graph will take place -->
   <div id="my_dataviz"></div>
 
   <a href="#" id="downloadButton"> Download </a>
+  <a href="#" id="webpDownloadButton"> Download Webp</a>
 
   <footer class="footer-distributed">
 

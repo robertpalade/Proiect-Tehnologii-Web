@@ -218,6 +218,7 @@ function mouseMoveHandler(d, i) {
 const svg = d3
   .select("#map__container")
   .append("svg")
+  .attr('id', 'svg')
   .attr("width", "100%")
   .attr("height", "100%");
 
@@ -286,4 +287,42 @@ function renderMap(root) {
                   .duration(500)
                   .style("opacity", 0);
           });*/
+
+  document.getElementById('downloadButton').addEventListener('click', () => saveSvg(document.getElementById('svg'), 'image.svg'))
+
+  function saveSvg(svgEl, name) {
+    svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    var svgData = svgEl.outerHTML;
+    var preface = '<?xml version="1.0" standalone="no"?>\r\n';
+    var svgBlob = new Blob([preface, svgData], { type: "image/svg+xml;charset=utf-8" });
+    var svgUrl = URL.createObjectURL(svgBlob);
+    var downloadLink = document.createElement("a");
+    downloadLink.href = svgUrl;
+    downloadLink.download = name;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+  }
+
+  document.getElementById('webpDownloadButton').addEventListener('click', () => saveWebp())
+
+  function saveWebp() {
+    // the canvg call that takes the svg xml and converts it to a canvas
+    var svgData = document.getElementById("svg").outerHTML;
+    const canvas = document.createElement('canvas');
+    canvas.setAttribute('id', 'svg-canvas')
+    canvg(canvas, svgData);
+
+    // the canvas calls to output a png
+    var img = canvas.toDataURL("image/webp");
+    // do what you want with the base64, write to screen, post to server, etc...
+
+    var downloadLink = document.createElement("a");
+    downloadLink.href = img;
+    downloadLink.download = name;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+    document.body.removeChild(canvas)
+  }
 }

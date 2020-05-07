@@ -1,17 +1,16 @@
-
 var county = document.getElementById('selectCountyButton').value.toUpperCase()
-        var theUrl = "http://localhost/api/masina/count_cars.php?county="
-        theUrl = theUrl.concat(county)
-        console.log(theUrl);
-        var req = new XMLHttpRequest();
-        req.overrideMimeType("application/json");
-        req.open("GET", theUrl, true);
-        req.onload  = function() {
-           var jsonResponse = JSON.parse(req.responseText);
-           buildAll(jsonResponse.records);
-        };
-    
-        req.send();
+var theUrl = "http://localhost/api/masina/count_cars.php?county="
+theUrl = theUrl.concat(county)
+console.log(theUrl);
+var req = new XMLHttpRequest();
+req.overrideMimeType("application/json");
+req.open("GET", theUrl, true);
+req.onload = function () {
+    var jsonResponse = JSON.parse(req.responseText);
+    buildAll(jsonResponse.records);
+};
+
+req.send();
 function buildAll(data) {
     // set the dimensions and margins of the graph
     var width = 700
@@ -33,7 +32,7 @@ function buildAll(data) {
         .attr('transform', 'translate(' + width / 3 + ',' + height / 2 + ')')
     // Create dummy data
     // this is the model data that will be changed to data from the database
-    
+
 
     // set the color scale
     var color = d3.scaleOrdinal().domain(data).range(['red', 'yellow', 'orange', 'brown', 'pink'])
@@ -52,22 +51,22 @@ function buildAll(data) {
             .attr('height', height)
             .append('g')
             .attr('transform', 'translate(' + width / 3 + ',' + height / 2 + ')')
-            var county = document.getElementById('selectCountyButton').value.toUpperCase()
-            var theUrl = "http://localhost/api/masina/count_cars.php?county="
-            theUrl = theUrl.concat(county)
-            console.log(theUrl);
-            var req = new XMLHttpRequest();
-            req.overrideMimeType("application/json");
-            req.open("GET", theUrl, true);
-            req.onload  = function() {
-               var jsonResponse = JSON.parse(req.responseText);
-               buildPie(svg,jsonResponse.records);
-            };
-            req.send();
+        var county = document.getElementById('selectCountyButton').value.toUpperCase()
+        var theUrl = "http://localhost/api/masina/count_cars.php?county="
+        theUrl = theUrl.concat(county)
+        console.log(theUrl);
+        var req = new XMLHttpRequest();
+        req.overrideMimeType("application/json");
+        req.open("GET", theUrl, true);
+        req.onload = function () {
+            var jsonResponse = JSON.parse(req.responseText);
+            buildPie(svg, jsonResponse.records);
+        };
+        req.send();
     }
 
     // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
-    function buildPie(svg,data) {
+    function buildPie(svg, data) {
         // Compute the position of each group on the pie:
         var pie = d3.pie().value(function (d) {
             return d.number_of_cars
@@ -127,15 +126,15 @@ function buildAll(data) {
 
     }
 
-    buildPie(svg,data)
-    
+    buildPie(svg, data)
+
     document.getElementById('downloadButton').addEventListener('click', () => saveSvg(document.getElementById('svg'), 'image.svg'))
 
     function saveSvg(svgEl, name) {
         svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
         var svgData = svgEl.outerHTML;
         var preface = '<?xml version="1.0" standalone="no"?>\r\n';
-        var svgBlob = new Blob([preface, svgData], {type:"image/svg+xml;charset=utf-8"});
+        var svgBlob = new Blob([preface, svgData], { type: "image/svg+xml;charset=utf-8" });
         var svgUrl = URL.createObjectURL(svgBlob);
         var downloadLink = document.createElement("a");
         downloadLink.href = svgUrl;
@@ -143,6 +142,28 @@ function buildAll(data) {
         document.body.appendChild(downloadLink);
         downloadLink.click();
         document.body.removeChild(downloadLink);
+    }
+
+    document.getElementById('webpDownloadButton').addEventListener('click', () => saveWebp())
+
+    function saveWebp() {
+        // the canvg call that takes the svg xml and converts it to a canvas
+        var svgData = document.getElementById("svg").outerHTML;
+        const canvas = document.createElement('canvas');
+        canvas.setAttribute('id', 'svg-canvas')
+        canvg(canvas, svgData);
+
+        // the canvas calls to output a png
+        var img = canvas.toDataURL("image/webp");
+        // do what you want with the base64, write to screen, post to server, etc...
+
+        var downloadLink = document.createElement("a");
+        downloadLink.href = img;
+        downloadLink.download = name;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        document.body.removeChild(canvas)
     }
 
 

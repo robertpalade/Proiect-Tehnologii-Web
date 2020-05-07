@@ -53,7 +53,7 @@ function buildAll(data) {
   set_size();
   //end responsive graph code
 
-  function mouseOverHandler(d,i,left, top) {
+  function mouseOverHandler(d, i, left, top) {
     d3.select(this).transition().duration("100").attr("r", 7);
     var name = d.number_of_cars;
     tooltip.transition()
@@ -116,99 +116,99 @@ function buildAll(data) {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    // Add the trendline
-    var line = svg
-      .append("path")
-      .data([data])
-      .attr("class", "line")
-      .attr("d", valueline)
-      .attr("stroke", "#32CD32")
-      .attr("stroke-width", 2)
-      .attr("fill", "#f2f2f2");
+  // Add the trendline
+  var line = svg
+    .append("path")
+    .data([data])
+    .attr("class", "line")
+    .attr("d", valueline)
+    .attr("stroke", "#32CD32")
+    .attr("stroke-width", 2)
+    .attr("fill", "#f2f2f2");
 
-    // Add the data points
-    var dots = svg
-      .selectAll("dot")
-      .data(data)
-      .enter()
-      .append("circle")
-      .attr("r", 5)
-      .attr("cx", function (d) {
-        return x(d.year);
-      })
-      .attr("cy", function (d) {
-        return y(d.number_of_cars);
-      })
-      .attr("stroke", "#32CD32")
-      .attr("stroke-width", 1.5)
-      .attr("fill", "#FFFFFF")
-      .on("mouseover", function(d){
+  // Add the data points
+  var dots = svg
+    .selectAll("dot")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("r", 5)
+    .attr("cx", function (d) {
+      return x(d.year);
+    })
+    .attr("cy", function (d) {
+      return y(d.number_of_cars);
+    })
+    .attr("stroke", "#32CD32")
+    .attr("stroke-width", 1.5)
+    .attr("fill", "#FFFFFF")
+    .on("mouseover", function (d) {
       d3.select(this).transition().duration("100").attr("r", 7);
       var name = d.number_of_cars;
       tooltip.transition()
         .duration(400)
         .style("opacity", 1);
       tooltip.html(name)
-        .style("left", x(d.year)+margin.top + "px")
-        .style("top", y(d.number_of_cars)+margin.left-10 + "px");
+        .style("left", x(d.year) + margin.top + "px")
+        .style("top", y(d.number_of_cars) + margin.left - 10 + "px");
     })
-      .on("mouseout", mouseOutHandler);
+    .on("mouseout", mouseOutHandler);
 
-    // Add the axis
-    if (width < 500) {
-      svg
-        .append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x).ticks(5));
-    } else {
-      svg
-        .append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x).ticks(5));
-    }
+  // Add the axis
+  if (width < 500) {
+    svg
+      .append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x).ticks(5));
+  } else {
+    svg
+      .append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x).ticks(5));
+  }
 
-    svg.append("g").call(d3.axisLeft(y));
+  svg.append("g").call(d3.axisLeft(y));
 
-    document.getElementById('selectCountyButton').addEventListener('change', updateScatter);
+  document.getElementById('selectCountyButton').addEventListener('change', updateScatter);
 
-    function updateScatter(){
-        var county = document.getElementById("selectCountyButton").value.toUpperCase();
-        var theUrl = "http://localhost/api/masina/count_cars.php?county=";
-        theUrl = theUrl.concat(county);
-        console.log(theUrl);
-        var req = new XMLHttpRequest();
-        req.overrideMimeType("application/json");
-        req.open("GET", theUrl, true);
-        req.onload = function () {
-          var jsonResponse = JSON.parse(req.responseText);
-       var data1 = jsonResponse.records;
-       data1.forEach(function (d) {
+  function updateScatter() {
+    var county = document.getElementById("selectCountyButton").value.toUpperCase();
+    var theUrl = "http://localhost/api/masina/count_cars.php?county=";
+    theUrl = theUrl.concat(county);
+    console.log(theUrl);
+    var req = new XMLHttpRequest();
+    req.overrideMimeType("application/json");
+    req.open("GET", theUrl, true);
+    req.onload = function () {
+      var jsonResponse = JSON.parse(req.responseText);
+      var data1 = jsonResponse.records;
+      data1.forEach(function (d) {
         parseDate = d3.timeParse("%Y");
         d.year = parseDate(d.year);
         d.number_of_cars = +d.number_of_cars;
       });
-     line
-      .data([data1])
-      .transition()
-      .duration(1000)
-      .attr("d", d3.line()
-      .x(function(d) { return x(+d.year) })
-      .y(function(d) { return y(+d.number_of_cars) })
-    )
-    // Add the data points
-    dots
-      .data(data1)
-      .transition()
-      .duration(1000)
-      .attr("cx", function (d) {
-        return x(d.year);
-      })
-      .attr("cy", function (d) {
-        return y(d.number_of_cars);
-      });
+      line
+        .data([data1])
+        .transition()
+        .duration(1000)
+        .attr("d", d3.line()
+          .x(function (d) { return x(+d.year) })
+          .y(function (d) { return y(+d.number_of_cars) })
+        )
+      // Add the data points
+      dots
+        .data(data1)
+        .transition()
+        .duration(1000)
+        .attr("cx", function (d) {
+          return x(d.year);
+        })
+        .attr("cy", function (d) {
+          return y(d.number_of_cars);
+        });
     }
     req.send();
-}
+  }
 
   document.getElementById('downloadButton').addEventListener('click', () => saveSvg(document.getElementById('svg'), 'image.svg'))
 
@@ -249,4 +249,4 @@ function buildAll(data) {
   }
 
 
-  }
+}

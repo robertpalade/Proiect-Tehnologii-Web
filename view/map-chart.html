@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="https://d3js.org/topojson.v1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
 	<meta charset="UTF-8">
 </head>
 
@@ -36,9 +37,19 @@
 	</div>
 
 	<label for="selectCountyButton"> Alege un judet: </label>
+	<select id="selectCountyButton"></select>
 
-  <select id="selectCountyButton">
-  </select>
+	<label for="selectBrandButton"> Alege o marca: </label>
+	<select id="selectBrandButton"></select>
+
+	<label for="selectNationalButton"> Alege o categorie nationala: </label>
+	<select id="selectNationalButton"></Select>
+
+	<label for="selectCommunityButton"> Alege o categorie comunitara: </label>
+	<select id="selectCommunityButton"></select>
+
+	<a href="#" id="downloadButton"> Download </a>
+	<a href="#" id="webpDownloadButton"> Download Webp</a>
 
 
 	<footer class="footer-distributed">
@@ -58,11 +69,11 @@
 		<p class="footer-company-name">Apax &copy; 2020</p>
 
 	</footer>
-	
+
 	<script src="../controller/js/select.js"></script>
 	<script src="../controller/js/romania.js"></script>
 
-	
+
 	<script src="../controller/js/map.js"></script>
 
 </body>

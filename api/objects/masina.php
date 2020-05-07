@@ -59,15 +59,15 @@ class Masina
 
         if ($county == "allCounties") {
             if ($year == 2015)
-                $query = "SELECT COUNT(*) as total_rows FROM masini2015";
+                $query = "SELECT SUM(total) as total_rows FROM masini2015";
             else if ($year == 2016)
-                $query = "SELECT COUNT(*) as total_rows FROM masini2016";
+                $query = "SELECT SUM(total) as total_rows FROM masini2016";
             else if ($year == 2017)
-                $query = "SELECT COUNT(*) as total_rows FROM masini2017";
+                $query = "SELECT SUM(total) as total_rows FROM masini2017";
             else if ($year == 2018)
-                $query = "SELECT COUNT(*) as total_rows FROM masini2018";
+                $query = "SELECT SUM(total) as total_rows FROM masini2018";
             else if ($year == 2019)
-                $query = "SELECT COUNT(*) as total_rows FROM masini2019";
+                $query = "SELECT SUM(total) as total_rows FROM masini2019";
                 $stmt = $this->conn->prepare($query);
                 $stmt->execute();
         }

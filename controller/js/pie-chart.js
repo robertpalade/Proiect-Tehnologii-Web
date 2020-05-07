@@ -1,5 +1,5 @@
 
-var county = document.getElementById('selectButton').value.toUpperCase()
+var county = document.getElementById('selectCountyButton').value.toUpperCase()
         var theUrl = "http://localhost/api/masina/count_cars.php?county="
         theUrl = theUrl.concat(county)
         console.log(theUrl);
@@ -15,6 +15,7 @@ var county = document.getElementById('selectButton').value.toUpperCase()
 function buildAll(data) {
     // set the dimensions and margins of the graph
     var width = 700
+    height = 450
     height = 450
     margin = 40
 
@@ -37,7 +38,7 @@ function buildAll(data) {
     // set the color scale
     var color = d3.scaleOrdinal().domain(data).range(['red', 'yellow', 'orange', 'brown', 'pink'])
 
-    document.getElementById('selectButton').addEventListener('change', updatePie)
+    document.getElementById('selectCountyButton').addEventListener('change', updatePie)
 
     function updatePie() {
         var parent = d3.select('#my_dataviz')
@@ -51,7 +52,7 @@ function buildAll(data) {
             .attr('height', height)
             .append('g')
             .attr('transform', 'translate(' + width / 3 + ',' + height / 2 + ')')
-            var county = document.getElementById('selectButton').value.toUpperCase()
+            var county = document.getElementById('selectCountyButton').value.toUpperCase()
             var theUrl = "http://localhost/api/masina/count_cars.php?county="
             theUrl = theUrl.concat(county)
             console.log(theUrl);

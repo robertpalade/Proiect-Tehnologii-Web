@@ -130,12 +130,12 @@
   ]
 
 
-  const selectButton = document.getElementById("selectButton")
+  const selectCountyButton = document.getElementById("selectCountyButton")
   for(let i=0;i<data.length;i++){
     let option = document.createElement("option");
     option.text = data[i].name;
     option.value = data[i].name;
-    selectButton.add(option);
+    selectCountyButton.add(option);
   }
 })()
 

@@ -103,7 +103,7 @@ function buildAll(data) {
 
     buildBar(svg, data)
 
-    document.getElementById('downloadButton').addEventListener('click', () => saveSvg(document.getElementById('svg'), 'image.svg'))
+    document.getElementById('downloadSVGButton').addEventListener('click', () => saveSvg(document.getElementById('svg'), 'image.svg'))
 
     function saveSvg(svgEl, name) {
         svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");

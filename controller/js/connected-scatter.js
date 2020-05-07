@@ -7,14 +7,7 @@ req.overrideMimeType("application/json");
 req.open("GET", theUrl, true);
 req.onload = function () {
   var jsonResponse = JSON.parse(req.responseText);
-  {
-    judet:
-  }
-  dateJson
-  dateCuNr
-  buildAll(dateJson);
-
-  expect( buildAll(dateJson)).toBeEqual(dateCuNr)
+  buildAll(jsonResponse.records);
 };
 
 req.send();

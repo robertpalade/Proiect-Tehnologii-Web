@@ -33,8 +33,7 @@
     </header>
 
 
-    <!-- Create a div where the graph will take place -->
-    <div id="my_dataviz"></div>
+
 
     <label for="selectCountyButton"> Alege un judet: </label>
     <select id="selectCountyButton"></select>
@@ -48,21 +47,30 @@
     <label for="selectCommunityButton"> Alege o categorie comunitara: </label>
     <select id="selectCommunityButton"></select>
 
-    <a href="#" id="downloadSVGButton"> Download SVG </a>
-    <a href="#" id="webpDownloadButton"> Download Webp</a>
+    <!-- Create a div where the graph will take place -->
+    <div id="my_dataviz"></div>
 
+    <div class="button-container">
+        <button class="downloadButton"> 
+            <a href="#" id="downloadSVGButton"> Download as SVG </a>
+        </button>
+
+        <button class="downloadButton">
+            <a href="#" id="webpDownloadButton"> Download as Webp </a>
+        </button>
+
+        <button class="downloadButton">
+            <a href="#" id="csvDownloadButton"> Download as CSV </a>
+        </button>
+    </div>
 
     <footer class="footer-distributed">
         <h3><span>Apax</span></h3>
         <p class="footer-links">
-            <a href="index.html">Home</a>
-            ·
-            <a href="pie-chart.html">Pie-Chart</a>
-            ·
-            <a href="bar-chart.html">Bar-Chart</a>
-            ·
-            <a href="connected-scatter.html">Line-Chart</a>
-            ·
+            <a href="index.html">Home</a> ·
+            <a href="pie-chart.html">Pie-Chart</a> ·
+            <a href="bar-chart.html">Bar-Chart</a> ·
+            <a href="connected-scatter.html">Line-Chart</a> ·
             <a href="map-chart.html">Map-Chart</a>
         </p>
         <p class="footer-company-name">Apax &copy; 2020</p>

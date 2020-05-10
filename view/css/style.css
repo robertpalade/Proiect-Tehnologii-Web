@@ -1,4 +1,5 @@
 /*csslint box-sizing: false*/
+
 html {
     height: 100%;
 }
@@ -13,13 +14,16 @@ body {
     line-height: 24px;
 }
 
+
 /*Style the top navigation bar*/
+
 .topnav {
     margin: 10px;
     padding: 0;
     overflow: hidden;
     text-align: left;
 }
+
 
 /*Style the topnav links*/
 
@@ -57,9 +61,7 @@ body {
     font-family: Lato, sans-serif;
     font-size: 13px;
     line-height: 16px;
-
 }
-
 
 .dropdown .dropbtn a {
     font-size: 13px;
@@ -119,14 +121,18 @@ body {
     text-align: center;
 }
 
+
 /*Clear floats after the columns*/
+
 .row:after-1 {
     content: '';
     display: table;
     clear: both;
 }
 
+
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+
 @media (max-width: 600px) {
     .column {
         width: 100%;
@@ -143,6 +149,33 @@ body {
     height: 725px;
     width: 100%;
 }
+
+.button-container {
+    margin: 50px 0 50px;
+}
+
+.downloadButton {
+    -webkit-appearance: none;
+    border: none;
+}
+
+.downloadButton a {
+    background-color: limegreen;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.downloadButton:hover {
+    /* background-color: ; */
+}
+
+
 /*
 .main-image h2{
 	font-size: 50px;
@@ -154,6 +187,7 @@ body {
 	transform: translate(-50%, -50%);
 }
 */
+
 .specific-charts {
     margin-top: 20px;
     margin-bottom: 60px;
@@ -208,9 +242,11 @@ body {
     height: 500px;
     position: relative;
 }
+
 .link-photo-big:first-of-type {
     margin-right: 30px;
 }
+
 .link-photo-big:hover .chart-description {
     opacity: 1;
     transition: opacity 0.3s ease-out;
@@ -236,19 +272,6 @@ h2 {
 .cursor {
     cursor: pointer;
 }
-
-.footer-distributed {
-    background-color: #292c2f;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-    box-sizing: border-box;
-    width: 100%;
-    text-align: left;
-    font-family: 'open sans', sans-serif;
-    font-size: 13px;
-    padding: 20px 22px;
-    margin-top: 0;
-}
-
 
 h3 {
     color: #ffffff;
@@ -303,8 +326,7 @@ path.tip {
     cursor: pointer;
     /* pointer-events: none; */
 }
-  
-  
+
 path.tip:after {
     box-sizing: border-box;
     display: block;
@@ -315,8 +337,19 @@ path.tip:after {
     position: absolute;
     right: 35px;
     text-align: center;
-  }
+}
 
+.footer-distributed {
+    background-color: #292c2f;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font-family: 'open sans', sans-serif;
+    font-size: 13px;
+    padding: 20px 22px;
+    margin-top: 0;
+}
 
 .footer-distributed .footer-links {
     color: #ffffff;

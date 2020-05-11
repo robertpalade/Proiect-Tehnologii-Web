@@ -14,7 +14,6 @@ body {
     line-height: 24px;
 }
 
-
 /*Style the top navigation bar*/
 
 .topnav {
@@ -23,7 +22,6 @@ body {
     overflow: hidden;
     text-align: left;
 }
-
 
 /*Style the topnav links*/
 
@@ -121,15 +119,13 @@ body {
     text-align: center;
 }
 
-
 /*Clear floats after the columns*/
 
 .row:after-1 {
-    content: '';
+    content: "";
     display: table;
     clear: both;
 }
-
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 
@@ -141,7 +137,7 @@ body {
 }
 
 .main-image {
-    background-image: url('../img/main-photo.jpg');
+    background-image: url("../img/main-photo.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -171,10 +167,17 @@ body {
     text-decoration: none;
 }
 
-.downloadButton:hover {
-    /* background-color: ; */
+.select-property {
+    position: relative;
 }
 
+.select-property select {
+    background-color: whitesmoke;
+    border-radius: 20px;
+    margin: 10px;
+    color: black;
+    border: 1px solid darkgray;
+}
 
 /*
 .main-image h2{
@@ -201,7 +204,7 @@ body {
 }
 
 .link-photo {
-    background-image: url('../img/pie-chart.jpg');
+    background-image: url("../img/pie-chart.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -216,15 +219,15 @@ body {
 }
 
 .bar-chart {
-    background-image: url('../img/bar-chart.jpg');
+    background-image: url("../img/bar-chart.jpg");
 }
 
 .line-chart {
-    background-image: url('../img/line-chart.jpg');
+    background-image: url("../img/line-chart.jpg");
 }
 
 .map-chart {
-    background-image: url('../img/map-chart.jpg');
+    background-image: url("../img/map-chart.jpg");
 }
 
 .link-photo:hover .chart-description {
@@ -233,7 +236,7 @@ body {
 }
 
 .link-photo-big {
-    background-image: url('../img/map-chart1.jpg');
+    background-image: url("../img/map-chart1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -275,7 +278,7 @@ h2 {
 
 h3 {
     color: #ffffff;
-    font: normal 36px 'Cookie', cursive;
+    font: normal 36px "Cookie", cursive;
     margin: 0;
 }
 
@@ -302,7 +305,7 @@ path.tooltip {
     height: 35px;
     padding: 2px;
     font-size: 14px;
-    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
     background-color: grey;
     border: 0px;
     border-radius: 8px;
@@ -318,7 +321,7 @@ path.tip {
     height: 25px;
     padding: 2px;
     font-size: 14px;
-    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
     background-color: rgba(0, 0, 0, 1);
     border: 0px;
     border-radius: 8px;
@@ -345,7 +348,7 @@ path.tip:after {
     box-sizing: border-box;
     width: 100%;
     text-align: left;
-    font-family: 'open sans', sans-serif;
+    font-family: "open sans", sans-serif;
     font-size: 13px;
     padding: 20px 22px;
     margin-top: 0;

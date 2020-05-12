@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>Apax</title>
+    <title>Line Chart cars by county and communitary category</title>
     <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
     <meta charset="UTF-8" />
 </head>
 
@@ -85,60 +87,43 @@
         </div>
     </header>
 
-    <div class="main-image"></div>
+    <label for="selectCountyButton"> Choose a county: </label>
+    <select id="selectCountyButton"></select>
 
-    <div class="specific-charts">
-        <h1 class="charts-title">Charts</h1>
-        <a href="pie-chart.html">
-            <div class="link-photo pie-chart">
-                <div class="chart-description">
-                    <h2>Pie-Chart</h2>
-                </div>
-            </div>
-        </a>
+    <label for="selectCommunityButton"> Choose a communitary category: </label>
+    <select id="selectCommunityButton"></select>
 
-        <a href="bar-chart.html">
-            <div class="link-photo bar-chart">
-                <div class="chart-description">
-                    <h2>Bar-Chart</h2>
-                </div>
-            </div>
-        </a>
-    </div>
+    <!-- Create a div where the graph will take place -->
+    <div id="scatter"></div>
 
-    <div class="specific-charts">
-        <a href="line-chart.html">
-            <div class="link-photo line-chart">
-                <div class="chart-description">
-                    <h2>Line-Chart</h2>
-                </div>
-            </div>
-        </a>
+    <div class="button-container">
+        <button class="downloadButton">
+            <a href="#" id="downloadSVGButton"> Download as SVG </a>
+        </button>
 
-        <a href="map-chart.html">
-            <div class="link-photo map-chart">
-                <div class="chart-description">
-                    <h2>Map-Chart</h2>
-                </div>
-            </div>
-        </a>
+        <button class="downloadButton">
+            <a href="#" id="webpDownloadButton"> Download as Webp </a>
+        </button>
+
+        <button class="downloadButton">
+            <a href="#" id="csvDownloadButton"> Download as CSV </a>
+        </button>
     </div>
 
     <footer class="footer-distributed">
         <h3><span>Apax</span></h3>
         <p class="footer-links">
-            <a href="index.html">Home</a>
-            ·
-            <a href="pie-chart.html">Pie-Chart</a>
-            ·
-            <a href="bar-chart.html">Bar-Chart</a>
-            ·
-            <a href="line-chart.html">Line-Chart</a>
-            ·
+            <a href="index.html">Home</a> ·
+            <a href="pie-chart.html">Pie-Chart</a> ·
+            <a href="bar-chart.html">Bar-Chart</a> ·
+            <a href="line-chart.html">Line-Chart</a> ·
             <a href="map-chart.html">Map-Chart</a>
         </p>
         <p class="footer-company-name">Apax &copy; 2020</p>
     </footer>
+
+    <script src="../controller/js/select.js"></script>
+    <script src="../controller/js/line-chart.js"></script>
 </body>
 
 </html>

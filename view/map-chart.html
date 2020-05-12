@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-    <title> Map Chart </title>
-    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/font.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Map Chart</title>
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/font.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
 </head>
 
 <body>
@@ -17,14 +17,70 @@
         <div class="topnav">
             <a href="index.html"> Home </a>
             <div class="dropdown">
-                <button class="dropbtn"> Charts <i class="fa fa-caret-down"> </i></button>
+                <button class="dropbtn"> Pie Charts <i class="fa fa-caret-down"></i>
+                </button>
                 <div class="dropdown-content charts-dropdown">
                     <div class="row">
                         <div class="menu-column">
-                            <a href="pie-chart.html"> Pie Chart </a>
-                            <a href="bar-chart.html"> Bar Chart </a>
-                            <a href="connected-scatter.html"> Line Chart </a>
-                            <a href="map-chart.html"> Map Chart </a>
+                            <a href="pie-chart-cars-by-county-and-brand.html"> Cars by county and brand </a>
+                            <a href="pie-chart-cars-by-county-and-national-category.html"> Cars by county and national
+                                category </a>
+                            <a href="pie-chart-cars-by-county-and-communitary-category.html"> Cars by county and
+                                communitary category </a>
+                            <a href="pie-chart-cars-by-all-romania.html"> Cars by all Romania </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn"> Bar Charts <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content charts-dropdown">
+                    <div class="row">
+                        <div class="menu-column">
+                            <a href="bar-chart-cars-by-county-and-brand.html"> Cars by county and brand </a>
+                            <a href="bar-chart-cars-by-county-and-national-category.html"> Cars by county and national
+                                category </a>
+                            <a href="bar-chart-cars-by-county-and-communitary-category.html"> Cars by county and
+                                communitary category </a>
+                            <a href="bar-chart-cars-by-all-romania.html"> Cars by all Romania </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">
+                    Line Charts <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content charts-dropdown">
+                    <div class="row">
+                        <div class="menu-column">
+                            <a href="line-chart-cars-by-county-and-brand.html"> Cars by county and brand </a>
+                            <a href="line-chart-cars-by-county-and-national-category.html"> Cars by county and
+                                national category </a>
+                            <a href="line-chart-cars-by-county-and-communitary-category.html"> Cars by county and
+                                communitary category </a>
+                            <a href="line-chart-cars-by-all-romania.html"> Cars by all Romania </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">
+                    Map Charts <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content charts-dropdown">
+                    <div class="row">
+                        <div class="menu-column">
+                            <a href="map-chart-cars-by-county-and-brand.html"> Cars by county and brand </a>
+                            <a href="map-chart-cars-by-county-and-national-category.html"> Cars by county and national
+                                category </a>
+                            <a href="map-chart-cars-by-county-and-communitary-category.html"> Cars by county and
+                                communitary category </a>
+                            <a href="map-chart-cars-by-all-romania.html"> Cars by all Romania </a>
                         </div>
                     </div>
                 </div>
@@ -32,24 +88,22 @@
         </div>
     </header>
 
-    <div id="map__container">
-
-    </div>
-
-    <label for="selectCountyButton"> Alege un judet: </label>
+    <label for="selectCountyButton"> Choose a county: </label>
     <select id="selectCountyButton"></select>
 
-    <label for="selectBrandButton"> Alege o marca: </label>
+    <label for="selectBrandButton"> Choose a brand: </label>
     <select id="selectBrandButton"></select>
 
-    <label for="selectNationalButton"> Alege o categorie nationala: </label>
-    <select id="selectNationalButton"></Select>
+    <label for="selectNationalButton"> Choose a national category: </label>
+    <select id="selectNationalButton"></select>
 
-    <label for="selectCommunityButton"> Alege o categorie comunitara: </label>
+    <label for="selectCommunityButton"> Choose a communitary category: </label>
     <select id="selectCommunityButton"></select>
 
+    <div id="map__container"></div>
+
     <div class="button-container">
-        <button class="downloadButton"> 
+        <button class="downloadButton">
             <a href="#" id="downloadSVGButton"> Download as SVG </a>
         </button>
 
@@ -62,28 +116,22 @@
         </button>
     </div>
 
-
-
     <footer class="footer-distributed">
-
         <h3><span>Apax</span></h3>
         <p class="footer-links">
             <a href="index.html">Home</a> ·
             <a href="pie-chart.html">Pie-Chart</a> ·
             <a href="bar-chart.html">Bar-Chart</a> ·
-            <a href="connected-scatter.html">Line-Chart</a> ·
+            <a href="line-chart.html">Line-Chart</a> ·
             <a href="map-chart.html">Map-Chart</a>
         </p>
         <p class="footer-company-name">Apax &copy; 2020</p>
-
     </footer>
 
     <script src="../controller/js/select.js"></script>
     <script src="../controller/js/romania.js"></script>
 
-
     <script src="../controller/js/map.js"></script>
-
 </body>
 
 </html>

@@ -1,16 +1,19 @@
 var county = document.getElementById("selectCountyButton").value.toUpperCase();
 var theUrl = "http://localhost/api/masina/count_cars.php?county=";
+var responseData;
 theUrl = theUrl.concat(county);
-console.log(theUrl);
 var req = new XMLHttpRequest();
 req.overrideMimeType("application/json");
 req.open("GET", theUrl, true);
 req.onload = function () {
-    var jsonResponse = JSON.parse(req.responseText);
-    buildAll(jsonResponse.records);
+    responseData = JSON.parse(req.responseText);
+    //console.log("responseData", responseData);
+    buildAll(responseData.records);
 };
 
 req.send();
+
+//console.log("responseData", responseData);
 
 function buildAll(data) {
     // set the dimensions and margins of the graph
@@ -43,9 +46,9 @@ function buildAll(data) {
         req.overrideMimeType("application/json");
         req.open("GET", theUrl, true);
         req.onload = function () {
-            var jsonResponse = JSON.parse(req.responseText);
-            console.log(jsonResponse.records);
-            var data1 = jsonResponse.records;
+            responseData = JSON.parse(req.responseText);
+            console.log(responseData.records);
+            var data1 = responseData.records;
             var x = d3
                 .scaleBand()
                 .range([0, width])
@@ -127,6 +130,7 @@ document
         saveSvg(document.getElementById("svg"), "image.svg")
     );
 
+
 function saveSvg(svgEl, name) {
     svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     var svgData = svgEl.outerHTML;
@@ -165,4 +169,27 @@ function saveWebp() {
     downloadLink.click();
     document.body.removeChild(downloadLink);
     document.body.removeChild(canvas);
+}
+
+
+document
+    .getElementById("csvDownloadButton")
+    .addEventListener("click", () => saveCsv(responseData));
+
+function saveCsv(data) {
+    var csvContent = "data:text/csv;charset=utf-8,";
+
+    csvContent += data.records
+        .map((it) => {
+            return Object.values(it).toString();
+        })
+        .join("\n");
+
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "my_data.csv");
+    document.body.appendChild(link); // Required for FF
+
+    link.click(); // This will download the data file named "my_data.csv".
 }

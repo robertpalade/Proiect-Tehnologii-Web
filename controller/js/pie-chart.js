@@ -13,7 +13,7 @@ req.onload = function () {
 
 req.send();
 
-console.log("responseData", responseData);
+//console.log("responseData", responseData);
 
 function buildAll(data) {
     // set the dimensions and margins of the graph
@@ -191,7 +191,6 @@ function saveWebp() {
 }
 
 function saveCsv(data) {
-    debugger;
     var csvContent = "data:text/csv;charset=utf-8,";
 
     csvContent += data.records

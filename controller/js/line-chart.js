@@ -1,13 +1,14 @@
 var county = document.getElementById("selectCountyButton").value.toUpperCase();
 var theUrl = "http://localhost/api/masina/count_cars.php?county=";
 theUrl = theUrl.concat(county);
-console.log(theUrl);
+var responseData;
+//console.log(theUrl);
 var req = new XMLHttpRequest();
 req.overrideMimeType("application/json");
 req.open("GET", theUrl, true);
 req.onload = function () {
-  var jsonResponse = JSON.parse(req.responseText);
-  buildAll(jsonResponse.records);
+  responseData = JSON.parse(req.responseText);
+  buildAll(responseData.records);
 };
 
 req.send();
@@ -180,8 +181,8 @@ function buildAll(data) {
     req.overrideMimeType("application/json");
     req.open("GET", theUrl, true);
     req.onload = function () {
-      var jsonResponse = JSON.parse(req.responseText);
-      var data1 = jsonResponse.records;
+      responseData = JSON.parse(req.responseText);
+      var data1 = responseData.records;
       data1.forEach(function (d) {
         parseDate = d3.timeParse("%Y");
         d.year = parseDate(d.year);
@@ -248,5 +249,26 @@ function buildAll(data) {
     document.body.removeChild(canvas)
   }
 
+  document
+    .getElementById("csvDownloadButton")
+    .addEventListener("click", () => saveCsv(responseData));
+
+  function saveCsv(data) {
+    var csvContent = "data:text/csv;charset=utf-8,";
+
+    csvContent += data.records
+      .map((it) => {
+        return Object.values(it).toString();
+      })
+      .join("\n");
+
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "my_data.csv");
+    document.body.appendChild(link); // Required for FF
+
+    link.click(); // This will download the data file named "my_data.csv".
+  }
 
 }

@@ -2,12 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>Map Chart cars by county and brand</title>
+    <title>Line Chart total cars by county</title>
     <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
     <meta charset="UTF-8" />
 </head>
@@ -27,7 +26,7 @@
                                 category </a>
                             <a href="pie-chart-cars-by-county-and-communitary-category.html"> Cars by county and
                                 communitary category </a>
-                            <a href="pie-chart-cars-by-all-romania.html"> Cars by all Romania </a>
+                            <a href="pie-chart-total-cars-by-county.html"> Total cars by county </a>
                         </div>
                     </div>
                 </div>
@@ -44,7 +43,7 @@
                                 category </a>
                             <a href="bar-chart-cars-by-county-and-communitary-category.html"> Cars by county and
                                 communitary category </a>
-                            <a href="bar-chart-cars-by-all-romania.html"> Cars by all Romania </a>
+                            <a href="bar-chart-total-cars-by-county.html"> Total cars by county </a>
                         </div>
                     </div>
                 </div>
@@ -62,7 +61,7 @@
                                 national category </a>
                             <a href="line-chart-cars-by-county-and-communitary-category.html"> Cars by county and
                                 communitary category </a>
-                            <a href="line-chart-cars-by-all-romania.html"> Cars by all Romania </a>
+                            <a href="line-chart-total-cars-by-county.html"> Total cars by county </a>
                         </div>
                     </div>
                 </div>
@@ -75,12 +74,11 @@
                 <div class="dropdown-content charts-dropdown">
                     <div class="row">
                         <div class="menu-column">
-                            <a href="map-chart-cars-by-county-and-brand.html"> Cars by county and brand </a>
-                            <a href="map-chart-cars-by-county-and-national-category.html"> Cars by county and national
+                            <a href="map-chart-cars-by-year-and-brand.html"> Cars by year and brand </a>
+                            <a href="map-chart-cars-by-year-and-national-category.html"> Cars by year and national
                                 category </a>
-                            <a href="map-chart-cars-by-county-and-communitary-category.html"> Cars by county and
+                            <a href="map-chart-cars-by-year-and-communitary-category.html"> Cars by year and
                                 communitary category </a>
-                            <a href="map-chart-cars-by-all-romania.html"> Cars by all Romania </a>
                         </div>
                     </div>
                 </div>
@@ -91,10 +89,8 @@
     <label for="selectCountyButton"> Choose a county: </label>
     <select id="selectCountyButton"></select>
 
-    <label for="selectBrandButton"> Choose a brand: </label>
-    <select id="selectBrandButton"></select>
-
-    <div id="map__container"></div>
+    <!-- Create a div where the graph will take place -->
+    <div id="scatter"></div>
 
     <div class="button-container">
         <button class="downloadButton">
@@ -123,9 +119,7 @@
     </footer>
 
     <script src="../controller/js/select.js"></script>
-    <script src="../controller/js/romania.js"></script>
-
-    <script src="../controller/js/map.js"></script>
+    <script src="../controller/js/line-chart.js"></script>
 </body>
 
 </html>

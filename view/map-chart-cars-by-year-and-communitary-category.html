@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
     <meta charset="UTF-8" />
 </head>
@@ -93,6 +94,8 @@
     <label for="selectCommunityButton"> Choose a communitary category: </label>
     <select id="selectCommunityButton"></select>
 
+    <button id="submitButton"> Submit </button>
+
     <div id="map__container"></div>
 
     <div class="button-container">
@@ -121,10 +124,12 @@
         <p class="footer-company-name">Apax &copy; 2020</p>
     </footer>
 
-    <script src="../controller/js/select.js"></script>
+    <script src="../controller/js/comboboxYears.js"></script>
+    <script src="../controller/js/comboboxCom.js"></script>
     <script src="../controller/js/romania.js"></script>
-
+    <script src="../controller/js/domainSplit.js"></script>
     <script src="../controller/js/map.js"></script>
+    <script src="../controller/js/mapChartCom.js"></script>
 </body>
 
 </html>

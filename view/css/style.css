@@ -32,7 +32,7 @@ body {
     /*display: block;*/
     color: #757575;
     /*display: inline-block;*/
-    padding: 22px 30px;
+    padding: 22px;
     text-decoration: none;
     transition: color 0.3s ease-out;
     vertical-align: middle;
@@ -82,14 +82,14 @@ body {
     position: absolute;
     background-color: #ccc;
     width: auto;
-    /*left: 80px;*/
+    left: 80px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
 .charts-dropdown .menu-column {
     width: 100%;
-    text-align: left;
+    text-align: center;
     box-sizing: border-box;
 }
 
@@ -302,7 +302,24 @@ path.tooltip {
     position: absolute;
     text-align: center;
     width: 100px;
-    height: 35px;
+    height: 40px;
+    padding: 2px;
+    font-size: 14px;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    background-color: grey;
+    border: 0px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    /* pointer-events: none; */
+}
+
+
+path.tooltip2 {
+    position: absolute;
+    text-align: center;
+    width: 150px;
+    height: 50px;
     padding: 2px;
     font-size: 14px;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
@@ -380,4 +397,8 @@ path.tip:after {
     font-size: 14px;
     font-weight: normal;
     margin: 0;
+}
+
+.bar:hover{
+        fill: #16a18f;
 }

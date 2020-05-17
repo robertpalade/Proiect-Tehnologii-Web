@@ -54,10 +54,10 @@ class Masina
         $this->total = $row['total'];
     }
 
-    function count_cars($year, $county)
+    function count_cars_county_nat_categ($year, $county, $nat_categ)
     {
 
-        if ($county == "allCounties") {
+        if ($county == "Toate" && $nat_categ == "Toate") {
             if ($year == 2015)
                 $query = "SELECT SUM(total) as total_rows FROM masini2015";
             else if ($year == 2016)
@@ -68,29 +68,424 @@ class Masina
                 $query = "SELECT SUM(total) as total_rows FROM masini2018";
             else if ($year == 2019)
                 $query = "SELECT SUM(total) as total_rows FROM masini2019";
-                $stmt = $this->conn->prepare($query);
-                $stmt->execute();
-        }
-        else
-        {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+        } else if ($county != "Toate" && $nat_categ == "Toate") {
             if ($year == 2015)
-            $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE judet = ?";
-        else if ($year == 2016)
-            $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE judet = ?";
-        else if ($year == 2017)
-            $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE judet = ?";
-        else if ($year == 2018)
-            $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE judet = ?";
-        else if ($year == 2019)
-            $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE judet = ?";
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE judet = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE judet = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE judet = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE judet = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE judet = ?";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(1, $county);
             $stmt->execute();
+        } else if ($county == "Toate" && $nat_categ != "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE categorie_nationala = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE categorie_nationala = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE categorie_nationala = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE categorie_nationala = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE categorie_nationala = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $nat_categ);
+            $stmt->execute();
+        } else if ($county != "Toate" && $nat_categ != "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE judet = ? AND categorie_nationala = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE judet = ? AND categorie_nationala = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE judet = ? AND categorie_nationala = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE judet = ? AND categorie_nationala = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE judet = ? AND categorie_nationala = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $county);
+            $stmt->bindParam(2, $nat_categ);
+            $stmt->execute();
         }
-        
-
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $row['total_rows'];;
+        return $row['total_rows'];
+    }
+    function count_cars_county_com_categ($year, $county, $com_categ)
+    {
+
+        if ($county == "Toate" && $com_categ == "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+        } else if ($county == "Toate" && $com_categ != "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE categorie_comunitara = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE categorie_comunitara = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE categorie_comunitara = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE categorie_comunitara = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE categorie_comunitara = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $com_categ);
+            $stmt->execute();
+        } else if ($county != "Toate" && $com_categ == "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE judet = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE judet = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE judet = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE judet = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE judet = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $county);
+            $stmt->execute();
+        } else if ($county != "Toate" && $com_categ != "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE judet = ? AND categorie_comunitara = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE judet = ? AND categorie_comunitara = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE judet = ? AND categorie_comunitara = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE judet = ? AND categorie_comunitara = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE judet = ? AND categorie_comunitara = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $county);
+            $stmt->bindParam(2, $com_categ);
+            $stmt->execute();
+        }
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $row['total_rows'];
+    }
+    function count_cars_county_brand($year, $county, $brand)
+    {
+
+        if ($county == "Toate" && $brand == "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+        } else if ($county != "Toate" && $brand == "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE judet = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE judet = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE judet = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE judet = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE judet = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $county);
+            $stmt->execute();
+        } else if ($county == "Toate" && $brand != "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE marca = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE marca = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE marca = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE marca = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE marca = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $brand);
+            $stmt->execute();
+        } else if ($county != "Toate" && $brand != "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE judet = ? AND marca = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE judet = ? AND marca = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE judet = ? AND marca = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE judet = ? AND marca = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE judet = ? AND marca = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $county);
+            $stmt->bindParam(2, $brand);
+            $stmt->execute();
+        }
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $row['total_rows'];
+    }
+    function count_cars_county_nat_categ_brand($year, $county, $nat_categ, $brand)
+    {
+        if ($county == "Toate" && $nat_categ == "Toate" && $brand == "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+        } else if ($county != "Toate" && $nat_categ == "Toate" && $brand == "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE judet = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE judet = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE judet = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE judet = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE judet = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $county);
+            $stmt->execute();
+        } else if ($county == "Toate" && $nat_categ != "Toate" && $brand == "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE categorie_nationala = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE categorie_nationala = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE categorie_nationala = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE categorie_nationala = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE categorie_nationala = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $nat_categ);
+            $stmt->execute();
+        } else if ($county == "Toate" && $nat_categ == "Toate" && $brand != "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE marca = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE marca = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE marca = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE marca = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE marca = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $brand);
+            $stmt->execute();
+        } else if ($county != "Toate" && $nat_categ != "Toate" && $brand == "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE judet = ? AND categorie_nationala = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE judet = ? AND categorie_nationala = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE judet = ? AND categorie_nationala = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE judet = ? AND categorie_nationala = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE judet = ? AND categorie_nationala = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $county);
+            $stmt->bindParam(2, $nat_categ);
+            $stmt->execute();
+        } else if ($county != "Toate" && $nat_categ == "Toate" && $brand != "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE judet = ? AND marca = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE judet = ? AND marca = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE judet = ? AND marca = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE judet = ? AND marca = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE judet = ? AND marca = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $county);
+            $stmt->bindParam(2, $brand);
+            $stmt->execute();
+        } else if ($county == "Toate" && $nat_categ != "Toate" && $brand != "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE categorie_nationala = ? AND marca = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE categorie_nationala = ? AND marca = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE categorie_nationala = ? AND marca = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE categorie_nationala = ? AND marca = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE categorie_nationala = ? AND marca = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $nat_categ);
+            $stmt->bindParam(2, $brand);
+            $stmt->execute();
+        } else if ($county != "Toate" && $nat_categ != "Toate" && $brand != "Toate") {
+            if ($year == 2015)
+                $query = "SELECT SUM(total) as total_rows FROM masini2015 WHERE judet = ? AND categorie_nationala = ? AND marca = ?";
+            else if ($year == 2016)
+                $query = "SELECT SUM(total) as total_rows FROM masini2016 WHERE judet = ? AND categorie_nationala = ? AND marca = ?";
+            else if ($year == 2017)
+                $query = "SELECT SUM(total) as total_rows FROM masini2017 WHERE judet = ? AND categorie_nationala = ? AND marca = ?";
+            else if ($year == 2018)
+                $query = "SELECT SUM(total) as total_rows FROM masini2018 WHERE judet = ? AND categorie_nationala = ? AND marca = ?";
+            else if ($year == 2019)
+                $query = "SELECT SUM(total) as total_rows FROM masini2019 WHERE judet = ? AND categorie_nationala = ? AND marca = ?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $county);
+            $stmt->bindParam(2, $nat_categ);
+            $stmt->bindParam(3, $brand);
+            $stmt->execute();
+        }
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $row['total_rows'];
+    }
+    function counties()
+    {
+        $query = "SELECT DISTINCT judet as county_name FROM masini2015";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
+    function brands($county)
+    {
+        if ($county == "All") {
+            $query = "SELECT marca as brand_name FROM(
+                (SELECT DISTINCT marca FROM masini2015) 
+                UNION 
+                (SELECT DISTINCT marca FROM masini2016) 
+                UNION
+                (SELECT DISTINCT marca FROM masini2017) 
+                UNION
+                (SELECT DISTINCT marca FROM masini2018) 
+                UNION
+                (SELECT DISTINCT marca FROM masini2019)) AS i
+                 ORDER BY marca";
+            $stmt = $this->conn->prepare($query);
+        } else {
+            $query = "SELECT marca as brand_name FROM(
+                 (SELECT DISTINCT marca FROM masini2015
+                  WHERE judet = ?) UNION 
+                 (SELECT DISTINCT marca FROM masini2016
+                  WHERE judet = ?) UNION
+                 (SELECT DISTINCT marca FROM masini2017 
+                  WHERE judet = ?) UNION
+                 (SELECT DISTINCT marca FROM masini2018
+                  WHERE judet = ?) UNION
+                 (SELECT DISTINCT marca FROM masini2019
+                  WHERE judet = ?)) AS i
+                  ORDER BY marca";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $county);
+            $stmt->bindParam(2, $county);
+            $stmt->bindParam(3, $county);
+            $stmt->bindParam(4, $county);
+            $stmt->bindParam(5, $county);
+        }
+        $stmt->execute();
+        return $stmt;
+    }
+    function nat_cat($county)
+    {
+        if ($county == "All") {
+            $query = "SELECT categorie_nationala AS nat_categ FROM(
+                (SELECT DISTINCT categorie_nationala FROM masini2015)
+                  UNION 
+                (SELECT DISTINCT categorie_nationala FROM masini2016) 
+                  UNION
+                (SELECT DISTINCT categorie_nationala FROM masini2017)
+                  UNION
+                (SELECT DISTINCT categorie_nationala FROM masini2018) 
+                  UNION
+                (SELECT DISTINCT categorie_nationala FROM masini2019)) AS i
+                ORDER BY categorie_nationala";
+            $stmt = $this->conn->prepare($query);
+        } else {
+            $query = "SELECT categorie_nationala AS nat_categ FROM(
+                  (SELECT DISTINCT categorie_nationala FROM masini2015 WHERE judet = ?)
+                    UNION 
+                  (SELECT DISTINCT categorie_nationala FROM masini2016 WHERE judet = ?) 
+                    UNION
+                  (SELECT DISTINCT categorie_nationala FROM masini2017 WHERE judet = ?)
+                    UNION
+                  (SELECT DISTINCT categorie_nationala FROM masini2018 WHERE judet = ?) 
+                    UNION
+                  (SELECT DISTINCT categorie_nationala FROM masini2019 WHERE judet = ?)) AS i
+                  ORDER BY categorie_nationala";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $county);
+            $stmt->bindParam(2, $county);
+            $stmt->bindParam(3, $county);
+            $stmt->bindParam(4, $county);
+            $stmt->bindParam(5, $county);
+        }
+        $stmt->execute();
+        return $stmt;
+    }
+    function com_cat($county)
+    {
+        if ($county == "All") {
+            $query = "SELECT categorie_comunitara AS com_categ FROM(
+                (SELECT DISTINCT categorie_comunitara FROM masini2015)
+                  UNION 
+                (SELECT DISTINCT categorie_comunitara FROM masini2016) 
+                  UNION
+                (SELECT DISTINCT categorie_comunitara FROM masini2017)
+                  UNION
+                (SELECT DISTINCT categorie_comunitara FROM masini2018) 
+                  UNION
+                (SELECT DISTINCT categorie_comunitara FROM masini2019)) AS i
+                ORDER BY categorie_comunitara";
+            $stmt = $this->conn->prepare($query);
+        } else {
+            $query = "SELECT categorie_comunitara AS com_categ FROM(
+            (SELECT DISTINCT categorie_comunitara FROM masini2015 WHERE judet = ?)
+              UNION 
+            (SELECT DISTINCT categorie_comunitara FROM masini2016 WHERE judet = ?) 
+              UNION
+            (SELECT DISTINCT categorie_comunitara FROM masini2017 WHERE judet = ?)
+              UNION
+            (SELECT DISTINCT categorie_comunitara FROM masini2018 WHERE judet = ?) 
+              UNION
+            (SELECT DISTINCT categorie_comunitara FROM masini2019 WHERE judet = ?)) AS i
+            ORDER BY categorie_comunitara";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(1, $county);
+            $stmt->bindParam(2, $county);
+            $stmt->bindParam(3, $county);
+            $stmt->bindParam(4, $county);
+            $stmt->bindParam(5, $county);
+        }
+        $stmt->execute();
+        return $stmt;
     }
 }

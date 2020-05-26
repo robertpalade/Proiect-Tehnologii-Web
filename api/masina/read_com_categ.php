@@ -17,18 +17,13 @@ $db = $database->getConnection();
 // prepare product object
 $masina = new Masina($db);
 
-$id = 1;
+$id = 0;
 $com_cat_arr = array();
 $com_cat_arr["records"] = array();
-$com_cat_item = array(
-    "id" => $id,
-    "com_categ" => "Toate"
-);
-
-array_push($com_cat_arr["records"], $com_cat_item);
 
 $county = isset($_GET['county']) ? $_GET['county'] : die();
-$stmt = $masina->com_cat($county);
+$year = isset($_GET['year'])?$_GET['year'] : die();
+$stmt = $masina->com_cat($county, $year);
 $num = $stmt->rowCount();
 
 if ($num > 0) {
@@ -58,6 +53,6 @@ if ($num > 0) {
 
     // tell the user no products found
     echo json_encode(
-        array("message" => "No products found.")
+        array("message" => "No communitary category found.")
     );
 }

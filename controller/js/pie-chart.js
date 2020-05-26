@@ -32,16 +32,16 @@ function buildAll(data, button1, button2, theUrl) {
     .domain(data)
     .range(["red", "yellow", "orange", "brown", "pink"]);
 
-
+    if(button2 != "notAvailable")
   document
     .getElementById(button1)
     .addEventListener("change", updateButton2Combo);
 
   function updateButton2Combo() {
     var county = document.getElementById(button1).value;
-    if (button2 == "selectBrandButton") build_brands_combo(county);
-    else if (button2 == "selectCommunityButton") build_com_combo(county);
-    else if (button2 == "selectNationalButton") build_nat_combo(county);
+    if (button2 == "selectBrandButton") build_brands_combo(county, "All");
+    else if (button2 == "selectCommunityButton") build_com_combo(county, "All");
+    else if (button2 == "selectNationalButton") build_nat_combo(county, "All");
   }
   document.getElementById("submitButton").addEventListener("click", updatePie);
 
@@ -58,15 +58,20 @@ function buildAll(data, button1, button2, theUrl) {
       .append("g")
       .attr("transform", "translate(" + width / 3 + "," + height / 2 + ")");
     var county = document.getElementById(button1).value;
+    if(button2 != "notAvailable")
     var valueTwo = document.getElementById(button2).value;
     var auxUrl = theUrl;
     auxUrl = auxUrl.concat(county);
-    if (button2 == "selectBrandButton") auxUrl = auxUrl.concat("&brand=");
-    else if (button2 == "selectCommunityButton")
+    if (button2 == "selectBrandButton") {
+      auxUrl = auxUrl.concat("&brand=");
+      auxUrl = auxUrl.concat(valueTwo);
+    } else if (button2 == "selectCommunityButton") {
       auxUrl = auxUrl.concat("&com_categ=");
-    else if (button2 == "selectNationalButton")
+      auxUrl = auxUrl.concat(valueTwo);
+    } else if (button2 == "selectNationalButton") {
       auxUrl = auxUrl.concat("&nat_categ=");
-    auxUrl = auxUrl.concat(valueTwo);
+      auxUrl = auxUrl.concat(valueTwo);
+    }
     console.log(auxUrl);
     var req = new XMLHttpRequest();
     req.overrideMimeType("application/json");
@@ -81,40 +86,38 @@ function buildAll(data, button1, button2, theUrl) {
   // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
   function buildPie(svg, data) {
     // Compute the position of each group on the pie:
-    function percentage(data, value){
+    function percentage(data, value) {
       console.log(data[0].number_of_cars);
-      var sum=0;
-      for(i=0;i<data.length; i++)
-      sum = sum + data[i].number_of_cars;
+      var sum = 0;
+      for (i = 0; i < data.length; i++) sum = sum + data[i].number_of_cars;
       console.log(sum);
-      var percent = value*100/sum;
+      var percent = (value * 100) / sum;
       percent = percent.toFixed(2);
       console.log(percent);
       return percent;
-  
     }
-    
-      function mouseOverHandler(d, i) {
+
+    function mouseOverHandler(d, i) {
       console.log(data);
-        var percent = percentage(data, d.value);
+      var percent = percentage(data, d.value);
       tooltip2.transition().duration(400).style("opacity", 0.9);
       tooltip2
         .html("Nr of cars:" + d.value + "</br>" + "Percentage:" + percent)
         .style("left", d3.event.pageX + 20 + "px")
         .style("top", d3.event.pageY - 28 + "px");
     }
-  
+
     function mouseOutHandler(d, i) {
       // d3.select(this).attr("fill", color(i))
       tooltip2.transition().duration(500).style("opacity", 0);
     }
-  
+
     function mouseMoveHandler(d, i) {
       tooltip2
         .style("left", d3.event.pageX + 10 + "px")
         .style("top", d3.event.pageY + 10 + "px");
     }
-    
+
     var pie = d3.pie().value(function (d) {
       return d.number_of_cars;
     });

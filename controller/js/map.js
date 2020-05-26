@@ -115,6 +115,17 @@ function buildAll(data, button1, button2, theUrl) {
       .on("mousemove", mouseMoveHandler);
   }
 
+  document
+      .getElementById(button1)
+      .addEventListener("change", updateButton2Combo);
+
+  function updateButton2Combo() {
+    var year = document.getElementById(button1).value;
+    if (button2 == "selectBrandButton") build_brands_combo("All", year);
+    else if (button2 == "selectCommunityButton") build_com_combo("All", year);
+    else if (button2 == "selectNationalButton") build_nat_combo("All", year);
+  }
+
   document.getElementById("submitButton").addEventListener("click", updateMap);
 
   function updateMap() {

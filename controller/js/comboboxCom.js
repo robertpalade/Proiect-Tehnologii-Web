@@ -1,7 +1,9 @@
-function build_com_combo(county) {
+function build_com_combo(county, year) {
   var theUrl = "http://localhost/api/masina/read_com_categ.php";
   theUrl = theUrl.concat("?county=");
   theUrl = theUrl.concat(county);
+  theUrl = theUrl.concat("&year=");
+  theUrl = theUrl.concat(year);
   console.log(theUrl);
   var reqCom = new XMLHttpRequest();
   reqCom.overrideMimeType("application/json");

@@ -1,7 +1,9 @@
-function build_nat_combo(county) {
+function build_nat_combo(county, year) {
   var theUrl = "http://localhost/api/masina/read_nat_categ.php";
   theUrl = theUrl.concat("?county=");
   theUrl = theUrl.concat(county);
+  theUrl = theUrl.concat("&year=");
+  theUrl = theUrl.concat(year);
   console.log(theUrl);
   var reqNat = new XMLHttpRequest();
   reqNat.overrideMimeType("application/json");

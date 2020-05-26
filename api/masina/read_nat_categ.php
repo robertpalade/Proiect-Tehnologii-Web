@@ -18,18 +18,13 @@ $db = $database->getConnection();
 $masina = new Masina($db);
 
 $masina = new Masina($db);
-$id = 1;
+$id = 0;
 $nat_cat_arr = array();
 $nat_cat_arr["records"] = array();
-$nat_cat_item = array(
-    "id" => $id,
-    "nat_categ" => "Toate"
-);
-
-array_push($nat_cat_arr["records"], $nat_cat_item);
 
 $county = isset($_GET['county']) ? $_GET['county'] : die();
-$stmt = $masina->nat_cat($county);
+$year = isset($_GET['year'])?$_GET['year'] : die();
+$stmt = $masina->nat_cat($county, $year);
 $num = $stmt->rowCount();
 
 if ($num > 0) {
@@ -59,6 +54,6 @@ if ($num > 0) {
 
     // tell the user no products found
     echo json_encode(
-        array("message" => "No products found.")
+        array("message" => "No national category found.")
     );
 }

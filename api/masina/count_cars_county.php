@@ -19,19 +19,18 @@ $masina = new Masina($db);
 
 $stmt = $masina->years();
 $county = isset($_GET['county']) ? $_GET['county'] : die();
-$nat_categ = isset($_GET['nat_categ']) ? $_GET['nat_categ'] : die();
 // create array
 $years_arr = array();
 $years_arr["records"] = array();
 $check_state = false;
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     extract($row);
-    $cars_per_year = intval($masina->count_cars_county_nat_categ($year, $county, $nat_categ));
+    $cars_per_year = intval($masina->count_cars_county($year, $county));
     if ($cars_per_year != 0) {
         $check_state = true;
     }
     $year_item = array(
-        "year" =>  intval($year),
+        "year" => intval($year),
         "county" => $county,
         "number_of_cars" => $cars_per_year,
     );

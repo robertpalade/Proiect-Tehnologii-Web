@@ -4,8 +4,8 @@ class Database{
   // specify your own database credentials
   private $host = "localhost";
   private $db_name = "parc_auto";
-  private $username = "user";
-  private $password = "user";
+  private $username = "apax";
+  private $password = "apax";
   public $conn;
 
   // get the database connection

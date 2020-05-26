@@ -39,7 +39,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     $id++;
     $county_item=array(
         "id" => $id,
-        "county" => $county_name
+        "county" => $county
     );
     array_push($counties_arr["records"], $county_item);
 }

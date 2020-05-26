@@ -16,20 +16,14 @@ $db = $database->getConnection();
 
 // prepare product object
 $masina = new Masina($db);
-$id = 1;
+$id = 0;
 $brands_arr = array();
 $brands_arr["records"] = array();
-$brand_item = array(
-    "id" => $id,
-    "brand" => "Toate"
-);
 
-array_push($brands_arr["records"], $brand_item);
-
-$county = isset($_GET['county']) ? $_GET['county'] : die();
-$stmt = $masina->brands($county);
+$county = isset($_GET['county'])?$_GET['county'] : die();
+$year = isset($_GET['year'])?$_GET['year'] : die();
+$stmt = $masina->brands($county, $year);
 $num = $stmt->rowCount();
-
 if ($num > 0) {
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         // extract row
@@ -57,6 +51,6 @@ if ($num > 0) {
 
     // tell the user no products found
     echo json_encode(
-        array("message" => "No products found.")
+        array("message" => "No brands found")
     );
 }

@@ -4,13 +4,13 @@ function buildAll(data, button1, button2, theUrl) {
     width = 700 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-    var tooltip = d3
+  var tooltip = d3
     .select("body")
     .append("path")
     .attr("class", "tip")
     .style("opacity", 0);
-  
-    // append the svg object to the body of the page
+
+  // append the svg object to the body of the page
   var svg = d3
     .select("#my_dataviz")
     .append("svg")
@@ -20,34 +20,40 @@ function buildAll(data, button1, button2, theUrl) {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    function mouseOutHandler(d, i) {
-        tooltip.transition().duration(500).style("opacity", 0);
-      }
+  function mouseOutHandler(d, i) {
+    tooltip.transition().duration(500).style("opacity", 0);
+  }
 
-   document
-    .getElementById(button1)
-    .addEventListener("change", updateButton2Combo);
+  if (button2 != "notAvailable")
+    document
+      .getElementById(button1)
+      .addEventListener("change", updateButton2Combo);
 
   function updateButton2Combo() {
     var county = document.getElementById(button1).value;
-    if (button2 == "selectBrandButton") build_brands_combo(county);
-    else if (button2 == "selectCommunityButton") build_com_combo(county);
-    else if (button2 == "selectNationalButton") build_nat_combo(county);
+    if (button2 == "selectBrandButton") build_brands_combo(county, "All");
+    else if (button2 == "selectCommunityButton") build_com_combo(county, "All");
+    else if (button2 == "selectNationalButton") build_nat_combo(county, "All");
   }
 
   document.getElementById("submitButton").addEventListener("click", updateBar);
 
   function updateBar() {
     var county = document.getElementById(button1).value;
-    var valueTwo = document.getElementById(button2).value;
+    if (button2 != "notAvailable")
+      var valueTwo = document.getElementById(button2).value;
     auxUrl = theUrl;
     auxUrl = auxUrl.concat(county);
-    if (button2 == "selectBrandButton") auxUrl = auxUrl.concat("&brand=");
-    else if (button2 == "selectCommunityButton")
+    if (button2 == "selectBrandButton") {
+      auxUrl = auxUrl.concat("&brand=");
+      auxUrl = auxUrl.concat(valueTwo);
+    } else if (button2 == "selectCommunityButton") {
       auxUrl = auxUrl.concat("&com_categ=");
-    else if (button2 == "selectNationalButton")
+      auxUrl = auxUrl.concat(valueTwo);
+    } else if (button2 == "selectNationalButton") {
       auxUrl = auxUrl.concat("&nat_categ=");
-    auxUrl = auxUrl.concat(valueTwo);
+      auxUrl = auxUrl.concat(valueTwo);
+    }
     console.log(auxUrl);
     var req = new XMLHttpRequest();
     req.overrideMimeType("application/json");

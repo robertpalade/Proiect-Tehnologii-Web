@@ -1,7 +1,9 @@
-function build_brands_combo(county) {
+function build_brands_combo(county, year) {
   var theUrl = "http://localhost/api/masina/read_brands.php";
   theUrl = theUrl.concat("?county=");
   theUrl = theUrl.concat(county);
+  theUrl = theUrl.concat("&year=");
+  theUrl = theUrl.concat(year);
   console.log(theUrl);
   var reqBrands = new XMLHttpRequest();
   reqBrands.overrideMimeType("application/json");

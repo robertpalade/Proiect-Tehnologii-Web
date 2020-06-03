@@ -13,8 +13,8 @@ function buildAll(data, button1, button2, theUrl) {
     .style("opacity", 0);
 
   //making graph responsive
-  default_width = 700 - margin.left - margin.right;
-  default_height = 500 - margin.top - margin.bottom;
+  default_width = 600;
+  default_height = 500;
   default_ratio = default_width / default_height;
 
   // Determine current size, which determines vars
@@ -26,28 +26,22 @@ function buildAll(data, button1, button2, theUrl) {
     if (current_ratio > default_ratio) {
       h = default_height;
       w = default_width;
+      console.log("desktop");
       // mobile
     } else {
       margin.left = 40;
       w = current_width - 40;
       h = w / default_ratio;
+      console.log("mobile");
     }
     // Set new width and height based on graph dimensions
-    width = w - 50 - margin.right;
+    width = w - margin.left - margin.right;
+    console.log(width);
     height = h - margin.top - margin.bottom;
+    console.log(height);
   }
   set_size();
   //end responsive graph code
-
-  function mouseOverHandler(d, i, left, top) {
-    d3.select(this).transition().duration("100").attr("r", 7);
-    var name = d.number_of_cars;
-    tooltip.transition().duration(400).style("opacity", 1);
-    tooltip
-      .html(name)
-      .style("left", left + "px")
-      .style("top", top + "px");
-  }
 
   function mouseOutHandler(d, i) {
     d3.select(this).transition().duration("200").attr("r", 5);
@@ -64,6 +58,8 @@ function buildAll(data, button1, button2, theUrl) {
   // set the ranges
   var x = d3.scaleTime().range([0, width]);
   var y = d3.scaleLinear().range([height, 0]);
+  var minValue = customMinimize(d3.min(data, (d) => d.number_of_cars));
+  var maxValue = customRound(d3.max(data, (d) => d.number_of_cars));
 
   // Scale the range of the data
   x.domain(
@@ -71,7 +67,7 @@ function buildAll(data, button1, button2, theUrl) {
       return d.year;
     })
   );
-  y.domain([0, 1457889]);
+  y.domain([minValue, maxValue]);
 
   // define the line
   var valueline = d3
@@ -125,30 +121,24 @@ function buildAll(data, button1, button2, theUrl) {
       tooltip.transition().duration(400).style("opacity", 1);
       tooltip
         .html(name)
-        .style("left", x(d.year) + margin.top + "px")
-        .style("top", y(d.number_of_cars) + margin.left - 10 + "px");
+        .style("left", x(d.year) + margin.left/3 + "px")
+        .style("top", y(d.number_of_cars) + margin.bottom + margin.top*2 + "px");
     })
     .on("mouseout", mouseOutHandler);
 
   // Add the axis
-  if (width < 500) {
     svg
       .append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x).ticks(5));
-  } else {
-    svg
-      .append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).ticks(5));
-  }
 
-  svg.append("g").call(d3.axisLeft(y));
+  var g = svg.append("g");
+  g.call(d3.axisLeft(y));
 
-  if(button2 != "notAvailable")
-  document
-    .getElementById(button1)
-    .addEventListener("change", updateButton2Combo);
+  if (button2 != "notAvailable")
+    document
+      .getElementById(button1)
+      .addEventListener("change", updateButton2Combo);
 
   function updateButton2Combo() {
     var county = document.getElementById(button1).value;
@@ -188,8 +178,12 @@ function buildAll(data, button1, button2, theUrl) {
       data1.forEach(function (d) {
         parseDate = d3.timeParse("%Y");
         d.year = parseDate(d.year);
-        d.number_of_cars = +d.number_of_cars;
       });
+      var y = d3.scaleLinear().range([height, 0]);
+      var minValue = customMinimize(d3.min(data1, (d) => d.number_of_cars));
+      var maxValue = customRound(d3.max(data1, (d) => d.number_of_cars));
+      y.domain([minValue, maxValue]);
+      g.call(d3.axisLeft(y));
       line
         .data([data1])
         .transition()
@@ -208,6 +202,16 @@ function buildAll(data, button1, button2, theUrl) {
       // Add the data points
       dots
         .data(data1)
+        .on("mouseover", function (d) {
+          d3.select(this).transition().duration("100").attr("r", 7);
+          var name = d.number_of_cars;
+          tooltip.transition().duration(400).style("opacity", 1);
+          tooltip
+            .html(name)
+            .style("left", x(d.year) + margin.left/3 + "px")
+            .style("top", y(d.number_of_cars) + margin.bottom + margin.top*2 + "px");
+        })
+        .on("mouseout", mouseOutHandler)
         .transition()
         .duration(1000)
         .attr("cx", function (d) {

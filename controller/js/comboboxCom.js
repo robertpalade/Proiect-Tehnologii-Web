@@ -13,19 +13,18 @@ function build_com_combo(county, year) {
     combobox_com(jsonResponseCom.records);
   };
   reqCom.send();
-
-  function combobox_com(data) {
-    const selectCommunityButton = document.getElementById(
-      "selectCommunityButton"
-    );
-    while (selectCommunityButton.firstChild) {
-      selectCommunityButton.removeChild(selectCommunityButton.firstChild);
+}
+function combobox_com(data) {
+  const selectCommunityButton = document.getElementById(
+    "selectCommunityButton"
+  );
+  while (selectCommunityButton.firstChild) {
+    selectCommunityButton.removeChild(selectCommunityButton.firstChild);
   }
-    for (let i = 0; i < data.length; i++) {
-      let option = document.createElement("option");
-      option.text = data[i].com_categ;
-      option.value = data[i].com_categ;
-      selectCommunityButton.add(option);
-    }
+  for (let i = 0; i < data.length; i++) {
+    let option = document.createElement("option");
+    option.text = data[i].com_categ;
+    option.value = data[i].com_categ;
+    selectCommunityButton.add(option);
   }
 }

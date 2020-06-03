@@ -14,7 +14,7 @@ function build_brands_combo(county, year) {
   };
 
   reqBrands.send();
-
+}
   function combobox_brands(data) {
     const selectBrandButton = document.getElementById("selectBrandButton");
     while (selectBrandButton.firstChild) {
@@ -27,4 +27,3 @@ function build_brands_combo(county, year) {
       selectBrandButton.add(option);
     }
   }
-}

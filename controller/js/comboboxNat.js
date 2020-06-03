@@ -13,7 +13,7 @@ function build_nat_combo(county, year) {
     combobox_nat(jsonResponseNat.records);
   };
   reqNat.send();
-
+}
   function combobox_nat(data) {
     const selectNationalButton = document.getElementById(
       "selectNationalButton"
@@ -28,4 +28,3 @@ function build_nat_combo(county, year) {
       selectNationalButton.add(option);
     }
   }
-}

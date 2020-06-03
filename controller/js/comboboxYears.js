@@ -1,40 +1,34 @@
-function build_years_combo(county) {
-    let data = [
-        {
-            id:1,
-            year:2015
-        },
-        {
-            id:2,
-            year:2016
-        },
-        {
-            id:3,
-            year:2017
-        },
-        {
-            id:4,
-            year:2018
-        },
-        {
-            id:5,
-            year:2019
-        }
-    ]
-      combobox_nat(data);
+function buildYearCombo(button1, button2, url, buildCombo, stringToConcat) {
+  var theUrl = "http://localhost/api/masina/read_years.php";
+  console.log(theUrl);
+  var reqYears = new XMLHttpRequest();
+  reqYears.overrideMimeType("application/json");
+  reqYears.open("GET", theUrl, true);
+  reqYears.onload = function () {
+    var jsonResponseYears = JSON.parse(reqYears.responseText);
+    var data = jsonResponseYears.records;
+    combobox_years(data);
+    buildInitialChartCombo(
+      button1,
+      button2,
+      url,
+      buildCombo,
+      "All",
+      data[0].year,
+      stringToConcat
+    );
+  };
+  reqYears.send();
 }
-  
-    function combobox_nat(data) {
-      const selectYearButton = document.getElementById(
-        "selectYearButton"
-      );
-      while (selectYearButton.firstChild) {
-        selectYearButton.removeChild(selectYearButton.firstChild);
-    }
-      for (let i = 0; i < data.length; i++) {
-        let option = document.createElement("option");
-        option.text = data[i].year;
-        option.value = data[i].year;
-        selectYearButton.add(option);
-      }
-    }
+function combobox_years(data) {
+  const selectYearButton = document.getElementById("selectYearButton");
+  while (selectYearButton.firstChild) {
+    selectYearButton.removeChild(selectYearButton.firstChild);
+  }
+  for (let i = 0; i < data.length; i++) {
+    let option = document.createElement("option");
+    option.text = data[i].year;
+    option.value = data[i].year;
+    selectYearButton.add(option);
+  }
+}

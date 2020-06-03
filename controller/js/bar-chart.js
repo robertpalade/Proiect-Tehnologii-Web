@@ -20,6 +20,26 @@ function buildAll(data, button1, button2, theUrl) {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+  var g = svg.append("g");
+
+  var x = d3
+    .scaleBand()
+    .range([0, width])
+    .domain(
+      data.map(function (d) {
+        return d.year;
+      })
+    )
+    .padding(0.2);
+
+  svg
+    .append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+    .selectAll("text")
+    .attr("transform", "translate(0,0)rotate(-30)")
+    .style("text-anchor", "end");
+
   function mouseOutHandler(d, i) {
     tooltip.transition().duration(500).style("opacity", 0);
   }
@@ -62,19 +82,25 @@ function buildAll(data, button1, button2, theUrl) {
       var jsonResponse = JSON.parse(req.responseText);
       console.log(jsonResponse.records);
       var data1 = jsonResponse.records;
-      var x = d3
-        .scaleBand()
-        .range([0, width])
-        .domain(
-          data.map(function (d) {
-            return d.year;
-          })
-        )
-        .padding(0.2);
-      var y = d3.scaleLinear().domain([0, 320000]).range([height, 0]);
 
+      var minValue = customMinimize(d3.min(data1, (d) => d.number_of_cars));
+      var maxValue = customRound(d3.max(data1, (d) => d.number_of_cars));
+      var countTicks = height / 50;
+      var y = d3.scaleLinear().domain([minValue, maxValue]).range([height, 0]);
+
+      // Add Y axis
+      g.call(d3.axisLeft(y).ticks(countTicks));
       d3.selectAll(".bar")
         .data(data1)
+        .on("mouseover", function (d) {
+          d3.select(this).transition().duration("100").attr("r", 7);
+          var name = d.number_of_cars;
+          tooltip.transition().duration(400).style("opacity", 1);
+          tooltip
+            .html(name)
+            .style("left", x(d.year) + margin.left + "px")
+            .style("top", y(d.number_of_cars) + margin.bottom + margin.top + "px");
+        })
         .transition()
         .duration(1000)
         .attr("x", function (d) {
@@ -93,28 +119,14 @@ function buildAll(data, button1, button2, theUrl) {
   function buildBar(svg, data) {
     // X axis
     console.log(data);
-    var x = d3
-      .scaleBand()
-      .range([0, width])
-      .domain(
-        data.map(function (d) {
-          return d.year;
-        })
-      )
-      .padding(0.2);
 
-    svg
-      .append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x))
-      .selectAll("text")
-      .attr("transform", "translate(0,0)rotate(-30)")
-      .style("text-anchor", "end");
-
+    var minValue = customMinimize(d3.min(data, (d) => d.number_of_cars));
+    var maxValue = customRound(d3.max(data, (d) => d.number_of_cars));
+    var countTicks = height / 50;
     // Add Y axis
-    var y = d3.scaleLinear().domain([0, 320000]).range([height, 0]);
-
-    svg.append("g").call(d3.axisLeft(y));
+    var y = d3.scaleLinear().domain([minValue, maxValue]).range([height, 0]);
+    console.log(countTicks);
+    g.call(d3.axisLeft(y).ticks(countTicks));
 
     // Bars
     svg
@@ -141,7 +153,7 @@ function buildAll(data, button1, button2, theUrl) {
         tooltip
           .html(name)
           .style("left", x(d.year) + margin.left + "px")
-          .style("top", y(d.number_of_cars) + margin.bottom + 20 + "px");
+          .style("top", y(d.number_of_cars) + margin.bottom + margin.top + "px");
       })
       .on("mouseout", mouseOutHandler);
   }

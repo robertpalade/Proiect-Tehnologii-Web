@@ -12,6 +12,7 @@ class Masina
     public $marca;
     public $descriere_comerciala;
     public $total;
+    public $an;
 
     // constructor with $db as database connection
     public function __construct($db)
@@ -59,8 +60,9 @@ class Masina
         return $row['total_rows'];
     }
 
-    function count_cars_county($year, $county){
-        
+    function count_cars_county($year, $county)
+    {
+
         $query = "SELECT SUM(total) as total_rows FROM masini WHERE an = ? AND judet = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(1, $year);
@@ -71,14 +73,16 @@ class Masina
         return $row['total_rows'];
     }
 
-    function years(){
+    function years()
+    {
         $query = "SELECT DISTINCT an as year FROM masini";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;
     }
 
-    function counties(){
+    function counties()
+    {
         $query = "SELECT DISTINCT judet as county FROM masini";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();

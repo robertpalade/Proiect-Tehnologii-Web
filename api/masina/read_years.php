@@ -17,12 +17,10 @@ $db = $database->getConnection();
 // prepare product object
 $masina = new Masina($db);
 $id = 0;
-$nat_cat_arr = array();
-$nat_cat_arr["records"] = array();
+$years_arr = array();
+$years_arr["records"] = array();
 
-$county = isset($_GET['county']) ? $_GET['county'] : die();
-$year = isset($_GET['year'])?$_GET['year'] : die();
-$stmt = $masina->nat_cat($county, $year);
+$stmt = $masina->years();
 $num = $stmt->rowCount();
 
 if ($num > 0) {
@@ -31,13 +29,13 @@ if ($num > 0) {
         // this will make $row['name'] to
         // just $name only
         extract($row);
-        if ($nat_categ != "") {
+        if ($year != "") {
             $id++;
-            $nat_cat_item = array(
+            $year_item = array(
                 "id" => $id,
-                "nat_categ" => $nat_categ
+                "year" => $year
             );
-            array_push($nat_cat_arr["records"], $nat_cat_item);
+            array_push($years_arr["records"], $year_item);
         }
     }
 
@@ -45,13 +43,13 @@ if ($num > 0) {
     http_response_code(200);
 
     // show products data in json format
-    echo json_encode($nat_cat_arr);
+    echo json_encode($years_arr);
 } else {
     // set response code - 404 Not found
     http_response_code(404);
 
     // tell the user no products found
     echo json_encode(
-        array("message" => "No national category found.")
+        array("message" => "No year found.")
     );
 }

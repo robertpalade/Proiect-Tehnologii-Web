@@ -14,6 +14,93 @@ body {
     line-height: 24px;
 }
 
+.logo{
+  text-align: center;
+  color: #5383d3;
+  /* text-decoration: dashed; */
+  font: normal 36px "Cookie", cursive;
+  padding: 10px;
+}
+
+h2 {
+    /* font-size: 16px; */
+    font-size: 20px;
+    text-align: center;
+    font-weight: 400;
+}
+
+form {
+  width: 20%;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #a2b3ca;
+  background: white;
+  border-radius: 10px;
+}
+
+.form-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  /*flex-direction: column;
+  flex-wrap: wrap;*/
+  flex-flow: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.input-group {
+  margin: 10px 0px 10px 0px;
+}
+
+.input-group label {
+  display: block;
+  text-align: left;
+  margin: 3px;
+}
+
+.input-group input {
+    height: 30px;
+    width: calc(100% - 22px);
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid gray;
+}
+
+.button {
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background: #1182e3;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+}
+
+
+
+.error {
+  color: #a94442;
+  text-align: center;
+  background: #f2dede; 
+  padding: 5px; 
+  border: 1px solid #a94442; 
+  border-radius: 5px; 
+}
+
+.success {
+  color: #3c763d; 
+  text-align: center;
+  background: #dff0d8; 
+  padding: 5px;
+  border: 1px solid #3c763d;
+  border-radius: 5px;
+}
+
+
+
 /*Style the top navigation bar*/
 
 .topnav {
@@ -267,9 +354,6 @@ body {
     transition: opacity 0.3s ease-out;
 }
 
-h2 {
-    font-size: 16px;
-}
 
 .cursor {
     cursor: pointer;
@@ -284,6 +368,8 @@ h3 {
 h3 span {
     color: #5383d3;
 }
+
+
 
 #map__container {
     height: 100%;

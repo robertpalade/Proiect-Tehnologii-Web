@@ -57,6 +57,7 @@ function buildInitialChartCombo(
     };
     req.send();
   } else {
+    var valueTwo = "";
     if (county != "All")
       buildChart(button1, button2, url, county, valueTwo, stringToConcat);
     else if (year != "All")

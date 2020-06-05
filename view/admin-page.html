@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bar Chart cars by county and brand</title>
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/font.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <script src="../controller/js/header.js"></script>
+
+    <div class="page-title">
+        <h1> Admin Page </h1>
+    </div>
+
+    <div class="charts-admin">
+
+        <h2>Hide statistics</h2>
+
+        <h2 class="chart-titles"> Pie Charts </h2>
+
+        <div class="stats-titles">
+            <label for="CountyAndBrandPie"> Cars by county and brand </label>
+            <input type="checkbox" id="CountyAndBrandPie">
+        </div>
+
+        <div class="stats-titles">
+            <label for="CountyAndNationalCategoryPie"> Cars by county and national category </label>
+            <input type="checkbox" id="CountyAndNationalCategoryPie">
+        </div>
+
+        <div class="stats-titles">
+            <label for="CountyAndCommunityCategoryPie"> Cars by county and communitary category </label>
+            <input type="checkbox" id="CountyAndCommunityCategoryPie">
+        </div>
+
+        <div class="stats-titles">
+            <label for="totalByCountyPie"> Total cars by county </label>
+            <input type="checkbox" id="totalByCountyPie">
+        </div>
+
+        <h2 class="chart-titles"> Bar Charts </h2>
+
+        <div class="stats-titles">
+            <label for="CountyAndBrandBar"> Cars by county and brand </label>
+            <input type="checkbox" id="CountyAndBrandBar">
+        </div>
+
+        <div class="stats-titles">
+            <label for="CountyAndNationalCategoryBar"> Cars by county and national category </label>
+            <input type="checkbox" id="CountyAndNationalCategoryBar">
+        </div>
+
+        <div class="stats-titles">
+            <label for="CountyAndCommunitaryCategoryBar"> Cars by county and communitary category </label>
+            <input type="checkbox" id="CountyAndCommunitaryCategoryBar">
+        </div>
+
+        <div class="stats-titles">
+            <label for="totalByCountyBar"> Total cars by county </label>
+            <input type="checkbox" id="totalByCountyBar">
+        </div>
+
+        <h2 class="chart-titles"> Line Charts </h2>
+
+        <div class="stats-titles">
+            <label for="CountyAndBrandLine"> Cars by county and brand </label>
+            <input type="checkbox" id="CountyAndBrandLine">
+        </div>
+
+        <div class="stats-titles">
+            <label for="CountyAndNationalCategoryLine"> Cars by county and national category </label>
+            <input type="checkbox" id="CountyAndNationalCategoryLine">
+        </div>
+
+        <div class="stats-titles">
+            <label for="CountyAndCommunitaryCategoryLine"> Cars by county and communitary category </label>
+            <input type="checkbox" id="CountyAndCommunitaryCategoryLine">
+        </div>
+
+        <div class="stats-titles">
+            <label for="totalByCountyLine"> Total cars by county </label>
+            <input type="checkbox" id="totalByCountyLine">
+        </div>
+
+        <h2 class="chart-titles"> Map Charts </h2>
+
+        <div class="stats-titles">
+            <label for="YearAndBrandMap"> Cars by year and brand </label>
+            <input type="checkbox" id="YearAndBrandMap">
+        </div>
+
+        <div class="stats-titles">
+            <label for="YearAndNationalCategoryMap"> Cars by year and national category </label>
+            <input type="checkbox" id="YearAndNationalCategoryMap">
+        </div>
+
+        <div class="stats-titles">
+            <label for="YearAndCommunityCategoryMap"> Cars by year and communitary category </label>
+            <input type="checkbox" id="YearAndCommunityCategoryMap">
+        </div>
+
+        <button id="submitButtonAdmin"> Submit </button>
+
+    </div>
+
+    <footer class="footer-distributed">
+        <h3><span>Apax</span></h3>
+        <p class="footer-links">
+            <a href="index.html">Home</a> ·
+            <a href="pie-chart.html">Pie-Chart</a> ·
+            <a href="bar-chart.html">Bar-Chart</a> ·
+            <a href="line-chart.html">Line-Chart</a> ·
+            <a href="map-chart.html">Map-Chart</a>
+        </p>
+        <p class="footer-company-name">Apax &copy; 2020</p>
+    </footer>
+
+    <script>
+        // get checkboxes from document
+        let checkboxes = document.getElementsByTagName('input')
+        // set new object representing checkboxes status ( checked or unchecked )
+        let checkboxesStatus = {}
+        // get the localstorage item or, if there is none, set this to an empty object
+        let chartsToHide = localStorage.getItem('chartsToHide') || {}
+        /**
+         * iterate through checkboxes to set input checked attribute 
+         * depending on chartsToHide object ( or true by default)
+         * true means that the input is checked
+         */
+        for (let element of checkboxes) {
+            element.setAttribute('checked', chartsToHide[element.getAttribute['id']] || true)
+        }
+        /**
+         * add event listener to inputs and change object with checked status 
+         * then set localstorage item to checkboxesStatus
+         */
+        for (let element of checkboxes) {
+            element.addEventListener('change', (event) => {
+                checkboxesStatus[event.target.getAttribute('id')] = event.target.checked;
+                localStorage.setItem('chartsToHide', JSON.stringify(checkboxesStatus))
+            })
+        }
+
+    </script>
+    <script src="../controller/js/admin.js"></script>
+</body>
+
+</html>

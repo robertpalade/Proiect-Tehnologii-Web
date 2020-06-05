@@ -10,84 +10,13 @@
 </head>
 
 <body>
-    <header>
-        <div class="topnav">
-            <a href="index.html"> Home </a>
-            <div class="dropdown">
-                <button class="dropbtn"> Pie Charts <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content charts-dropdown">
-                    <div class="row">
-                        <div class="menu-column">
-                            <a href="pie-chart-cars-by-county-and-brand.html"> Cars by county and brand </a>
-                            <a href="pie-chart-cars-by-county-and-national-category.html"> Cars by county and national
-                                category </a>
-                            <a href="pie-chart-cars-by-county-and-communitary-category.html"> Cars by county and
-                                communitary category </a>
-                            <a href="pie-chart-total-cars-by-county.html"> Total cars by county </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <script src="../controller/js/header.js"></script>
 
-            <div class="dropdown">
-                <button class="dropbtn"> Bar Charts <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content charts-dropdown">
-                    <div class="row">
-                        <div class="menu-column">
-                            <a href="bar-chart-cars-by-county-and-brand.html"> Cars by county and brand </a>
-                            <a href="bar-chart-cars-by-county-and-national-category.html"> Cars by county and national
-                                category </a>
-                            <a href="bar-chart-cars-by-county-and-communitary-category.html"> Cars by county and
-                                communitary category </a>
-                            <a href="bar-chart-total-cars-by-county.html"> Total cars by county </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dropdown">
-                <button class="dropbtn">
-                    Line Charts <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content charts-dropdown">
-                    <div class="row">
-                        <div class="menu-column">
-                            <a href="line-chart-cars-by-county-and-brand.html"> Cars by county and brand </a>
-                            <a href="line-chart-cars-by-county-and-national-category.html"> Cars by county and
-                                national category </a>
-                            <a href="line-chart-cars-by-county-and-communitary-category.html"> Cars by county and
-                                communitary category </a>
-                            <a href="line-chart-total-cars-by-county.html"> Total cars by county </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dropdown">
-                <button class="dropbtn">
-                    Map Charts <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content charts-dropdown">
-                    <div class="row">
-                        <div class="menu-column">
-                            <a href="map-chart-cars-by-year-and-brand.html"> Cars by year and brand </a>
-                            <a href="map-chart-cars-by-year-and-national-category.html"> Cars by year and national
-                                category </a>
-                            <a href="map-chart-cars-by-year-and-communitary-category.html"> Cars by year and
-                                communitary category </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
 
     <div class="main-image"></div>
 
     <div class="specific-charts">
-        <h1 class="charts-title">Charts</h1>
+        <h1 class="page-title">Charts</h1>
         <a href="pie-chart.html">
             <div class="link-photo pie-chart">
                 <div class="chart-description">
@@ -138,6 +67,18 @@
         </p>
         <p class="footer-company-name">Apax &copy; 2020</p>
     </footer>
+
+    <script>
+        document.getElementById("logout").addEventListener("click", () => {
+            debugger
+            localStorage.removeItem("token");
+            localStorage.removeItem("admin");
+            var y = localStorage.length;
+            console.log(y);
+        }
+        );
+    </script>
+    <script src="../controller/js/admin.js"></script>
 </body>
 
 </html>

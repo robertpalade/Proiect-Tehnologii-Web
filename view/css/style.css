@@ -29,8 +29,18 @@ h2 {
     font-weight: 400;
 }
 
+h3 {
+    color: #ffffff;
+    font: normal 36px "Cookie", cursive;
+    margin: 0;
+}
+
+h3 span {
+    color: #5383d3;
+}
+
 form {
-  width: 20%;
+  width: 300px;
   margin: auto;
   padding: 20px;
   border: 1px solid #a2b3ca;
@@ -108,6 +118,8 @@ form {
     padding: 0;
     overflow: hidden;
     text-align: left;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 /*Style the topnav links*/
@@ -205,6 +217,12 @@ form {
     text-align: center;
 }
 
+#logout{
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+}
+
 /*Clear floats after the columns*/
 
 .row:after-1 {
@@ -282,11 +300,26 @@ form {
     margin-bottom: 60px;
     text-align: center;
 }
-
+/* 
 .charts-title {
-    font-size: 24px;
     line-height: 40px;
     color: #282828;
+}
+
+.admin-title{
+    margin-top: 20px;
+    margin-bottom: 60px;
+    text-align: center;
+    line-height: 40px;
+    color: #282828;
+} */
+
+.page-title{
+    margin-top: 20px;
+    text-align: center;
+    line-height: 40px;
+    color: #282828;
+
 }
 
 .link-photo {
@@ -354,27 +387,47 @@ form {
     transition: opacity 0.3s ease-out;
 }
 
-
 .cursor {
     cursor: pointer;
 }
-
-h3 {
-    color: #ffffff;
-    font: normal 36px "Cookie", cursive;
-    margin: 0;
-}
-
-h3 span {
-    color: #5383d3;
-}
-
-
 
 #map__container {
     height: 100%;
 }
 
+.charts-admin{
+    width: 40%;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-titles{
+    text-align: left;
+}
+
+.stats-titles{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+#submitButtonAdmin{
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background: #1182e3;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+#submitButtonAdmin:hover{
+    background-color: #5383d3;
+}
 path:hover {
     fill: #d36f80;
 }

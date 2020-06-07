@@ -1,5 +1,5 @@
 function buildYearCombo(button1, button2, url, buildCombo, stringToConcat) {
-  var theUrl = "http://localhost/api/masina/read_years.php";
+  var theUrl = "http://localhost/Proiect-Tehnologii-Web/api/masina/read_years.php";
   console.log(theUrl);
   var reqYears = new XMLHttpRequest();
   reqYears.overrideMimeType("application/json");

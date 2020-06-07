@@ -1,3 +1,4 @@
+var dataForCsv;
 function buildAll(data, button1, button2, theUrl) {
   // set the dimensions and margins of the graph
   var width = 700;
@@ -32,10 +33,10 @@ function buildAll(data, button1, button2, theUrl) {
     .domain(data)
     .range(["red", "yellow", "orange", "brown", "pink"]);
 
-    if(button2 != "notAvailable")
-  document
-    .getElementById(button1)
-    .addEventListener("change", updateButton2Combo);
+  if (button2 != "notAvailable")
+    document
+      .getElementById(button1)
+      .addEventListener("change", updateButton2Combo);
 
   function updateButton2Combo() {
     var county = document.getElementById(button1).value;
@@ -58,8 +59,8 @@ function buildAll(data, button1, button2, theUrl) {
       .append("g")
       .attr("transform", "translate(" + width / 3 + "," + height / 2 + ")");
     var county = document.getElementById(button1).value;
-    if(button2 != "notAvailable")
-    var valueTwo = document.getElementById(button2).value;
+    if (button2 != "notAvailable")
+      var valueTwo = document.getElementById(button2).value;
     var auxUrl = theUrl;
     auxUrl = auxUrl.concat(county);
     if (button2 == "selectBrandButton") {
@@ -79,8 +80,11 @@ function buildAll(data, button1, button2, theUrl) {
     req.onload = function () {
       jsonResponse = JSON.parse(req.responseText);
       buildPie(svg, jsonResponse.records);
+      dataForCsv = jsonResponse.records;
     };
     req.send();
+
+
   }
 
   // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
@@ -185,6 +189,8 @@ function buildAll(data, button1, button2, theUrl) {
   }
 
   buildPie(svg, data);
+
+  dataForCsv = data
 }
 
 document
@@ -195,7 +201,9 @@ document
 
 document
   .getElementById("csvDownloadButton")
-  .addEventListener("click", () => saveCsv(responseData));
+  .addEventListener("click", () => saveCsv(dataForCsv));
+
+
 
 function saveSvg(svgEl, name) {
   svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -238,10 +246,9 @@ function saveWebp() {
 }
 
 function saveCsv(data) {
-  debugger;
   var csvContent = "data:text/csv;charset=utf-8,";
 
-  csvContent += data.records
+  csvContent += data
     .map((it) => {
       return Object.values(it).toString();
     })

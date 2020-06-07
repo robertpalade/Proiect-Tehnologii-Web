@@ -1,3 +1,4 @@
+var dataForCsv;
 function buildAll(data, button1, button2, theUrl) {
   // set the dimensions and margins of the graph
   var margin = { top: 30, right: 30, bottom: 70, left: 60 },
@@ -80,6 +81,7 @@ function buildAll(data, button1, button2, theUrl) {
     req.open("GET", auxUrl, true);
     req.onload = function () {
       var jsonResponse = JSON.parse(req.responseText);
+      dataForCsv = jsonResponse.records;
       console.log(jsonResponse.records);
       var data1 = jsonResponse.records;
 
@@ -156,6 +158,7 @@ function buildAll(data, button1, button2, theUrl) {
           .style("top", y(d.number_of_cars) + margin.bottom + margin.top + "px");
       })
       .on("mouseout", mouseOutHandler);
+    dataForCsv = data
   }
 
   buildBar(svg, data);
@@ -166,6 +169,10 @@ document
   .addEventListener("click", () =>
     saveSvg(document.getElementById("svg"), "image.svg")
   );
+
+document
+  .getElementById("csvDownloadButton")
+  .addEventListener("click", () => saveCsv(dataForCsv));
 
 function saveSvg(svgEl, name) {
   svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -205,4 +212,22 @@ function saveWebp() {
   downloadLink.click();
   document.body.removeChild(downloadLink);
   document.body.removeChild(canvas);
+}
+
+function saveCsv(data) {
+  var csvContent = "data:text/csv;charset=utf-8,";
+
+  csvContent += data
+    .map((it) => {
+      return Object.values(it).toString();
+    })
+    .join("\n");
+
+  var encodedUri = encodeURI(csvContent);
+  var link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", "my_data.csv");
+  document.body.appendChild(link); // Required for FF
+
+  link.click(); // This will download the data file named "my_data.csv".
 }

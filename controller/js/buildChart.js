@@ -25,11 +25,11 @@ function buildInitialChartCombo(
 ) {
   var theUrl;
   if (stringToConcat.includes("brand"))
-    theUrl = "http://localhost/api/masina/read_brands.php";
+    theUrl = "http://localhost/Proiect-Tehnologii-Web/api/masina/read_brands.php";
   else if (stringToConcat.includes("com_categ"))
-    theUrl = "http://localhost/api/masina/read_com_categ.php";
+    theUrl = "http://localhost/Proiect-Tehnologii-Web/api/masina/read_com_categ.php";
   else if (stringToConcat.includes("nat_categ"))
-    theUrl = "http://localhost/api/masina/read_nat_categ.php";
+    theUrl = "http://localhost/Proiect-Tehnologii-Web/api/masina/read_nat_categ.php";
 
   if (theUrl != null) {
     theUrl = theUrl.concat("?county=");

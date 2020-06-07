@@ -1,3 +1,4 @@
+var dataForCsv;
 function buildAll(data, button1, button2, theUrl) {
   var margin = {
     top: 20,
@@ -113,11 +114,13 @@ function buildAll(data, button1, button2, theUrl) {
       .on("mouseover", mouseOverHandler)
       .on("mouseout", mouseOutHandler)
       .on("mousemove", mouseMoveHandler);
+
+    dataForCsv = data;
   }
 
   document
-      .getElementById(button1)
-      .addEventListener("change", updateButton2Combo);
+    .getElementById(button1)
+    .addEventListener("change", updateButton2Combo);
 
   function updateButton2Combo() {
     var year = document.getElementById(button1).value;
@@ -145,6 +148,7 @@ function buildAll(data, button1, button2, theUrl) {
     req.open("GET", auxUrl, true);
     req.onload = function () {
       var jsonResponse = JSON.parse(req.responseText);
+      dataForCsv = jsonResponse.records;
       var data1 = jsonResponse.records;
       console.log(data1);
       var new_domain = domainSplit(data1);
@@ -180,6 +184,10 @@ function buildAll(data, button1, button2, theUrl) {
     .addEventListener("click", () =>
       saveSvg(document.getElementById("svg"), "image.svg")
     );
+
+  document
+    .getElementById("csvDownloadButton")
+    .addEventListener("click", () => saveCsv(dataForCsv));
 
   function saveSvg(svgEl, name) {
     svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -219,5 +227,23 @@ function buildAll(data, button1, button2, theUrl) {
     downloadLink.click();
     document.body.removeChild(downloadLink);
     document.body.removeChild(canvas);
+  }
+
+  function saveCsv(data) {
+    var csvContent = "data:text/csv;charset=utf-8,";
+
+    csvContent += data
+      .map((it) => {
+        return Object.values(it).toString();
+      })
+      .join("\n");
+
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "my_data.csv");
+    document.body.appendChild(link); // Required for FF
+
+    link.click(); // This will download the data file named "my_data.csv".
   }
 }

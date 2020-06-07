@@ -1,3 +1,4 @@
+var dataForCsv;
 function buildAll(data, button1, button2, theUrl) {
   var margin = {
     top: 20,
@@ -121,16 +122,17 @@ function buildAll(data, button1, button2, theUrl) {
       tooltip.transition().duration(400).style("opacity", 1);
       tooltip
         .html(name)
-        .style("left", x(d.year) + margin.left/3 + "px")
-        .style("top", y(d.number_of_cars) + margin.bottom + margin.top*2 + "px");
+        .style("left", x(d.year) + margin.left / 3 + "px")
+        .style("top", y(d.number_of_cars) + margin.bottom + margin.top * 2 + "px");
     })
     .on("mouseout", mouseOutHandler);
 
+  dataForCsv = data;
   // Add the axis
-    svg
-      .append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).ticks(5));
+  svg
+    .append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x).ticks(5));
 
   var g = svg.append("g");
   g.call(d3.axisLeft(y));
@@ -174,6 +176,7 @@ function buildAll(data, button1, button2, theUrl) {
     req.open("GET", auxUrl, true);
     req.onload = function () {
       var jsonResponse = JSON.parse(req.responseText);
+      dataForCsv = jsonResponse.records;
       var data1 = jsonResponse.records;
       data1.forEach(function (d) {
         parseDate = d3.timeParse("%Y");
@@ -208,8 +211,8 @@ function buildAll(data, button1, button2, theUrl) {
           tooltip.transition().duration(400).style("opacity", 1);
           tooltip
             .html(name)
-            .style("left", x(d.year) + margin.left/3 + "px")
-            .style("top", y(d.number_of_cars) + margin.bottom + margin.top*2 + "px");
+            .style("left", x(d.year) + margin.left / 3 + "px")
+            .style("top", y(d.number_of_cars) + margin.bottom + margin.top * 2 + "px");
         })
         .on("mouseout", mouseOutHandler)
         .transition()
@@ -229,6 +232,10 @@ function buildAll(data, button1, button2, theUrl) {
     .addEventListener("click", () =>
       saveSvg(document.getElementById("svg"), "image.svg")
     );
+
+  document
+    .getElementById("csvDownloadButton")
+    .addEventListener("click", () => saveCsv(dataForCsv));
 
   function saveSvg(svgEl, name) {
     svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -269,4 +276,24 @@ function buildAll(data, button1, button2, theUrl) {
     document.body.removeChild(downloadLink);
     document.body.removeChild(canvas);
   }
+
+  function saveCsv(data) {
+    var csvContent = "data:text/csv;charset=utf-8,";
+
+    csvContent += data
+      .map((it) => {
+        return Object.values(it).toString();
+      })
+      .join("\n");
+
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "my_data.csv");
+    document.body.appendChild(link); // Required for FF
+
+    link.click(); // This will download the data file named "my_data.csv".
+  }
 }
+
+

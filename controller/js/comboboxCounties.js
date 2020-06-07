@@ -1,5 +1,5 @@
 function build_county_combo(button1, button2, url, buildCombo, stringToConcat) {
-  var theUrl = "http://localhost/api/masina/read_counties.php";
+  var theUrl = "http://localhost/Proiect-Tehnologii-Web/api/masina/read_counties.php";
   console.log(theUrl);
   var reqCounties = new XMLHttpRequest();
   reqCounties.overrideMimeType("application/json");
@@ -12,12 +12,12 @@ function build_county_combo(button1, button2, url, buildCombo, stringToConcat) {
   };
   reqCounties.send();
 }
-  function combobox_counties(data) {
-    const selectCountyButton = document.getElementById("selectCountyButton");
-    for (let i = 0; i < data.length; i++) {
-      let option = document.createElement("option");
-      option.text = data[i].county;
-      option.value = data[i].county;
-      selectCountyButton.add(option);
-    }
+function combobox_counties(data) {
+  const selectCountyButton = document.getElementById("selectCountyButton");
+  for (let i = 0; i < data.length; i++) {
+    let option = document.createElement("option");
+    option.text = data[i].county;
+    option.value = data[i].county;
+    selectCountyButton.add(option);
   }
+}

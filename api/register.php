@@ -15,7 +15,7 @@ function msg($success, $status, $message, $extra = []){
 }
 
 // INCLUDING DATABASE AND MAKING OBJECT
-include_once 'config/Database.php';
+include_once 'config/database.php';
 $db_connection = new Database();
 $conn = $db_connection->getConnection();
 
@@ -53,7 +53,6 @@ $conn = $db_connection->getConnection();
 
         else:
             try {
-
                 $check_email = "SELECT `email` FROM `users` WHERE `email`=:email";
                 $check_email_stmt = $conn->prepare($check_email);
                 $check_email_stmt->bindValue(':email', $email,PDO::PARAM_STR);
@@ -64,13 +63,14 @@ $conn = $db_connection->getConnection();
                 
                 else:
                     $insert_query = "INSERT INTO `users`(`email`,`password`) VALUES(:email,:password)";
-
                     $insert_stmt = $conn->prepare($insert_query);
 
                     // DATA BINDING
                     $insert_stmt->bindValue(':email', $email,PDO::PARAM_STR);
                     $insert_stmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT),PDO::PARAM_STR);
-
+                    // echo($email);
+                    // echo($password);
+                    // echo($insert_query);
                     $insert_stmt->execute();
 
                     $returnData = msg(1,201,'You have successfully registered!');

@@ -123,7 +123,7 @@
         // get checkboxes from document
         let checkboxes = document.getElementsByTagName('input')
         // set new object representing checkboxes status ( checked or unchecked )
-        let checkboxesStatus = {}
+        let checkboxesStatus = JSON.parse(localStorage.getItem('chartsToHide')) || {}
         // get the localstorage item or, if there is none, set this to an empty object
         let chartsToHide = localStorage.getItem('chartsToHide') || {}
         /**
@@ -132,7 +132,11 @@
          * true means that the input is checked
          */
         for (let element of checkboxes) {
-            element.setAttribute('checked', chartsToHide[element.getAttribute['id']] || true)
+            // !! forces the expression to return Boolean
+            let chart = JSON.parse(chartsToHide)[element.id]
+            if (!!chart || chart === undefined) {
+                element.setAttribute('checked', true)
+            }
         }
         /**
          * add event listener to inputs and change object with checked status 
@@ -145,8 +149,10 @@
             })
         }
 
+        document.getElementById('submitButtonAdmin').addEventListener('click', () => {
+            window.location.reload()
+        })
     </script>
-    <script src="../controller/js/admin.js"></script>
 </body>
 
 </html>

@@ -14,20 +14,20 @@ function msg($success,$status,$message,$extra = []){
 }
 
 
-    include_once 'config/database.php';
-    include_once 'config/JwtHandler.php';
-    $db_connection = new Database();
-    $conn = $db_connection->getConnection();
+include_once 'config/database.php';
+include_once 'config/JwtHandler.php';
+$db_connection = new Database();
+$conn = $db_connection->getConnection();
 
 // $data = json_decode(file_get_contents("php://input"));
+// var_dump($_POST['email']); die;
+if (null !== $_POST['email'] && null !== $_POST['password']):
 
-    if (null !== $_POST['email'] && null !== $_POST['password']):
-
-        $email = trim($_POST['email']);
-        $password = trim($_POST['password']);
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
 
     $returnData = [];
-        
+    
     if (null == $email || null == $password || empty(trim($email)) || empty(trim($password))):
     
         $fields = ['fields' => ['email','password']];    
@@ -48,22 +48,21 @@ function msg($success,$status,$message,$extra = []){
 
         // THE USER IS ABLE TO PERFORM THE LOGIN ACTION
         else:
-            try{
-                
+            try {
                 $fetch_user_by_email = "SELECT * FROM `users` WHERE `email`=:email";
                 $query_stmt = $conn->prepare($fetch_user_by_email);
                 $query_stmt->bindValue(':email', $email,PDO::PARAM_STR);
                 $query_stmt->execute();
 
-                // IF THE USER IS FOUNDED BY EMAIL
+                // IF THE USER IS FOUND BY EMAIL
                 if($query_stmt->rowCount()):
                     $row = $query_stmt->fetch(PDO::FETCH_ASSOC);
                     $check_password = password_verify($password, $row['password']);
-
+                    // echo('user found');
                     // VERIFYING THE PASSWORD (IS CORRECT OR NOT?)
                     // IF PASSWORD IS CORRECT THEN SEND THE LOGIN TOKEN
                     if($check_password):
-
+                        // echo('check password');
                         $jwt = new JwtHandler();
                         $token = $jwt->_jwt_encode_data(
                             'http://localhost/php_auth_api/',
@@ -77,6 +76,9 @@ function msg($success,$status,$message,$extra = []){
                             'admin' => $row['admin']
                         ];
 
+                        // echo json_encode($returnData);
+
+                        // echo json_encode($returnData);
                     // IF INVALID PASSWORD
                     else:
                         $returnData = msg(0,422,'Invalid Password!');
@@ -90,11 +92,11 @@ function msg($success,$status,$message,$extra = []){
             catch(PDOException $e){
                 $returnData = msg(0,500,$e->getMessage());
             }
-
         endif;
     endif;
+    echo json_encode($returnData);
 endif;
 
-    echo json_encode($returnData);
+
 
 ?>

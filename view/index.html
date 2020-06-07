@@ -70,13 +70,10 @@
 
     <script>
         document.getElementById("logout").addEventListener("click", () => {
-            debugger
             localStorage.removeItem("token");
             localStorage.removeItem("admin");
             var y = localStorage.length;
-            console.log(y);
-        }
-        );
+        });
     </script>
     <script src="../controller/js/admin.js"></script>
 </body>

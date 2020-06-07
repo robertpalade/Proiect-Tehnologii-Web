@@ -423,6 +423,7 @@ form {
     cursor: pointer;
     display: flex;
     justify-content: center;
+    margin: 40px 0;
 }
 
 #submitButtonAdmin:hover{

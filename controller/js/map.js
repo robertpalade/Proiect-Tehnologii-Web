@@ -7,7 +7,7 @@ function buildAll(data, button1, button2, theUrl) {
     left: 30,
   };
 
-  //making graph responsive
+  //   //making graph responsive
   default_width = 750;
   default_height = 600;
   default_ratio = default_width / default_height;
@@ -17,15 +17,11 @@ function buildAll(data, button1, button2, theUrl) {
     current_height = window.innerHeight;
     current_ratio = current_width / current_height;
     // desktop
-    if (current_ratio > default_ratio) {
-      h = default_height;
-      w = default_width;
-      // mobile
-    } else {
-      margin.left = 40;
-      w = current_width - 40;
-      h = w / default_ratio;
-    }
+
+    h = default_height;
+    w = default_width;
+    // mobile
+
     // Set new width and height based on graph dimensions
     width = w - margin.left - margin.right;
     height = h - margin.top - margin.bottom;
@@ -65,7 +61,7 @@ function buildAll(data, button1, button2, theUrl) {
   }
 
   const svg = d3
-    .select("#map__container")
+    .select("#map_container")
     .append("svg")
     .attr("id", "svg")
     .attr("width", width)

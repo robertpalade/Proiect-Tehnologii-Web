@@ -4,7 +4,8 @@ function buildAll(data, button1, button2, theUrl) {
   var width = 700;
   height = 450;
   height = 450;
-  margin = 40;
+  margin = 10;
+  // var margin = { top: 30, right: 30, bottom: 70, left: 60 };
 
   var tooltip2 = d3
     .select("body")
@@ -12,6 +13,27 @@ function buildAll(data, button1, button2, theUrl) {
     .attr("class", "tooltip2")
     .style("opacity", 0);
 
+  default_width = 600;
+  default_height = 500;
+  default_ratio = default_width / default_height;
+
+  // Determine current size, which determines vars
+  function set_size() {
+    current_width = window.innerWidth;
+    current_height = window.innerHeight;
+    current_ratio = current_width / current_height;
+    // desktop
+    if (current_ratio > default_ratio) {
+      margin = 40;
+      console.log("desktop");
+      // mobile
+    } else {
+      margin = 100;
+      console.log("mobile");
+    }
+    // Set new width and height based on graph dimensions
+  }
+  set_size();
   // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
   var radius = Math.min(width, height) / 2 - margin;
 
@@ -83,8 +105,6 @@ function buildAll(data, button1, button2, theUrl) {
       dataForCsv = jsonResponse.records;
     };
     req.send();
-
-
   }
 
   // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
@@ -190,7 +210,7 @@ function buildAll(data, button1, button2, theUrl) {
 
   buildPie(svg, data);
 
-  dataForCsv = data
+  dataForCsv = data;
 }
 
 document
@@ -202,8 +222,6 @@ document
 document
   .getElementById("csvDownloadButton")
   .addEventListener("click", () => saveCsv(dataForCsv));
-
-
 
 function saveSvg(svgEl, name) {
   svgEl.setAttribute("xmlns", "http://www.w3.org/2000/svg");

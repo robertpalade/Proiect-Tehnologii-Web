@@ -73,28 +73,25 @@ document.write(`
 
             <a href="admin-page.html" id="admin-page">Admin Page</a>
             <!-- on click delete delete redirect -->
-            <div id="logout">
-                <a href="Login.html">Log out</a>
-            </div>
-
-
+            <a href="Login.html" id="logout" class="logout">Log out</a>
         </div>
     </header>
-`)
+`);
 
 function toggleCharts() {
-    let chartsToHide = JSON.parse(localStorage.getItem('chartsToHide'))
-    console.log(chartsToHide)
-    for (let chart in chartsToHide) {
-        document.getElementById(chart).style.display = chartsToHide[chart] === true ? 'block' : 'none'
-    }
+  let chartsToHide = JSON.parse(localStorage.getItem("chartsToHide"));
+  console.log(chartsToHide);
+  for (let chart in chartsToHide) {
+    document.getElementById(chart).style.display =
+      chartsToHide[chart] === true ? "block" : "none";
+  }
 }
 
 function toggleAdmin() {
-    let admin = JSON.parse(localStorage.getItem('admin'))
-    document.getElementById('admin-page').style.display = admin === 1 ? 'block' : 'none'
+  let admin = JSON.parse(localStorage.getItem("admin"));
+  document.getElementById("admin-page").style.display =
+    admin === 1 ? "block" : "none";
 }
 
-toggleCharts()
-toggleAdmin()
-
+toggleCharts();
+toggleAdmin();

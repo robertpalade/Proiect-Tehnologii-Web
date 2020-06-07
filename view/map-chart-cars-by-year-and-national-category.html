@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Map Chart cars by year and national category</title>
-    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="css/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -11,46 +13,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <meta charset="UTF-8" />
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
 
-<body>
+  <body>
     <script src="../controller/js/header.js"></script>
 
-    <label for="selectYearButton"> Choose an year: </label>
-    <select id="selectYearButton"></select>
-
-    <label for="selectNationalButton"> Choose a national category: </label>
-    <select id="selectNationalButton"></select>
-
-    <button id="submitButton"> Submit </button>
-
-    <div id="map__container"></div>
-
-    <div class="button-container">
-        <button class="downloadButton">
-            <a href="#" id="downloadSVGButton"> Download as SVG </a>
-        </button>
-
-        <button class="downloadButton">
-            <a href="#" id="webpDownloadButton"> Download as Webp </a>
-        </button>
-
-        <button class="downloadButton">
-            <a href="#" id="csvDownloadButton"> Download as CSV </a>
-        </button>
+    <div class="select-wrapper">
+      <label for="selectYearButton"> Choose an year: </label>
+      <select id="selectYearButton"></select>
     </div>
 
-    <footer class="footer-distributed">
-        <h3><span>Apax</span></h3>
-        <p class="footer-links">
-            <a href="index.html">Home</a> ·
-            <a href="pie-chart.html">Pie-Chart</a> ·
-            <a href="bar-chart.html">Bar-Chart</a> ·
-            <a href="line-chart.html">Line-Chart</a> ·
-            <a href="map-chart.html">Map-Chart</a>
-        </p>
-        <p class="footer-company-name">Apax &copy; 2020</p>
-    </footer>
+    <div class="select-wrapper">
+      <label for="selectNationalButton"> Choose a national category: </label>
+      <select id="selectNationalButton"></select>
+    </div>
+
+    <button id="submitButton" class="submitSelectButton">Submit</button>
+
+    <div id="map_container" class="map_container"></div>
+
+    <div class="button-container">
+      <button class="downloadButton">
+        <a href="#" id="downloadSVGButton"> Download as SVG </a>
+      </button>
+
+      <button class="downloadButton">
+        <a href="#" id="webpDownloadButton"> Download as Webp </a>
+      </button>
+
+      <button class="downloadButton">
+        <a href="#" id="csvDownloadButton"> Download as CSV </a>
+      </button>
+    </div>
 
     <script src="../controller/js/comboboxYears.js"></script>
     <script src="../controller/js/comboboxNat.js"></script>
@@ -59,7 +54,5 @@
     <script src="../controller/js/map.js"></script>
     <script src="../controller/js/buildChart.js"></script>
     <script src="../controller/js/mapChartNat.js"></script>
-    <script src="../controller/js/admin.js"></script>
-</body>
-
+  </body>
 </html>

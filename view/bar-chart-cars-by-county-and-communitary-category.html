@@ -1,62 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Bar Chart cars by county and communitary category</title>
-    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link
+      rel="stylesheet"
+      href="css/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.5/canvg.min.js"></script>
     <meta charset="UTF-8" />
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
 
-<body>
+  <body>
     <script src="../controller/js/header.js"></script>
 
-    <label for="selectCountyButton"> Choose a county: </label>
-    <select id="selectCountyButton"></select>
+    <div class="select-wrapper">
+      <label for="selectCountyButton"> Choose a county: </label>
+      <select id="selectCountyButton"></select>
+    </div>
 
-    <label for="selectCommunityButton"> Choose a communitary category: </label>
-    <select id="selectCommunityButton"></select>
+    <div class="select-wrapper">
+      <label for="selectCommunityButton">
+        Choose a communitary category:
+      </label>
+      <select id="selectCommunityButton"></select>
+    </div>
 
-    <button id="submitButton"> Submit </button>
+    <button id="submitButton" class="submitSelectButton">Submit</button>
 
     <!-- Create a div where the graph will take place -->
     <div id="my_dataviz"></div>
 
     <div class="button-container">
-        <button class="downloadButton">
-            <a href="#" id="downloadSVGButton"> Download as SVG </a>
-        </button>
+      <button class="downloadButton">
+        <a href="#" id="downloadSVGButton"> Download as SVG </a>
+      </button>
 
-        <button class="downloadButton">
-            <a href="#" id="webpDownloadButton"> Download as Webp </a>
-        </button>
+      <button class="downloadButton">
+        <a href="#" id="webpDownloadButton"> Download as Webp </a>
+      </button>
 
-        <button class="downloadButton">
-            <a href="#" id="csvDownloadButton"> Download as CSV </a>
-        </button>
+      <button class="downloadButton">
+        <a href="#" id="csvDownloadButton"> Download as CSV </a>
+      </button>
     </div>
 
-    <footer class="footer-distributed">
-        <h3><span>Apax</span></h3>
-        <p class="footer-links">
-            <a href="index.html">Home</a> ·
-            <a href="pie-chart.html">Pie-Chart</a> ·
-            <a href="bar-chart.html">Bar-Chart</a> ·
-            <a href="line-chart.html">Line-Chart</a> ·
-            <a href="map-chart.html">Map-Chart</a>
-        </p>
-        <p class="footer-company-name">Apax &copy; 2020</p>
-    </footer>
     <script src="../controller/js/comboboxCounties.js"></script>
     <script src="../controller/js/comboboxCom.js"></script>
     <script src="../controller/js/domainSplit.js"></script>
     <script src="../controller/js/bar-chart.js"></script>
     <script src="../controller/js/buildChart.js"></script>
     <script src="../controller/js/chartCom.js"></script>
-    <script src="../controller/js/admin.js"></script>
-</body>
-
+  </body>
 </html>

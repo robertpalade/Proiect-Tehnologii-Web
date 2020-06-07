@@ -11,6 +11,34 @@ function buildAll(data, button1, button2, theUrl) {
     .attr("class", "tip")
     .style("opacity", 0);
 
+  default_width = 600;
+  default_height = 500;
+  default_ratio = default_width / default_height;
+
+  // Determine current size, which determines vars
+  function set_size() {
+    current_width = window.innerWidth;
+    current_height = window.innerHeight;
+    current_ratio = current_width / current_height;
+    // desktop
+    if (current_ratio > default_ratio) {
+      h = default_height;
+      w = default_width;
+      console.log("desktop");
+      // mobile
+    } else {
+      margin.left = 40;
+      w = current_width - 40;
+      h = w / default_ratio;
+      console.log("mobile");
+    }
+    // Set new width and height based on graph dimensions
+    width = w - margin.left - margin.right;
+    console.log(width);
+    height = h - margin.top - margin.bottom;
+    console.log(height);
+  }
+  set_size();
   // append the svg object to the body of the page
   var svg = d3
     .select("#my_dataviz")
@@ -82,7 +110,6 @@ function buildAll(data, button1, button2, theUrl) {
     req.onload = function () {
       var jsonResponse = JSON.parse(req.responseText);
       dataForCsv = jsonResponse.records;
-      console.log(jsonResponse.records);
       var data1 = jsonResponse.records;
 
       var minValue = customMinimize(d3.min(data1, (d) => d.number_of_cars));
@@ -101,7 +128,10 @@ function buildAll(data, button1, button2, theUrl) {
           tooltip
             .html(name)
             .style("left", x(d.year) + margin.left + "px")
-            .style("top", y(d.number_of_cars) + margin.bottom + margin.top + "px");
+            .style(
+              "top",
+              y(d.number_of_cars) + margin.bottom + margin.top + "px"
+            );
         })
         .transition()
         .duration(1000)
@@ -155,10 +185,13 @@ function buildAll(data, button1, button2, theUrl) {
         tooltip
           .html(name)
           .style("left", x(d.year) + margin.left + "px")
-          .style("top", y(d.number_of_cars) + margin.bottom + margin.top + "px");
+          .style(
+            "top",
+            y(d.number_of_cars) + margin.bottom + margin.top + "px"
+          );
       })
       .on("mouseout", mouseOutHandler);
-    dataForCsv = data
+    dataForCsv = data;
   }
 
   buildBar(svg, data);

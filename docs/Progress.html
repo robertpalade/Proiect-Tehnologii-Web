@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Apax Report</title>
+    <link rel="stylesheet" href="resources/scholarly.css">
+</head>
+
+<body>
+    <article resource="#" typeof="schema:ScholarlyArticle">
+        <header>
+            <h1 property="schema:name">Apax Progress</h1>
+        </header>
+        <meta property="schema:accessibilityFeature" content="alternativeText">
+        <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+        <meta property="schema:accessMode" content="textual">
+        <div role="contentinfo">
+            <ol role="directory">
+                <li>
+                    <a href="#overview">
+                        <span>1. </span>
+                        Web design
+                    </a>
+                </li>
+                <li>
+                    <a href="#register">
+                        <span>2. </span>
+                        Download buttons
+                        <ol>
+                            <li>
+                                <a href="#way_of_viz">
+                                    <span>2.1. </span>
+                                    SVG
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#statistic">
+                                    <span>2.2. </span>
+                                    Webp
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#statistic">
+                                    <span>2.3. </span>
+                                    CSV
+                                </a>
+                            </li>
+                        </ol>
+                    </a>
+                </li>
+                <li>
+                    <a href="#login">
+                        <span>3. </span>
+                        Comboboxes
+                    </a>
+                </li>
+                <li>
+                    <a href="#homepage">
+                        <span>4. </span>
+                        API
+                    </a>
+                </li>
+                <li>
+                    <a href="#navbar">
+                        <span>5. </span>
+                        Updated Comboboxes
+                    </a>
+                </li>
+                <li>
+                    <a href="#interaction">
+                        <span>6. </span>
+                        Code Restructuring & Hardcoding Removal
+                    </a>
+                    <a href="#update">
+                        <span>7. </span>
+                        API update
+                    </a>
+                </li>
+                <li>
+                    <a href="#export">
+                        <span>8. </span>
+                        Login and Register
+                    </a>
+                </li>
+                <li>
+                    <a href="#administrator">
+                        <span>9. </span>
+                        Added header as a separate file in all pages
+                    </a>
+                </li>
+                <li>
+                    <a href="#administrator">
+                        <span>9. </span>
+                        Admin page
+                    </a>
+                </li>
+                <li>
+                    <a href="#administrator">
+                        <span>9. </span>
+                        Responsive
+                    </a>
+                </li>
+                <li>
+                    <a href="#administrator">
+                        <span>9. </span>
+                        Validate CSS & HTML
+                    </a>
+                </li>
+            </ol>
+            <section typeof="sa:AuthorsList">
+                <h2>Authors</h2>
+                <ul>
+                    <li typeof="sa:ContributorRole" property="schema:author">
+                        <span typeof="schema:Person">
+                            <meta property="schema:givenName" content="Robert" />
+                            <meta property="schema:familyName" content="Leonte" />
+                            <span property="schema:name">Robert Leonte</span>
+                        </span>
+                        <ul>
+                            <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                                <a href="mailto:robertleonte7@gmail.com" property="schema:email">
+                                    robertleonte7@gmail.com
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li typeof="sa:ContributorRole" property="schema:author">
+                        <span typeof="schema:Person">
+                            <meta property="schema:givenName" content="Robert" />
+                            <meta property="schema:additionalName" content="Eusebiu" />
+                            <meta property="schema:familyName" content="Palade" />
+                            <span property="schema:name">Robert Eusebiu Palade</span>
+                        </span>
+                        <ul>
+                            <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                                <a href="mailto:robertleonte7@gmail.com" property="schema:email">
+                                    robert.palade99@gmail.com
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>License</h2>
+                <a typeof="CreativeWork" property="schema:license" rel="license"
+                    href="https://creativecommons.org/licenses/by/4.0/">CC-BY
+                </a>
+            </section>
+            <h2>References</h2>
+            <ol>
+                <li typeof="schema:WebPage" role="doc-biblioentry"
+                    resource="https://data.gov.ro/dataset/parc-auto-romania" property="schema:citation" id="fleet">
+                    <cite property="schema:name">
+                        <a href="http://semver.org/">National Fleet Website</a>
+                    </cite>
+                </li>
+                <li typeof="schema:WebPage" role="doc-biblioentry"
+                    resource="https://documenter.getpostman.com/view/11218522/SztHYRFq?version=latest"
+                    property="schema:citation" id="apidoc">
+                    <cite property="schema:name">
+                        <a href="https://documenter.getpostman.com/view/11218522/SztHYRFq?version=latest">Apax API
+                            Documentation</a>
+                    </cite>
+                </li>
+            </ol>
+            </section>
+        </div>
+        <section id="overview">
+            <h3><span>1. </span>Overview</h3>
+            <p>Apax is a web application that lets the user see multiple statistics determined by different criteria.
+                This is a guide of how to use this web application in terms of account managing, viewing statistics,
+                interacting and updating them.
+                Moreover, this guide includes the extra rights assigned to an administrator account.
+            </p>
+        </section>
+        <section id="register">
+            <h3><span>2. </span>Register</h3>
+            <p>The first thing a new user has to do when entering the web application is to create a new account, also
+                known as registering.
+                This can be done very easily by providing an email and an eight-character long password. After doing
+                this, the account will be saved
+                as a normal user one and he/she will be redirected to the <a href="#login">Login Page</a>.
+            </p>
+        </section>
+        <section id="login">
+            <h3><span>3. </span>Login</h3>
+            <p>If the user has already created an account, the only thing the user has to do is to type in the mail and
+                the password correspondent to, and
+                he/she will be redirected to the <a href="#homepage">Home Page</a>.
+            </p>
+        </section>
+        <section id="homepage">
+            <h3><span>4. </span>Home Page</h3>
+            <p>This is the page where it all begins, presenting the web application with a pretty design, but its most
+                important element is the navigation bar.
+                To find out more about how to use it, go to the <a href="#navbar">Navigation Bar</a> section below.
+            </p>
+        </section>
+        <section id="navbar">
+            <h4><span>5. </span>Navigation Bar</h4>
+            <p>The purpose of the navigation bar is to help the user explore the statistics easily.
+                Thus, there are two steps the user needs to pay attention to when making his/her choice, explained in
+                the following sections.
+            </p>
+            <section id="way_of_viz">
+                <h4><span>5.1. </span>Choose Way of Visualisation</h4>
+                <p>As seen in the navigation bar, there are 4 types of data visualisation:
+                <ul>
+                    <li>Pie Chart - a type of graph in which a circle is divided into sectors that each represent a
+                        proportion of the whole.</li>
+                    <li>Bar Chart - a diagram in which the numerical values of variables are represented by the height
+                        or length of lines or rectangles of equal width.</li>
+                    <li>Line Chart - a diagram that displays the evolution of a numeric variable. Data points are
+                        represented by a dot and connected by straight line segments.</li>
+                    <li>Map Chart- a map divided into counties, coloured representatively depending on the values given.
+                    </li>
+                </ul>
+                Depending on how the user wants to see the information, he/she needs to pick one of the above.
+                It is worthy to mention the fact that the first 3 help visualising the same information - number of cars
+                per county and one other attribute of the cars found in the national fleet,
+                which can be <i>brand</i>,<i>national category</i>, or <i>communitary category</i> for the last 5 years.
+                Examples for each of them can be found below:
+                <div id="chart_examples">
+                    <figure typeof="sa:image">
+                        <img src="resources/bar_chart_example.png" alt="bar_chart_example">
+                        <figcaption>Bar Chart</figcaption>
+                    </figure>
+                    <figure typeof="sa:image">
+                        <img src="resources/line_chart_example.png" alt="line_chart_example">
+                        <figcaption>Line Chart</figcaption>
+                    </figure>
+                    <figure typeof="sa:image">
+                        <img src="resources/pie_chart_example.png" alt="pie_chart_example">
+                        <figcaption>Pie Chart</figcaption>
+                    </figure>
+                </div>
+                However, map chart represents data for all counties in a certain year with the same car attributes as in
+                the previous three charts. So, if the user wants to see
+                more like a geographical information than a historical one, he/she can opt for this chart. Below there
+                is an example for the map chart:
+                <figure typeof="sa:image">
+                    <img src="resources/map_chart_example.png" alt="map_chart_example">
+                    <figcaption>Bar Chart</figcaption>
+                </figure>
+                </p>
+            </section>
+            <section id="statistic">
+                <h4><span>5.2. </span>Choose statistic</h4>
+                <p>The second option the user needs to decide on is what type of statistic he/she wants to see. As
+                    mentioned in the section above, bar chart, line chart, and pie chart
+                    have the following statistics (for the last 5 years that appear in the National Fleet Website):
+                <ul>
+                    <li>county and brand - number of cars in a certain county that are part of a brand</li>
+                    <li>county and national category - number of cars in a certain county that are part of
+                        a national category</li>
+                    <li>county and communitary category- number of cars in a certain county that are part
+                        of a communitary category</li>
+                    <li>county - total number of cars in a certain county</li>
+                </ul>
+                On the other hand, the user can opt for a statistic from the following (from the map chart, for each
+                county of Romania):
+                <ul>
+                    <li>year and brand - number of cars that are part of a brand in a certain year</li>
+                    <li>year and national category - number of cars that are part of a national category in a certain
+                        year</li>
+                    <li>year and communitary category - number of cars that are part of a communitary category in a
+                        certain year</li>
+                </ul>
+                Once the user chooses a statistic, too, the new page loads with a chart generated by the first values of
+                the two selectboxes. After this,
+                he/she can enjoy the interaction it provides.
+                </p>
+            </section>
+        </section>
+        <section id="interaction">
+            <h3><span>6. </span>Interaction with Statistics</h3>
+            <p>
+                What would a data visualisation be without interaction? That is why every chart has its own way of
+                interacting with the user, making it easier for him/her to see the data. An important action the user
+                should make is using the cursor to go over the elements found in the respective chart. This will cause
+                different actions, depending on the type of data visualisation:
+            <ol>
+                <li>The rectangles in the bar chart will change their colour
+                    to a lighter shade and display the number of the cars respecting the two values selected in the
+                    selectbox
+                    (and the year that is abscissa value for the rectangle).
+                    <figure typeof="sa:image">
+                        <img src="resources/bar_chart_interactive.png" alt="bar_chart_interactive">
+                    </figure>
+                </li>
+                <li>The circles of the line chart increase their radius, and a
+                    tooltip
+                    appears with the same information as for the bar chart.
+                    <figure typeof="sa:image">
+                        <img src="resources/line_chart_interactive.png" alt="line_chart_interactive">
+                    </figure>
+                </li>
+                <li>The "slices" of the pie chart change their colour and, also,
+                    the tooltip appears, containing the information about the number of cars, and the percentage out of
+                    the
+                    total
+                    number of cars for the last 5 years.
+                    <figure typeof="sa:image">
+                        <img src="resources/pie_chart_interactive.png" alt="pie_chart_interactive">
+                    </figure>
+                </li>
+                <li>The counties of the map chart change their colour when selected, and the tooltip appears containing
+                    the name of the county and
+                    the
+                    number
+                    of the cars found in that county that respect the second attribute selected by the user.
+                    <figure typeof="sa:image">
+                        <img src="resources/map_interactive.png" alt="map_interactive">
+                    </figure>
+                </li>
+        </section>
+        <section id="update">
+            <h3><span>7. </span>Update</h3>
+            <p>
+                If the user wants to change the statistic criteria he/she can modify the values of the selectboxes found
+                on the page.
+            <figure typeof="sa:image">
+                <img src="resources/selectbox_modify.png" alt="selectbox_modify">
+                <figcaption>Changing selectbox value.</figcaption>
+            </figure>
+            After doing that, he/she can press the <i>Submit</i> button in order to generate the new chart. After doing
+            so, the update effect will take place,
+            being different for each of the charts:
+            <ul>
+                <li>Bar Chart - the bars go higher or lower, depending on the new values given. Moreover, the y axis
+                    updates
+                    itself with the correspondent numbers of cars</li>
+                <li>Line Chart - the line, together with the circles, go higher or lower. Also, the y axis updates
+                    itself the
+                    same way it does at bar chart</li>
+                <li>Pie Chart - the slices change their size, and, usually, their order changes too, from the biggest to
+                    the
+                    smallest</li>
+                <li>Map - the colour shades of the counties represent a higher or a lower number of cars, compared to
+                    the
+                    minnimum value. Update means changing the shades of the colour.</li>
+            </ul>
+            As expected, the tooltip for each of these data visualisations is also updated with the new correspondent
+            values.
+            </p>
+            <section id="export">
+                <h3><span>8. </span>Data Export</h3>
+                <p>
+                    Another feature the user can enjoy is data exportation. Each of the charts presented can be exported
+                    in 3 formats:
+                <ul>
+                    <li>CSV - the data is written, containing the attributes selected in that specific view and their
+                        values</li>
+                    <li>SVG - it saves the whole chart or map as a 2D image using XML</li>
+                    <li>WebP - an image format that compresses the original image data and represents it with a smaller
+                        size</li>
+                </ul>
+                All the user has to do is to press one of the three buttons below the chart (one for each format) and
+                the file will
+                be downloaded.
+                <figure typeof="sa:image">
+                    <img src="resources/download_buttons.png" alt="download_buttons">
+                    <figcaption>Download Buttons.</figcaption>
+                </figure>
+                </p>
+            </section>
+        </section>
+        <section id="administrator">
+            <h3><span>9. </span>Administrator</h3>
+            <p>
+                The functionalities mentioned above are avaialable for both normal users and the ones with administrator
+                privileges. However, there is
+                a thing needed to be added here: the normal user can only see the statistics that the administrator lets
+                him/her see. That is the feature
+                implemented for the administration module. Thus, the administrator disposes of a page with options to be
+                checked or unchecked, like in the following
+                image:
+            <figure typeof="sa:image">
+                <img src="resources/checkbox_admin.png" alt="checkbox_admin">
+            </figure>
+            Once a statistic for a certain way of visualisation is unchecked by the administrator, it cannot be seen by
+            a normal user. The opposite is available, too:
+            once a statistic is checked, it can be seen by the user.
+            </p>
+        </section>
+    </article>
+</body>

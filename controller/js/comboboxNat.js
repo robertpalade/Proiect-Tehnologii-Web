@@ -1,5 +1,5 @@
 function build_nat_combo(county, year) {
-  var theUrl = "http://localhost/Proiect-Tehnologii-Web/api/masina/read_nat_categ.php";
+  var theUrl = "../api/masina/read_nat_categ.php";
   theUrl = theUrl.concat("?county=");
   theUrl = theUrl.concat(county);
   theUrl = theUrl.concat("&year=");
@@ -15,9 +15,7 @@ function build_nat_combo(county, year) {
   reqNat.send();
 }
 function combobox_nat(data) {
-  const selectNationalButton = document.getElementById(
-    "selectNationalButton"
-  );
+  const selectNationalButton = document.getElementById("selectNationalButton");
   while (selectNationalButton.firstChild) {
     selectNationalButton.removeChild(selectNationalButton.firstChild);
   }

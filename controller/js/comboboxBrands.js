@@ -1,5 +1,5 @@
 function build_brands_combo(county, year) {
-  var theUrl = "http://localhost/Proiect-Tehnologii-Web/api/masina/read_brands.php";
+  var theUrl = "../api/masina/read_brands.php";
   theUrl = theUrl.concat("?county=");
   theUrl = theUrl.concat(county);
   theUrl = theUrl.concat("&year=");

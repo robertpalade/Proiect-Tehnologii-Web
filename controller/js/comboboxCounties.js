@@ -1,5 +1,5 @@
 function build_county_combo(button1, button2, url, buildCombo, stringToConcat) {
-  var theUrl = "http://localhost/Proiect-Tehnologii-Web/api/masina/read_counties.php";
+  var theUrl = "../api/masina/read_counties.php";
   console.log(theUrl);
   var reqCounties = new XMLHttpRequest();
   reqCounties.overrideMimeType("application/json");
@@ -8,7 +8,15 @@ function build_county_combo(button1, button2, url, buildCombo, stringToConcat) {
     var jsonResponseCounties = JSON.parse(reqCounties.responseText);
     var data = jsonResponseCounties.records;
     combobox_counties(data);
-    buildInitialChartCombo(button1, button2, url, buildCombo, data[0].county, "All", stringToConcat);
+    buildInitialChartCombo(
+      button1,
+      button2,
+      url,
+      buildCombo,
+      data[0].county,
+      "All",
+      stringToConcat
+    );
   };
   reqCounties.send();
 }

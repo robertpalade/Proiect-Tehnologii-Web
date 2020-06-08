@@ -1,5 +1,5 @@
 function build_com_combo(county, year) {
-  var theUrl = "http://localhost/Proiect-Tehnologii-Web/api/masina/read_com_categ.php";
+  var theUrl = "../api/masina/read_com_categ.php";
   theUrl = theUrl.concat("?county=");
   theUrl = theUrl.concat(county);
   theUrl = theUrl.concat("&year=");

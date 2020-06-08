@@ -82,7 +82,7 @@ function buildAll(data, button1, button2, theUrl) {
       .attr("transform", "translate(" + width / 3 + "," + height / 2 + ")");
     var county = document.getElementById(button1).value;
     if (button2 != "notAvailable")
-      var valueTwo = document.getElementById(button2).value;
+      var valueTwo = prepare(document.getElementById(button2).value);
     var auxUrl = theUrl;
     auxUrl = auxUrl.concat(county);
     if (button2 == "selectBrandButton") {

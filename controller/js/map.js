@@ -129,7 +129,7 @@ function buildAll(data, button1, button2, theUrl) {
 
   function updateMap() {
     var year = document.getElementById(button1).value;
-    var valueTwo = document.getElementById(button2).value;
+    var valueTwo = prepare(document.getElementById(button2).value);
     auxUrl = theUrl;
     auxUrl = auxUrl.concat(year);
     if (button2 == "selectBrandButton") auxUrl = auxUrl.concat("&brand=");

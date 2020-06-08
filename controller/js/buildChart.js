@@ -45,7 +45,7 @@ function buildInitialChartCombo(
       var data = jsonResponse.records;
       buildCombo(data);
       var valueTwo;
-      if (stringToConcat.includes("brand")) valueTwo = data[0].brand;
+      if (stringToConcat.includes("brand")) {valueTwo = prepare(data[0].brand); console.log(valueTwo);}
       else if (stringToConcat.includes("com_categ"))
         valueTwo = data[0].com_categ;
       else if (stringToConcat.includes("nat_categ"))

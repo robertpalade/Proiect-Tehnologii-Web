@@ -57,7 +57,7 @@ form {
 }
 
 .input-group {
-  margin: 10px 0 10px 0;
+  margin: 10px;
 }
 
 .input-group label {
@@ -94,6 +94,7 @@ form {
   padding: 5px;
   border: 1px solid #a94442;
   border-radius: 5px;
+  margin: 10px;
 }
 
 .success {
@@ -103,6 +104,7 @@ form {
   padding: 5px;
   border: 1px solid #3c763d;
   border-radius: 5px;
+  margin: 10px;
 }
 
 /*Style the top navigation bar*/
@@ -209,9 +211,17 @@ form {
 }
 
 .logout {
-  display: inline-block;
   position: absolute;
   right: 20px;
+  padding: 22px;
+  display: inline-block;
+  white-space: nowrap;
+  cursor: pointer;
+  color: #757575;
+  text-decoration: none;
+  transition: color 0.3s ease-out;
+  vertical-align: middle;
+  line-height: 16px;
 }
 
 /*Clear floats after the columns*/
@@ -251,7 +261,6 @@ form {
   -webkit-appearance: none;
   border: none;
   background-color: #23ac23;
-  border: none;
   border-radius: 6px;
   color: white;
   cursor: pointer;
@@ -418,9 +427,9 @@ form {
 .submitButtonAdmin:hover {
   background: #044d9b;
 }
-/* path:hover {
+path:hover {
   fill: #d36f80;
-} */
+}
 
 path {
   position: relative;
@@ -543,7 +552,6 @@ path {
   margin: 0;
   padding-top: 20%;
   width: 50%;
-  padding-left: 20px;
 }
 
 .submitSelectButton {
@@ -578,7 +586,9 @@ path {
     display: block;
   }
 
-  .topnav > * {
+  .topnav a,
+  .logout,
+  .topnav .dropdown {
     display: block;
     text-align: center;
     position: static;

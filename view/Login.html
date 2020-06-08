@@ -23,13 +23,20 @@
 
         <div class="input-group">
           <label for="email">Email</label>
-          <input type="email" name="email" required autocomplete="email" />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+          />
         </div>
 
         <div class="input-group">
           <label for="password">Password</label>
           <input
             type="password"
+            id="password"
             name="password"
             required
             autocomplete="current-password"
@@ -40,9 +47,8 @@
           <button type="submit" class="submit-button button" name="log_user">
             Sign In
           </button>
+          <p>Not a member? <a href="Register.html">Sign Up</a></p>
         </div>
-
-        <p>Not a member? <a href="Register.html">Sign Up</a></p>
 
         <div id="message"></div>
       </form>
@@ -59,18 +65,13 @@
         xhttp.send(data);
 
         xhttp.onreadystatechange = function () {
-          // console.log(xhttp.response);
-          //
           if (xhttp.readyState === 4) {
-            console.log(JSON.parse(xhttp.response));
             var response = JSON.parse(xhttp.response);
             var messageDiv = document.getElementById("message");
             if (response.success === 1) {
               messageDiv.setAttribute("class", "success");
               localStorage.setItem("token", response.token);
               localStorage.setItem("admin", response.admin);
-              var x = localStorage.length;
-              console.log(x);
               window.location.href = "index.html";
             } else {
               messageDiv.setAttribute("class", "error");

@@ -20,7 +20,7 @@ $db_connection = new Database();
 $conn = $db_connection->getConnection();
 
 // $data = json_decode(file_get_contents("php://input"));
-// var_dump($_POST['email']); die;
+// var_dump($_POST); die;
 if (null !== $_POST['email'] && null !== $_POST['password']):
 
     $email = trim($_POST['email']);

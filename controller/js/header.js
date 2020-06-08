@@ -73,7 +73,7 @@ document.write(`
 
             <a href="admin-page.html" id="admin-page">Admin Page</a>
             <!-- on click delete delete redirect -->
-            <a href="Login.html" id="logout" class="logout">Log out</a>
+            <div id="logout" class="logout">Log out</div>
         </div>
     </header>
 `);
@@ -93,5 +93,19 @@ function toggleAdmin() {
     admin === 1 ? "block" : "none";
 }
 
+function redirectIfNotLoggedIn() {
+  let token = localStorage.getItem("token");
+  if (!token) {
+    window.location.href = "../view/Login.html";
+  }
+}
+
+document.getElementById("logout").addEventListener("click", () => {
+  window.location.href = "../view/Login.html";
+  localStorage.removeItem("token");
+  localStorage.removeItem("admin");
+});
+
 toggleCharts();
 toggleAdmin();
+redirectIfNotLoggedIn();

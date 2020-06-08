@@ -123,7 +123,10 @@ function buildAll(data, button1, button2, theUrl) {
       tooltip
         .html(name)
         .style("left", x(d.year) + margin.left / 3 + "px")
-        .style("top", y(d.number_of_cars) + margin.bottom + margin.top * 2 + "px");
+        .style(
+          "top",
+          y(d.number_of_cars) + margin.bottom + margin.top * 2 + "px"
+        );
     })
     .on("mouseout", mouseOutHandler);
 
@@ -212,7 +215,10 @@ function buildAll(data, button1, button2, theUrl) {
           tooltip
             .html(name)
             .style("left", x(d.year) + margin.left / 3 + "px")
-            .style("top", y(d.number_of_cars) + margin.bottom + margin.top * 2 + "px");
+            .style(
+              "top",
+              y(d.number_of_cars) + margin.bottom + margin.top * 2 + "px"
+            );
         })
         .on("mouseout", mouseOutHandler)
         .transition()
@@ -295,5 +301,3 @@ function buildAll(data, button1, button2, theUrl) {
     link.click(); // This will download the data file named "my_data.csv".
   }
 }
-
-

@@ -25,11 +25,10 @@ function buildAll(data, button1, button2, theUrl) {
     // desktop
     if (current_ratio > default_ratio) {
       margin = 40;
-      console.log("desktop");
-      // mobile
+      // desktop
     } else {
       margin = 100;
-      console.log("mobile");
+      //mobile
     }
     // Set new width and height based on graph dimensions
   }
@@ -95,7 +94,6 @@ function buildAll(data, button1, button2, theUrl) {
       auxUrl = auxUrl.concat("&nat_categ=");
       auxUrl = auxUrl.concat(valueTwo);
     }
-    console.log(auxUrl);
     var req = new XMLHttpRequest();
     req.overrideMimeType("application/json");
     req.open("GET", auxUrl, true);
@@ -111,18 +109,14 @@ function buildAll(data, button1, button2, theUrl) {
   function buildPie(svg, data) {
     // Compute the position of each group on the pie:
     function percentage(data, value) {
-      console.log(data[0].number_of_cars);
       var sum = 0;
       for (i = 0; i < data.length; i++) sum = sum + data[i].number_of_cars;
-      console.log(sum);
       var percent = (value * 100) / sum;
       percent = percent.toFixed(2);
-      console.log(percent);
       return percent;
     }
 
     function mouseOverHandler(d, i) {
-      console.log(data);
       var percent = percentage(data, d.value);
       tooltip2.transition().duration(400).style("opacity", 0.9);
       tooltip2
@@ -146,7 +140,6 @@ function buildAll(data, button1, button2, theUrl) {
       return d.number_of_cars;
     });
     var data_ready = pie(data);
-    console.log(data_ready[0].value);
     var slices = svg.selectAll("path").data(data_ready).enter().append("path");
 
     slices

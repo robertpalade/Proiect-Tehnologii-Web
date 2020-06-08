@@ -138,7 +138,6 @@ function buildAll(data, button1, button2, theUrl) {
     else if (button2 == "selectNationalButton")
       auxUrl = auxUrl.concat("&nat_categ=");
     auxUrl = auxUrl.concat(valueTwo);
-    console.log(auxUrl);
     var req = new XMLHttpRequest();
     req.overrideMimeType("application/json");
     req.open("GET", auxUrl, true);
@@ -146,7 +145,6 @@ function buildAll(data, button1, button2, theUrl) {
       var jsonResponse = JSON.parse(req.responseText);
       dataForCsv = jsonResponse.records;
       var data1 = jsonResponse.records;
-      console.log(data1);
       var new_domain = domainSplit(data1);
       var colorScale = d3
         .scaleThreshold()
@@ -172,7 +170,6 @@ function buildAll(data, button1, button2, theUrl) {
     };
 
     req.send();
-    console.log("Am iesit din updateMap");
   }
 
   document

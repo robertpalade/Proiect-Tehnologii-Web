@@ -24,20 +24,16 @@ function buildAll(data, button1, button2, theUrl) {
     if (current_ratio > default_ratio) {
       h = default_height;
       w = default_width;
-      console.log("desktop");
-      // mobile
+      // desktop
     } else {
       margin.left = 40;
-      // margin.top = 100;
       w = current_width - 40;
       h = w / default_ratio;
-      console.log("mobile");
+      //mobile
     }
     // Set new width and height based on graph dimensions
     width = w - margin.left - margin.right;
-    console.log(width);
     height = h - margin.top - margin.bottom;
-    console.log(height);
   }
   set_size();
   // append the svg object to the body of the page
@@ -105,7 +101,6 @@ function buildAll(data, button1, button2, theUrl) {
       auxUrl = auxUrl.concat("&nat_categ=");
       auxUrl = auxUrl.concat(valueTwo);
     }
-    console.log(auxUrl);
     var req = new XMLHttpRequest();
     req.overrideMimeType("application/json");
     req.open("GET", auxUrl, true);
@@ -152,14 +147,12 @@ function buildAll(data, button1, button2, theUrl) {
 
   function buildBar(svg, data) {
     // X axis
-    console.log(data);
 
     var minValue = customMinimize(d3.min(data, (d) => d.number_of_cars));
     var maxValue = customRound(d3.max(data, (d) => d.number_of_cars));
     var countTicks = height / 50;
     // Add Y axis
     var y = d3.scaleLinear().domain([minValue, maxValue]).range([height, 0]);
-    console.log(countTicks);
     g.call(d3.axisLeft(y).ticks(countTicks));
 
     // Bars

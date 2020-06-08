@@ -80,7 +80,6 @@ document.write(`
 
 function toggleCharts() {
   let chartsToHide = JSON.parse(localStorage.getItem("chartsToHide"));
-  console.log(chartsToHide);
   for (let chart in chartsToHide) {
     document.getElementById(chart).style.display =
       chartsToHide[chart] === true ? "block" : "none";

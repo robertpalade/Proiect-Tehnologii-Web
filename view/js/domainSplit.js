@@ -46,5 +46,3 @@ function customMinimize(number) {
   var result = divident * precision;
   return result;
 }
-
-console.log(customMinimize(295322));

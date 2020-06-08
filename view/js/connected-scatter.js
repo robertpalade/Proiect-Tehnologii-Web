@@ -27,19 +27,16 @@ function buildAll(data, button1, button2, theUrl) {
     if (current_ratio > default_ratio) {
       h = default_height;
       w = default_width;
-      console.log("desktop");
-      // mobile
+      // desktop
     } else {
       margin.left = 40;
       w = current_width - 40;
       h = w / default_ratio;
-      console.log("mobile");
+      //mobile
     }
     // Set new width and height based on graph dimensions
     width = w - margin.left - margin.right;
-    console.log(width);
     height = h - margin.top - margin.bottom;
-    console.log(height);
   }
   set_size();
   //end responsive graph code
@@ -157,7 +154,6 @@ function buildAll(data, button1, button2, theUrl) {
     .addEventListener("click", updateScatter);
 
   function updateScatter() {
-    console.log("Am intrat in functie");
     var county = document.getElementById(button1).value;
     if (button2 != "notAvailable")
       var valueTwo = prepare(document.getElementById(button2).value);
@@ -173,7 +169,6 @@ function buildAll(data, button1, button2, theUrl) {
       auxUrl = auxUrl.concat("&nat_categ=");
       auxUrl = auxUrl.concat(valueTwo);
     }
-    console.log(auxUrl);
     var req = new XMLHttpRequest();
     req.overrideMimeType("application/json");
     req.open("GET", auxUrl, true);

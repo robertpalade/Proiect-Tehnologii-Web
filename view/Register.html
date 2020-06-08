@@ -14,7 +14,7 @@
 
   <body>
     <div class="form-wrapper">
-      <form id="form" method="post" novalidate>
+      <form id="form" method="post">
         <div class="logo">
           Apax
         </div>
@@ -63,10 +63,7 @@
         xhttp.send(data);
 
         xhttp.onreadystatechange = function () {
-          // console.log(xhttp.response);
-          //
           if (xhttp.readyState === 4) {
-            // console.log(JSON.parse(xhttp.response));
             var response = JSON.parse(xhttp.response);
             var messageDiv = document.getElementById("message");
             if (response.success === 1) {

@@ -16,8 +16,10 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
+"""
 sql = "DROP TABLE masini"
 mycursor.execute(sql)
+"""
 sql = ("CREATE TABLE masini( " 
        "id INT NOT NULL AUTO_INCREMENT, " 
        "judet VARCHAR(255), " 
@@ -32,32 +34,43 @@ sql = ("CREATE TABLE masini( "
 mycursor.execute(sql)
 
 def clean_text(text):
-    text = text.replace(".","")
-    text = text.replace(",","")
+    text = text.replace(".", "")
+    text = text.replace(",", "")
     ap = text.find("0")
-    if ap >= 1 and ap <= len(text)-2:
-        if text[ap-1]>'A' and text[ap-1]<'Z' and text[ap+1]>'A' and text[ap+1]<'Z':
-            text = text.replace("0","O")
+    while ap >= 0:
+        if string_or_number(text) == True:
+            text = text.replace("0", "O")
+            ap = text.find("0")
+        else:
+            return text    
     return text
 
 def text_extract(text):
-    ap = text.find(" ") 
-    if ap != -1:
-        return clean_text(text[0:ap])
-    
-    ap = text.find("-")
-    if ap != -1:
-        return clean_text(text[0:ap])
-    
-    ap = text.find("/")
-    if ap != -1:
-        return clean_text(text[0:ap])
-
-    return clean_text(text)
-
-def year_extraction(url):
-    year = url[len(url)-8:len(url)-4]
-    return year
+    return_text = text
+    while True:
+        ap = return_text.find(" ")
+        if ap > 0:
+            return_text=clean_text(return_text[0:ap])
+        elif ap == 0:
+            clean_text(return_text[1:len(return_text)])
+        ap = return_text.find("-")
+        if ap > 0:
+            return_text=clean_text(return_text[0:ap])
+        elif ap == 0:
+            return_text=clean_text(return_text[1:len(return_text)])
+        ap = return_text.find("/")
+        if ap > 0:
+            return_text=clean_text(return_text[0:ap])
+        elif ap == 0:
+            return_text=clean_text(return_text[1:len(return_text)])
+        ap = return_text.find("\\")
+        if ap > 0:
+            return_text=clean_text(return_text[0:ap])
+        elif ap == 0:
+            return_text=clean_text(return_text[1:len(return_text)])
+        if ap == -1:
+            break    
+    return return_text
 
 def insert_into_table(url):
     data = urllib.request.urlopen(url)

@@ -45,6 +45,7 @@ function buildAll(data, button1, button2, theUrl) {
     .select("#my_dataviz")
     .append("svg")
     .attr("id", "svg")
+    .attr("style", "background-color: white")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -245,7 +246,6 @@ function saveWebp() {
   document.body.appendChild(downloadLink);
   downloadLink.click();
   document.body.removeChild(downloadLink);
-  document.body.removeChild(canvas);
 }
 
 function saveCsv(data) {

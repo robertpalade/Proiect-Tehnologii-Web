@@ -130,7 +130,7 @@
             <ul>
               <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
                 <a href="mailto:robertleonte7@gmail.com" property="schema:email">
-                  robertleonte7@gmail.com
+                  palade.robert99@gmail.com
                 </a>
               </li>
             </ul>
@@ -183,6 +183,19 @@
         <img src="resources/database_example.png" alt="database">
         <figcaption>How the table looks like and some values for each attribute.</figcaption>
       </figure>
+      <p>
+        The table used for login and register an user is called <i>users</i> and it contains attributes such as:
+      <ul>
+        <li>admin - describes if the user is an admin or not( 1- for admin, 0- for a normal user) </li>
+        <li>email - the email that the user registered</li>
+        <li>password - the password that the user registered stored as a hash</li>
+      </ul>
+      </p>
+      <figure typeof="sa:image">
+        <img src="resources/database_example.png" alt="database">
+        <figcaption>How the table looks like and some values for each attribute.</figcaption>
+      </figure>
+
     </section>
     <section id="api">
       <h3><span>3. </span>API</h3>
@@ -197,21 +210,47 @@
       <p> </p>
       <section id="login">
         <h4><span>4.1. </span>Login</h4>
-        <p> </p>
+        <p> If an user wants to access the website he/she has to login firstly. For that, the user has to provide the email 
+          and the password that he/she has chosen when she registered. If all these fields are completed, the email is valid
+          and the password has at least 8 characters, a verification is made in the database to see if there is an user 
+          with the email provided and if the password matches. If all these steps are passed, the user will enter the webpage.
+        </p>
       </section>
       <section id="register">
         <h4><span>4.2. </span>Register</h4>
+        <p> If an user doesn' t have an account, he/ she has to register. For that, the user has to provide a valid email
+          adress and a password which should have at least 8 characters and to confirm the password. If the email is
+        valid and it isn't been used by another user, also if the password has the necessary length and if the confirmPassword
+      field matches with the password, the user is created. A message is shown for this and if there is any error, with 
+    any of these fields it shows an error which specifies exactly which is the problem. The password is stored crypted in the database. Both register and login are based on POST requests. </p>
       </section>
       <section id="privileges">
         <h4><span>4.3. </span>Privileges</h4>
-        <p> </p>
+        <p> There are two types of users for this webpage: a normal user and an administrator who can make some changes
+          to the webpage from a dedicated page. We store this difference in the database through a field called "admin", which can be 0 or 1. I store the field admin in local storage and make the verification when somebody logs in.
+        
+        </p>
         <section id="user">
           <h5><span>4.3.1 </span>User</h5>
-          <p> </p>
+          <p> A normal user can see the statistics and download them in three diffrent formats: SVG, Webp and CSV. </p>
         </section>
         <section id="administrator">
           <h5><span>4.3.2 </span>Administrator</h5>
-          <p> </p>
+          <p> An administrator can see in addition to all the things which a normal user can see, a page called " Admin page",
+            from where he/ she can check or uncheck the statistics which will appear. In this page there is a table with 
+          all the statistics for every type of data visualisation, which are checked firstly and if one statistic is unchecked, 
+          that statistic won' t appear anymore in the header, so the user can' t access it.          
+          First of all, I get all checkboxes and I put them in an HTMLCollection because that's what getElementsByTagName returns.
+          Then I put in an object the key which is the id for every checkbox and the value which is the checked status( true for checked and false for unchecked).
+          
+          For every checkbox input I set the checked attribute depending on the values from the localstorage object (chartsToHide) or if there is no value for that id, it is true by default because we want to show the pages by default.
+          
+          Then for every element, when the checkbox is changed the value from the localstorage will also be changed.
+          
+          If a normal user wants to enter this admin page, he/ she will be redirected to the home page because he/ she doesn't 
+          have the rights to access it. For this it is verified in the localstorage if the field "admin" is 0 or 1.
+          
+          </p>
         </section>
       </section>
     </section>

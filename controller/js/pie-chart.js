@@ -260,7 +260,6 @@ function saveWebp() {
   document.body.appendChild(downloadLink);
   downloadLink.click();
   document.body.removeChild(downloadLink);
-  document.body.removeChild(canvas);
 }
 
 function saveCsv(data) {

@@ -222,7 +222,6 @@ function buildAll(data, button1, button2, theUrl) {
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
-    document.body.removeChild(canvas);
   }
 
   function saveCsv(data) {

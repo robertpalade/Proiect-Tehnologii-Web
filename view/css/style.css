@@ -83,6 +83,10 @@ form {
   cursor: pointer;
 }
 
+.button:hover {
+  background: #044d9b;
+}
+
 .error {
   color: #a94442;
   text-align: center;
@@ -238,7 +242,7 @@ form {
 }
 
 .button-container {
-  margin: 50px 0 50px;
+  margin: 50px 0 50px 32px;
 }
 
 .downloadButton {
@@ -246,10 +250,7 @@ form {
   -moz-appearance: none;
   -webkit-appearance: none;
   border: none;
-}
-
-.downloadButton a {
-  background-color: limegreen;
+  background-color: #23ac23;
   border: none;
   border-radius: 6px;
   color: white;
@@ -257,6 +258,7 @@ form {
   padding: 7px 10px;
   text-align: center;
   text-decoration: none;
+  margin-right: 6px;
 }
 
 .select-property {
@@ -379,7 +381,7 @@ form {
 }
 
 .map_container {
-  height: 100%;
+  height: 75%;
 }
 
 .charts-admin {
@@ -414,11 +416,11 @@ form {
 }
 
 .submitButtonAdmin:hover {
-  background-color: #5383d3;
+  background: #044d9b;
 }
-path:hover {
+/* path:hover {
   fill: #d36f80;
-}
+} */
 
 path {
   position: relative;
@@ -453,7 +455,7 @@ path {
 .tip {
   position: absolute;
   text-align: center;
-  width: 84px;
+  width: 81px;
   height: 29px;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   line-height: 29px;
@@ -520,7 +522,7 @@ path {
 .main-button {
   color: #fff;
   background-color: #007bff;
-  border-color: #007bff;
+  /* border-color: #007bff; */
   cursor: pointer;
   font-size: 30px;
   padding: 20px 25px;
@@ -544,6 +546,33 @@ path {
   padding-left: 20px;
 }
 
+.submitSelectButton {
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background: #1182e3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submitSelectButton:hover {
+  background: #044d9b;
+}
+.select-wrapper label {
+  margin: 10px;
+}
+
+.select-wrapper select {
+  padding: 10px;
+  margin: 0 10px;
+}
+
+.selects-wrapper {
+  display: flex;
+  margin-left: 22px;
+}
+
 @media screen and (max-width: 768px) {
   .topnav {
     display: block;
@@ -565,14 +594,15 @@ path {
     transform: translateX(-50%);
   }
 
-  .select-wrapper {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-
   .submitSelectButton {
     margin: 0 auto;
     display: block;
+  }
+
+  .select-wrapper {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 16px;
   }
 
   .button-container button {
@@ -585,5 +615,9 @@ path {
   .main-text {
     padding-top: 5%;
     width: 65%;
+  }
+
+  .selects-wrapper {
+    display: block;
   }
 }

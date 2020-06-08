@@ -28,6 +28,7 @@ function buildAll(data, button1, button2, theUrl) {
       // mobile
     } else {
       margin.left = 40;
+      // margin.top = 100;
       w = current_width - 40;
       h = w / default_ratio;
       console.log("mobile");

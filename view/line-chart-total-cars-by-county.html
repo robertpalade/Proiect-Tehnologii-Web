@@ -17,27 +17,29 @@
   <body>
     <script src="../controller/js/header.js"></script>
 
-    <div class="select-wrapper">
-      <label for="selectCountyButton"> Choose a county: </label>
-      <select id="selectCountyButton"></select>
-    </div>
+    <div class="selects-wrapper">
+      <div class="select-wrapper">
+        <label for="selectCountyButton"> Choose a county: </label>
+        <select id="selectCountyButton"></select>
+      </div>
 
-    <button id="submitButton" class="submitSelectButton">Submit</button>
+      <button id="submitButton" class="submitSelectButton">Submit</button>
+    </div>
 
     <!-- Create a div where the graph will take place -->
     <div id="scatter"></div>
 
     <div class="button-container">
-      <button class="downloadButton">
-        <a href="#" id="downloadSVGButton"> Download as SVG </a>
+      <button class="downloadButton" id="downloadSVGButton">
+        Download as SVG
       </button>
 
-      <button class="downloadButton">
-        <a href="#" id="webpDownloadButton"> Download as Webp </a>
+      <button class="downloadButton" id="webpDownloadButton">
+        Download as Webp
       </button>
 
-      <button class="downloadButton">
-        <a href="#" id="csvDownloadButton"> Download as CSV </a>
+      <button class="downloadButton" id="csvDownloadButton">
+        Download as CSV
       </button>
     </div>
 

@@ -19,31 +19,33 @@
   <body>
     <script src="../controller/js/header.js"></script>
 
-    <div class="select-wrapper">
-      <label for="selectYearButton"> Choose an year: </label>
-      <select id="selectYearButton"></select>
-    </div>
+    <div class="selects-wrapper">
+      <div class="select-wrapper">
+        <label for="selectYearButton"> Choose an year: </label>
+        <select id="selectYearButton"></select>
+      </div>
 
-    <div class="select-wrapper">
-      <label for="selectBrandButton"> Choose a brand: </label>
-      <select id="selectBrandButton"></select>
-    </div>
+      <div class="select-wrapper">
+        <label for="selectBrandButton"> Choose a brand: </label>
+        <select id="selectBrandButton"></select>
+      </div>
 
-    <button id="submitButton" class="submitSelectButton">Submit</button>
+      <button id="submitButton" class="submitSelectButton">Submit</button>
+    </div>
 
     <div id="map_container" class="map_container"></div>
 
     <div class="button-container">
-      <button class="downloadButton">
-        <a href="#" id="downloadSVGButton"> Download as SVG </a>
+      <button class="downloadButton" id="downloadSVGButton">
+        Download as SVG
       </button>
 
-      <button class="downloadButton">
-        <a href="#" id="webpDownloadButton"> Download as Webp </a>
+      <button class="downloadButton" id="webpDownloadButton">
+        Download as Webp
       </button>
 
-      <button class="downloadButton">
-        <a href="#" id="csvDownloadButton"> Download as CSV </a>
+      <button class="downloadButton" id="csvDownloadButton">
+        Download as CSV
       </button>
     </div>
 

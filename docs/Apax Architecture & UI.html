@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Apax Report</title>
+  <link rel="stylesheet" href="resources/scholarly.css">
+</head>
+
+<body>
+  <article resource="#" typeof="schema:ScholarlyArticle">
+    <header>
+      <h1 property="schema:name">Apax Report</h1>
+    </header>
+    <meta property="schema:accessibilityFeature" content="alternativeText">
+    <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+    <meta property="schema:accessMode" content="textual">
+    <div role="contentinfo">
+      <ol role="directory">
+        <li>
+          <a href="#description">
+            <span>1. </span>
+            Description
+          </a>
+        </li>
+        <li>
+          <a href="#database">
+            <span>2. </span>
+            Database
+          </a>
+        </li>
+        <li>
+          <a href="#api">
+            <span>3. </span>
+            API
+          </a>
+        </li>
+        <li>
+          <a href="#account">
+            <span>4. </span>
+            Account
+          </a>
+          <ol role="directory">
+            <li>
+              <a href="#register">
+                <span>4.1. </span>
+                Register
+              </a>
+            </li>
+            <li>
+              <a href="#login">
+                <span>4.2. </span>
+                Login
+              </a>
+            </li>
+            <li>
+              <a href="#privileges">
+                <span>4.3. </span>
+                Privileges
+              </a>
+              <ol role="directory">
+                <li>
+                  <a href="#user">
+                    <span>4.3.1 </span>
+                    User
+                  </a>
+                </li>
+                <li>
+                  <a href="#administrator">
+                    <span>4.3.2 </span>
+                    Administrator
+                  </a>
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="#statistics">
+            <span>5. </span>
+            Statistics
+          </a>
+        </li>
+        <li>
+          <a href="#visualisation">
+            <span>6. </span>
+            Data Visualisation
+          </a>
+          <ol>
+            <a href="#interactivity">
+              <span>6.1. </span>
+              Interactivity
+            </a>
+            <a href="#updatability">
+              <span>6.2. </span>
+              Updatability
+            </a>
+          </ol>
+        </li>
+        <li>
+          <a href="#export">
+            <span>7. </span>
+            Data Export
+          </a>
+        </li>
+      </ol>
+      <section typeof="sa:AuthorsList">
+        <h2>Authors</h2>
+        <ul>
+          <li typeof="sa:ContributorRole" property="schema:author">
+            <span typeof="schema:Person">
+              <meta property="schema:givenName" content="Robert" />
+              <meta property="schema:familyName" content="Leonte" />
+              <span property="schema:name">Robert Leonte</span>
+            </span>
+            <ul>
+              <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                <a href="mailto:robertleonte7@gmail.com" property="schema:email">
+                  robertleonte7@gmail.com
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li typeof="sa:ContributorRole" property="schema:author">
+            <span typeof="schema:Person">
+              <meta property="schema:givenName" content="Robert" />
+              <meta property="schema:additionalName" content="Eusebiu" />
+              <meta property="schema:familyName" content="Palade" />
+              <span property="schema:name">Robert Eusebiu Palade</span>
+            </span>
+            <ul>
+              <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                <a href="mailto:robertleonte7@gmail.com" property="schema:email">
+                  robertleonte7@gmail.com
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>License</h2>
+        <a typeof="CreativeWork" property="schema:license" rel="license"
+          href="https://creativecommons.org/licenses/by/4.0/">CC-BY
+        </a>
+      </section>
+      <h2>References</h2>
+      <ol>
+        <li typeof="schema:WebPage" role="doc-biblioentry" resource="https://data.gov.ro/dataset/parc-auto-romania"
+          property="schema:citation" id="fleet">
+          <cite property="schema:name">
+            <a href="http://semver.org/">National Fleet Website</a>
+          </cite>
+        </li>
+        <li typeof="schema:WebPage" role="doc-biblioentry"
+          resource="https://documenter.getpostman.com/view/11218522/SztHYRFq?version=latest" property="schema:citation"
+          id="apidoc">
+          <cite property="schema:name">
+            <a href="https://documenter.getpostman.com/view/11218522/SztHYRFq?version=latest">Apax API Documentation</a>
+          </cite>
+        </li>
+      </ol>
+      </section>
+    </div>
+    <section id="description">
+      <h3><span>1. </span>Description</h3>
+      <p>Apax is a web application that helps users see statistics about cars in the national fleet for the past 5
+        years. With its help, they can follow the flow control of the numbers on different categories.</p>
+    </section>
+    <section id="database">
+      <h3><span>2. </span>Database</h3>
+      <p>Apax uses a mySQL Database that stores the information available in CSV format on the official site of the
+        fleet, found in References (1). </p>
+      <p>The table used for saving and accessing this information is called <i>masini</i> and contains attributes such
+        as:
+      <ul>
+        <li>judet - describes the name of the county where cars in that registration can be found</li>
+        <li>categorie_nationala - describes the national category cars in that registration are part of</li>
+        <li>categorie_comunitara - describes the national category cars in that registration are part of </li>
+        <li>marca - describes the brand cars in that registration are part of</li>
+      </ul>
+      </p>
+      <figure typeof="sa:image">
+        <img src="resources/database_example.png" alt="database">
+        <figcaption>How the table looks like and some values for each attribute.</figcaption>
+      </figure>
+    </section>
+    <section id="api">
+      <h3><span>3. </span>API</h3>
+      <p>Our web application makes use of a Rest API that serves information needed from the database mentioned above in
+        JSON format. Mainly, it is base on GET requests, which is specific to the description: allows users to see
+        statistics.
+        For more information about the endpoints of the API, you can access the API documentation found in References
+        (2).</p>
+    </section>
+    <section id="account">
+      <h3><span>4. </span>Account</h3>
+      <p> </p>
+      <section id="login">
+        <h4><span>4.1. </span>Login</h4>
+        <p> </p>
+      </section>
+      <section id="register">
+        <h4><span>4.2. </span>Register</h4>
+      </section>
+      <section id="privileges">
+        <h4><span>4.3. </span>Privileges</h4>
+        <p> </p>
+        <section id="user">
+          <h5><span>4.3.1 </span>User</h5>
+          <p> </p>
+        </section>
+        <section id="administrator">
+          <h5><span>4.3.2 </span>Administrator</h5>
+          <p> </p>
+        </section>
+      </section>
+    </section>
+    <section id="statistics">
+      <h3>Statistics</h3>
+      <p>Apax offers a variety of statistics comparing the numbers of cars present in each of the last 5 years in the
+        national fleet. There are several criterias they can opt for:
+      <ul>
+        <li>Number of cars by county and brand</li>
+        <li>Number of cars by county and national category</li>
+        <li>Number of cars by county and communitary category</li>
+        <li>Number of total cars by county</li>
+      </ul>
+      Moreover, Apax comes with a feature that lets the user see the number of cars for a specific year, in each county.
+      This is also available for each of the relevant attribute described in the list above.
+      </p>
+      <p>For every statistic mentioned above, the application provides a page which the user can access from the navbar
+      </p>
+      <figure typeof="sa:image">
+        <img src="resources/county_stats_example.png" alt="county_stats">
+        <figcaption>Statistics by county for the last 5 years.</figcaption>
+      </figure>
+      <figure typeof="sa:image">
+        <img src="resources/year_stats_example.png" alt="county_stats">
+        <figcaption>Statistics by year for all counties.</figcaption>
+      </figure>
+    </section>
+    <section id="visualisation">
+      <h3>Data Visualisation</h3>
+      <p>The <a href="#statistics">Statistics</a> mentioned above need to have a visualisation that is relevant to the
+        user.
+        That is why Apax comes with three types of charts and one cartographic way of visualisation.
+        The charts are listed bellow as the following:
+      <ul>
+        <li>Pie Chart</li>
+        <figure typeof="sa:image">
+          <img src="resources/pie_chart.png" alt="pie_chart">
+        </figure>
+        <li>Bar Chart</li>
+        <figure typeof="sa:image">
+          <img src="resources/bar_chart.png" alt="bar_chart">
+        </figure>
+        <li>Line Chart (also known as Connected-Scatter)</li>
+        <figure typeof="sa:image">
+          <img src="resources/line_chart.png" alt="line_chart">
+        </figure>
+      </ul>
+      </p>
+      <p>
+        In order to implement the statistics, each of this way of data visualisation contains one or two select
+        boxes, with the help of which the user can choose the values for the attributes they want to see.
+        (By default, when the page is opened, the view is generated with the first values of each of the two select
+        boxes.)
+        In the case of charts, the first select button describes the county value, while the second one (if there is)
+        describes the value of the chosen attribute.
+      <figure typeof="sa:image">
+        <img src="resources/select_boxes_county.png" alt="select_boxes_county">
+      </figure>
+      </p>
+      <p>
+        For the cartographic visualisation, the only difference is that the first select button represents the year
+        value.
+      <figure typeof="sa:image">
+        <img src="resources/select_boxes_year.png" alt="select_boxes_year">
+      </figure>
+      </p>
+      <section id="interactivity">
+        <h4>Interactivity</h4>
+        <p>Every data representation has an interactive element, called a tooltip. This is a small box that displays
+          information about the data selected.
+          Also, the colour changing effect when a certain part is selected, increases the feeling of interactive data
+          visualisation.
+        </p>
+        <p>
+          For example, moving the mouse cursor over one of the rectangles in the bar chart will change their colour to a
+          lighter shade and display the number of the cars respecting the two values selected in the selectbox
+          (and the year that is abscissa value for the rectangle).
+        <figure typeof="sa:image">
+          <img src="resources/bar_chart_interactive.png" alt="bar_chart_interactive">
+        </figure>
+        </p>
+        <p>
+          In the case of line chart, there is no changing colour, but the circle increases its radius, and a tooltip
+          appears with the same information as for the bar chart, once the cursor is over it.
+        <figure typeof="sa:image">
+          <img src="resources/line_chart_interactive.png" alt="line_chart_interactive">
+        </figure>
+        </p>
+        <p>
+          Pie chart fulfills its interactive aspect, having the colour of the "slices" changed when the cursor is over
+          them, and, also,
+          the tooltip appears, containing the information about the number of cars, and the percentage out of the total
+          number of cars for the last 5 years.
+        <figure typeof="sa:image">
+          <img src="resources/pie_chart_interactive.png" alt="pie_chart_interactive">
+        </figure>
+        </p>
+        <p>
+          Last but not least, the cartographic visualisation, which is the map of Romania split in counties, possesses
+          the change-colour effect when a certain
+          county is selected, and the tooltip effect, which contains the name of the county and the number
+          of the cars found in that county.
+        <figure typeof="sa:image">
+          <img src="resources/map_interactive.png" alt="map_interactive">
+        </figure>
+        </p>
+      </section>
+      <section id="updatability">
+        <h4>Updatability</h4>
+        <p>
+          Another quality of Apax's data visualisation is updatability (and the effects that come with it). Every chart
+          or map we have mentioned
+          has this feature. We will say exactly what it is all about in the following order:
+        <ul>
+          <li>Bar Chart - the bars go higher or lower, depending on the new values given. Moreover, the y axis updates
+            itself with the correspondent numbers of cars</li>
+          <li>Line Chart - the line, together with the circles, go higher or lower. Also, the y axis updates itself the
+            same way it does at bar chart</li>
+          <li>Pie Chart - the slices change their size, and, usually, their order changes too, from the biggest to the
+            smallest</li>
+          <li>Map - the colour shades of the counties represent a higher or a lower number of cars, compared to the
+            minnimum value. Update means changing the shades of the colour.</li>
+        </ul>
+        As expected, the tooltip for each of these data visualisations is also updated with the new correspondent
+        values.
+        Every update takes place after the user selects the two values and presses the <b>Submit</b> button.
+        <figure typeof="sa:image">
+          <img src="resources/submit_button.png" alt="submit_button">
+        </figure>
+        </p>
+      </section>
+    </section>
+    <section id="export">
+      <h3>Data Export</h3>
+      <p>
+        Every way of data visualisation also has the option to export the data in different formats:
+      <ul>
+        <li>CSV - the data is written, containing the attributes selected in that specific view and their values</li>
+        <li>SVG - it saves the whole chart or map as a 2D image using XML</li>
+        <li>WebP - an image format that compresses the original image data and represents it with a smaller size</li>
+      </ul>
+      </p>
+    </section>
+  </article>
+</body>

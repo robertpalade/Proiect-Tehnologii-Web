@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Apax Report</title>
-    <link rel="stylesheet" href="resources/scholarly.css">
+    <link rel="stylesheet" href="../resources/scholarly.css">
 </head>
 
 <body>
@@ -96,6 +96,12 @@
                         Unit testing
                     </a>
                 </li>
+                <li>
+                    <a href="#github">
+                        <span>13. </span>
+                        Github Administration
+                    </a>
+                </li>
             </ol>
             <section typeof="sa:AuthorsList">
                 <h2>Authors</h2>
@@ -167,7 +173,8 @@
             <h3><span>2. </span>API</h3>
             <p>
                 At this step we created a database that stores the information available in CSV format on the official 
-                site of the fleet.
+                site of the fleet. Moreover, even though not that many (and quite hardcoded), we have written some functions that query the database
+                and some scripts that prepare the information taken through the functions and wrap them in JSON format(API Endpoints).
             </p>
         </section>
         <section id="selectboxes">
@@ -181,12 +188,12 @@
             <h3><span>4. </span>Download buttons</h3>
             <p>
                 At this step we implemented the download buttons for exporting data in three formats: CSV, SVG, WebP.
-                For this step we made 2 functions for every chart, one for build and the other one for updating the
+                There have been made 2 functions for each chart, one for build and the other one for updating the
                 chart every time the user selects something else from the select boxes.
             </p>
         </section>
         <section id="updatedcomboboxes">
-            <h4><span>5. </span>Updated comboboxes</h4>
+            <h3><span>5. </span>Updated comboboxes</h3>
             <p>
                 For each way of data visualisation we added one or two select boxes. When there are two select boxes,
                 the second one updates depending on the first one.
@@ -196,14 +203,15 @@
         <section id="coderestructuring">
             <h3><span>6. </span>Code Restructuring & Hardcoding Removal</h3>
             <p>
-                For every page of data visualisation we had a different JavaScript file, so we created just one for 
-                every type of chart, and a single buildChart javascript file.
+                For every page of data visualisation we used to have a different JavaScript file, so we created just one for 
+                every type of chart, and a single buildChart JavaScript file. Moreover, instead of the hardcoded values given for the last 5 years
+                inside the querying functions, we have created a script which generates automatically a single table (there were 5 before) in the database with all the information. 
             </p>
         </section>
         <section id="apiupdate">
             <h3><span>7. </span>API update</h3>
             <p>
-                We created a script which generates automatically the database with all the information.
+                We added some functions for some new features we thought of, such as the ability to see the total number of cars in a county.
             </p>
         </section>
         <section id="loginandregister">
@@ -216,7 +224,7 @@
         <section id="addedheader">
             <h3><span>9. </span>Added header as a separate file in all pages</h3>
             <p>
-                I've created a new JavaScript file which contains the header because we have too many html pages with 
+                We've created a new JavaScript file which contains the header because too many html pages were containing 
                 the same code.
             </p>
         </section>
@@ -224,17 +232,17 @@
             <h3><span>10. </span>Admin page</h3>
             <p>
                 We have two types of users: normal user and administrator. The administrator has a new page from where 
-                he/ she can hide the statistics he/ she wants.
+                he/she can hide the desired statistics.
             </p>
         </section>
         <section id="responsiveness">
             <h3><span>11. </span>Responsiveness</h3>
-            <p>The page can be see also on a table or smartphone.
+            <p>We have modified the width and the height values so that the page can also be properly seen on a tablet or smartphone.
             </p>
         </section>
         <section id="validate">
             <h3><span>12. </span>Validate CSS & HTML</h3>
-            <p>At this step we elimanated some warnings that we had with the CSS file and HTML pages.
+            <p>At this step we eliminated some warnings that we had with the CSS file and HTML pages.
             </p>
         </section>
         <section id="unittesting">
@@ -243,6 +251,21 @@
                 We made some unit tests for API.
             </p>
         </section>
-        
+        <section id="github">
+            <h3><span>14. </span>Github Administration</h3>
+            <p>
+                For keeping the code updated and managing it we used Github. Every time one of us had some useful update for the project as
+                a whole and was sure it was ready, we would commit and push it. As a matter of fact, each of the chapters above represents, 
+                more or less, a commit one of us did. 
+            </p>
+            <p>    
+                Moreover, besides these specific commits, we also had code refactorization commits, 
+                that consist in making the code more readable.  
+            </p>
+            <p>
+                Another important aspect of Github Administration was updating the code. After one's commit, the other one of us had the responsibility
+                to keep up with the latest changes by pulling them. 
+            </p>
+        </section> 
     </article>
 </body>

@@ -1,653 +1,685 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Apax Report</title>
-    <link rel="stylesheet" href="../resources/scholarly.css" />
-  </head>
 
-  <body>
-    <article resource="#" typeof="schema:ScholarlyArticle">
-      <header>
-        <h1 property="schema:name">Apax Report</h1>
-      </header>
-      <meta property="schema:accessibilityFeature" content="alternativeText" />
-      <meta property="schema:accessibilityHazard" content="noFlashingHazard" />
-      <meta property="schema:accessMode" content="textual" />
-      <div role="contentinfo">
-        <ol role="directory">
-          <li>
-            <a href="#description">
-              <span>1. </span>
-              Description
-            </a>
-          </li>
-          <li>
-            <a href="#database">
-              <span>2. </span>
-              Database
-            </a>
-          </li>
-          <li>
-            <a href="#api">
-              <span>3. </span>
-              API
-            </a>
-          </li>
-          <li>
-            <a href="#account">
-              <span>4. </span>
-              Account
-            </a>
-            <ol role="directory">
-              <li>
-                <a href="#register">
-                  <span>4.1. </span>
-                  Register
-                </a>
-              </li>
-              <li>
-                <a href="#login">
-                  <span>4.2. </span>
-                  Login
-                </a>
-              </li>
-              <li>
-                <a href="#privileges">
-                  <span>4.3. </span>
-                  Privileges
-                </a>
-                <ol role="directory">
-                  <li>
-                    <a href="#user">
-                      <span>4.3.1 </span>
-                      User
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#administrator">
-                      <span>4.3.2 </span>
-                      Administrator
-                    </a>
-                  </li>
-                </ol>
-              </li>
-            </ol>
-          </li>
-          <li>
-            <a href="#statistics">
-              <span>5. </span>
-              Statistics
-            </a>
-          </li>
-          <li>
-            <a href="#visualisation">
-              <span>6. </span>
-              Data Visualisation
-            </a>
-            <ol>
-              <li>
-                <a href="#interactivity">
-                  <span>6.1. </span>
-                  Interactivity
-                </a>
-              </li>
-              <li>
-                <a href="#updatability">
-                  <span>6.2. </span>
-                  Updatability
-                </a>
-              </li>
-            </ol>
-          </li>
-          <li>
-            <a href="#export">
-              <span>7. </span>
-              Data Export
-            </a>
-          </li>
-          <li>
-            <a href="#bibliography">
-              <span>8. </span>
-              Bibliography
-            </a>
-          </li>
-        </ol>
-        <section typeof="sa:AuthorsList">
-          <h2>Authors</h2>
-          <ul>
-            <li typeof="sa:ContributorRole" property="schema:author">
-              <span typeof="schema:Person">
-                <meta property="schema:givenName" content="Robert" />
-                <meta property="schema:familyName" content="Leonte" />
-                <span property="schema:name">Robert Leonte</span>
-              </span>
-              <ul>
-                <li
-                  property="schema:roleContactPoint"
-                  typeof="schema:ContactPoint"
-                >
-                  <a
-                    href="mailto:robertleonte7@gmail.com"
-                    property="schema:email"
-                  >
-                    robertleonte7@gmail.com
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li typeof="sa:ContributorRole" property="schema:author">
-              <span typeof="schema:Person">
-                <meta property="schema:givenName" content="Robert" />
-                <meta property="schema:additionalName" content="Eusebiu" />
-                <meta property="schema:familyName" content="Palade" />
-                <span property="schema:name">Robert Eusebiu Palade</span>
-              </span>
-              <ul>
-                <li
-                  property="schema:roleContactPoint"
-                  typeof="schema:ContactPoint"
-                >
-                  <a
-                    href="mailto:robertleonte7@gmail.com"
-                    property="schema:email"
-                  >
-                    palade.robert99@gmail.com
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h2>License</h2>
-          <a
-            typeof="CreativeWork"
-            property="schema:license"
-            rel="license"
-            href="https://creativecommons.org/licenses/by/4.0/"
-            >CC-BY
+<head>
+  <meta charset="utf-8" />
+  <title>Apax Report</title>
+  <link rel="stylesheet" href="../resources/scholarly.css" />
+</head>
+
+<body>
+  <article resource="#" typeof="schema:ScholarlyArticle">
+    <header>
+      <h1 property="schema:name">Apax Report</h1>
+    </header>
+    <meta property="schema:accessibilityFeature" content="alternativeText" />
+    <meta property="schema:accessibilityHazard" content="noFlashingHazard" />
+    <meta property="schema:accessMode" content="textual" />
+    <div role="contentinfo">
+      <ol role="directory">
+        <li>
+          <a href="#description">
+            <span>1. </span>
+            Description
           </a>
-        </section>
-        <h2>References</h2>
-        <ol>
-          <li
-            typeof="schema:WebPage"
-            role="doc-biblioentry"
-            resource="https://data.gov.ro/dataset/parc-auto-romania"
-            property="schema:citation"
-            id="fleet"
-          >
-            <cite property="schema:name">
-              <a href="https://data.gov.ro/dataset/parc-auto-romania"
-                >National Fleet Website</a
-              >
-            </cite>
-          </li>
-          <li
-            typeof="schema:WebPage"
-            role="doc-biblioentry"
-            resource="https://documenter.getpostman.com/view/11218522/SztHYRFq?version=latest"
-            property="schema:citation"
-            id="apidoc"
-          >
-            <cite property="schema:name">
-              <a
-                href="https://documenter.getpostman.com/view/11218522/SztHYRFq?version=latest"
-                >Apax API Documentation</a
-              >
-            </cite>
-          </li>
-        </ol>
-      </div>
-      <section id="description">
-        <h3><span>1. </span>Description</h3>
-        <p>
-          Apax is a web application that helps users see statistics about cars
-          in the national fleet for the past 5 years. With its help, they can
-          follow the flow control of the numbers on different categories.
-        </p>
-      </section>
-      <section id="database">
-        <h3><span>2. </span>Database</h3>
-        <p>
-          Apax uses a mySQL Database that stores the information available in
-          CSV format on the official site of the fleet, found in References (1).
-        </p>
-        <p>
-          The table used for saving and accessing this information is called
-          <i>masini</i> and contains attributes such as:
-        </p>
-        <ul>
-          <li>
-            judet - describes the name of the county where cars in that
-            registration can be found
-          </li>
-          <li>
-            categorie_nationala - describes the national category cars in that
-            registration are part of
-          </li>
-          <li>
-            categorie_comunitara - describes the national category cars in that
-            registration are part of
-          </li>
-          <li>
-            marca - describes the brand cars in that registration are part of
-          </li>
-        </ul>
-        <figure typeof="sa:image">
-          <img src="../resources/database_example1.png" alt="database" />
-          <figcaption>
-            How the table looks like and some values for each attribute.
-          </figcaption>
-        </figure>
-        <p>
-          The table used for login and register an user is called
-          <i>users</i> and it contains attributes such as:
-        </p>
-
-        <ul>
-          <li>
-            admin - describes if the user is an admin or not( 1- for admin, 0-
-            for a normal user)
-          </li>
-          <li>email - the email that the user registered</li>
-          <li>
-            password - the password that the user registered stored as a hash
-          </li>
-        </ul>
-        <figure typeof="sa:image">
-          <img src="../resources/database_example2.png" alt="database" />
-          <figcaption>
-            How the table looks like and some values for each attribute.
-          </figcaption>
-        </figure>
-      </section>
-      <section id="api">
-        <h3><span>3. </span>API</h3>
-        <p>
-          Our web application makes use of a Rest API that serves information
-          needed from the database mentioned above in JSON format. Mainly, it is
-          base on GET requests, which is specific to the description: allows
-          users to see statistics. For more information about the endpoints of
-          the API, you can access the API documentation found in References (2).
-        </p>
-      </section>
-      <section id="account">
-        <h3><span>4. </span>Account</h3>
-        <p></p>
-        <section id="login">
-          <h4><span>4.1. </span>Login</h4>
-          <p>
-            If an user wants to access the website he/she has to login firstly.
-            For that, the user has to provide the email and the password that
-            he/she has chosen when she registered. If all these fields are
-            completed, the email is valid and the password has at least 8
-            characters, a verification is made in the database to see if there
-            is an user with the email provided and if the password matches. If
-            all these steps are passed, the user will enter the webpage.
-          </p>
-        </section>
-        <section id="register">
-          <h4><span>4.2. </span>Register</h4>
-          <p>
-            If an user doesn' t have an account, he/ she has to register. For
-            that, the user has to provide a valid email adress and a password
-            which should have at least 8 characters and to confirm the password.
-            If the email is valid and it isn't been used by another user, also
-            if the password has the necessary length and if the confirmPassword
-            field matches with the password, the user is created. A message is
-            shown for this and if there is any error, with any of these fields
-            it shows an error which specifies exactly which is the problem. The
-            password is stored crypted in the database. Both register and login
-            are based on POST requests.
-          </p>
-        </section>
-        <section id="privileges">
-          <h4><span>4.3. </span>Privileges</h4>
-          <p>
-            There are two types of users for this webpage: a normal user and an
-            administrator who can make some changes to the webpage from a
-            dedicated page. We store this difference in the database through a
-            field called "admin", which can be 0 or 1. I store the field admin
-            in local storage and make the verification when somebody logs in.
-          </p>
-          <section id="user">
-            <h5><span>4.3.1 </span>User</h5>
-            <p>
-              A normal user can see the statistics and download them in three
-              diffrent formats: SVG, Webp and CSV.
-            </p>
-          </section>
-          <section id="administrator">
-            <h5><span>4.3.2 </span>Administrator</h5>
-            <p>
-              An administrator can see in addition to all the things which a
-              normal user can see, a page called " Admin page", from where he/
-              she can check or uncheck the statistics which will appear. In this
-              page there is a table with all the statistics for every type of
-              data visualisation, which are checked firstly and if one statistic
-              is unchecked, that statistic won' t appear anymore in the header,
-              so the user can' t access it. First of all, I get all checkboxes
-              and I put them in an HTMLCollection because that's what
-              getElementsByTagName returns. Then I put in an object the key
-              which is the id for every checkbox and the value which is the
-              checked status( true for checked and false for unchecked). For
-              every checkbox input I set the checked attribute depending on the
-              values from the localstorage object (chartsToHide) or if there is
-              no value for that id, it is true by default because we want to
-              show the pages by default. Then for every element, when the
-              checkbox is changed the value from the localstorage will also be
-              changed. If a normal user wants to enter this admin page, he/ she
-              will be redirected to the home page because he/ she doesn't have
-              the rights to access it. For this it is verified in the
-              localstorage if the field "admin" is 0 or 1.
-            </p>
-          </section>
-        </section>
-      </section>
-      <section id="statistics">
-        <h3>Statistics</h3>
-        <p>
-          Apax offers a variety of statistics comparing the numbers of cars
-          present in each of the last 5 years in the national fleet. There are
-          several criterias they can opt for:
-        </p>
-        <ul>
-          <li>Number of cars by county and brand</li>
-          <li>Number of cars by county and national category</li>
-          <li>Number of cars by county and communitary category</li>
-          <li>Number of total cars by county</li>
-        </ul>
-        <p>
-          Moreover, Apax comes with a feature that lets the user see the number
-          of cars for a specific year, in each county. This is also available
-          for each of the relevant attribute described in the list above.
-        </p>
-        <p>
-          For every statistic mentioned above, the application provides a page
-          which the user can access from the navbar
-        </p>
-        <figure typeof="sa:image">
-          <img src="../resources/county_stats.png" alt="county_stats" />
-          <figcaption>Statistics by county for the last 5 years.</figcaption>
-        </figure>
-        <figure typeof="sa:image">
-          <img src="../resources/year_stats.png" alt="county_stats" />
-          <figcaption>Statistics by year for all counties.</figcaption>
-        </figure>
-      </section>
-      <section id="visualisation">
-        <h3>Data Visualisation</h3>
-        <p>
-          The <a href="#statistics">Statistics</a> mentioned above need to have
-          a visualisation that is relevant to the user. That is why Apax comes
-          with three types of charts and one cartographic way of visualisation.
-          The charts are listed bellow as the following:
-        </p>
-
-        <ul>
-          <li>Pie Chart</li>
-        </ul>
-          <figure typeof="sa:image">
-            <img src="../resources/pie_chart.png" alt="pie_chart" />
-          </figure>
-        <ul>
-          <li>Bar Chart</li>
-        </ul>
-          <figure typeof="sa:image">
-            <img src="../resources/bar_chart.png" alt="bar_chart" />
-          </figure>
-        <ul>
-          <li>Line Chart (also known as Connected-Scatter)</li>
-        </ul>
-          <figure typeof="sa:image">
-            <img src="../resources/line_chart.png" alt="line_chart" />
-          </figure>
-
-        <p>
-          In order to implement the statistics, each of this way of data
-          visualisation contains one or two select boxes, with the help of which
-          the user can choose the values for the attributes they want to see.
-          (By default, when the page is opened, the view is generated with the
-          first values of each of the two select boxes.) In the case of charts,
-          the first select button describes the county value, while the second
-          one (if there is) describes the value of the chosen attribute.
-          <figure typeof="sa:image">
-            <img
-              src="../resources/select_boxes_county.png"
-              alt="select_boxes_county"
-            />
-          </figure>
-
-        <p>
-          For the cartographic visualisation, the only difference is that the
-          first select button represents the year value.
-        </p>
-          <figure typeof="sa:image">
-            <img
-              src="../resources/select_boxes_year.png"
-              alt="select_boxes_year"
-            />
-          </figure>
-
-        <section id="interactivity">
-          <h4>Interactivity</h4>
-          <p>
-            Every data representation has an interactive element, called a
-            tooltip. This is a small box that displays information about the
-            data selected. Also, the colour changing effect when a certain part
-            is selected, increases the feeling of interactive data
-            visualisation.
-          </p>
-          <p>
-            For example, moving the mouse cursor over one of the rectangles in
-            the bar chart will change their colour to a lighter shade and
-            display the number of the cars respecting the two values selected in
-            the selectbox (and the year that is abscissa value for the
-            rectangle).
-          </p>
-            <figure typeof="sa:image">
-              <img
-                src="../resources/bar_chart_interactive.png"
-                alt="bar_chart_interactive"
-              />
-            </figure>
-
-          <p>
-            In the case of line chart, there is no changing colour, but the
-            circle increases its radius, and a tooltip appears with the same
-            information as for the bar chart, once the cursor is over it.
-            </p>
-            <figure typeof="sa:image">
-              <img
-                src="../resources/line_chart_interactive.png"
-                alt="line_chart_interactive"
-              />
-            </figure>
-
-          <p>
-            Pie chart fulfills its interactive aspect, having the colour of the
-            "slices" changed when the cursor is over them, and, also, the
-            tooltip appears, containing the information about the number of
-            cars, and the percentage out of the total number of cars for the
-            last 5 years.
-          </p>
-            <figure typeof="sa:image">
-              <img
-                src="../resources/pie_chart_interactive.png"
-                alt="pie_chart_interactive"
-              />
-            </figure>
-
-          <p>
-            Last but not least, the cartographic visualisation, which is the map
-            of Romania split in counties, possesses the change-colour effect
-            when a certain county is selected, and the tooltip effect, which
-            contains the name of the county and the number of the cars found in
-            that county.
-          </p>
-            <figure typeof="sa:image">
-              <img
-                src="../resources/map_interactive.png"
-                alt="map_interactive"
-              />
-            </figure>
-        </section>
-
-        <section id="updatability">
-          <h4>Updatability</h4>
-          <p>
-            Another quality of Apax's data visualisation is updatability (and
-            the effects that come with it). Every chart or map we have mentioned
-            has this feature. We will say exactly what it is all about in the
-            following order:
-          </p>
-
-          <ul>
+        </li>
+        <li>
+          <a href="#database">
+            <span>2. </span>
+            Database
+          </a>
+        </li>
+        <li>
+          <a href="#api">
+            <span>3. </span>
+            API
+          </a>
+        </li>
+        <li>
+          <a href="#account">
+            <span>4. </span>
+            Account
+          </a>
+          <ol role="directory">
             <li>
-              Bar Chart - the bars go higher or lower, depending on the new
-              values given. Moreover, the y axis updates itself with the
-              correspondent numbers of cars
+              <a href="#register">
+                <span>4.1. </span>
+                Register
+              </a>
             </li>
             <li>
-              Line Chart - the line, together with the circles, go higher or
-              lower. Also, the y axis updates itself the same way it does at bar
-              chart
+              <a href="#login">
+                <span>4.2. </span>
+                Login
+              </a>
             </li>
             <li>
-              Pie Chart - the slices change their size, and, usually, their
-              order changes too, from the biggest to the smallest
+              <a href="#privileges">
+                <span>4.3. </span>
+                Privileges
+              </a>
+              <ol role="directory">
+                <li>
+                  <a href="#user">
+                    <span>4.3.1 </span>
+                    User
+                  </a>
+                </li>
+                <li>
+                  <a href="#administrator">
+                    <span>4.3.2 </span>
+                    Administrator
+                  </a>
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li>
+          <a href="#statistics">
+            <span>5. </span>
+            Statistics
+          </a>
+        </li>
+        <li>
+          <a href="#visualisation">
+            <span>6. </span>
+            Data Visualisation
+          </a>
+          <ol>
+            <li>
+              <a href="#interactivity">
+                <span>6.1. </span>
+                Interactivity
+              </a>
             </li>
             <li>
-              Map - the colour shades of the counties represent a higher or a
-              lower number of cars, compared to the minnimum value. Update means
-              changing the shades of the colour.
+              <a href="#updatability">
+                <span>6.2. </span>
+                Updatability
+              </a>
             </li>
-          </ul>
-          As expected, the tooltip for each of these data visualisations is also
-          updated with the new correspondent values. Every update takes place
-          after the user selects the two values and presses the
-          <b>Submit</b> button.
-          <figure typeof="sa:image">
-            <img src="../resources/submit_button.png" alt="submit_button" />
-          </figure>
-        </section>
-      </section>
-      <section id="export">
-        <h3>Data Export</h3>
-        <p>
-          Every way of data visualisation also has the option to export the data
-          in different formats:
-        </p>
-
+          </ol>
+        </li>
+        <li>
+          <a href="#export">
+            <span>7. </span>
+            Data Export
+          </a>
+        </li>
+        <li>
+          <a href="#bibliography">
+            <span>8. </span>
+            Bibliography
+          </a>
+        </li>
+      </ol>
+      <section typeof="sa:AuthorsList">
+        <h2>Authors</h2>
         <ul>
-          <li>
-            CSV - the data is written, containing the attributes selected in
-            that specific view and their values
+          <li typeof="sa:ContributorRole" property="schema:author">
+            <span typeof="schema:Person">
+              <meta property="schema:givenName" content="Robert" />
+              <meta property="schema:familyName" content="Leonte" />
+              <span property="schema:name">Robert Leonte</span>
+            </span>
+            <ul>
+              <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                <a href="mailto:robertleonte7@gmail.com" property="schema:email">
+                  robertleonte7@gmail.com
+                </a>
+              </li>
+            </ul>
           </li>
-          <li>SVG - it saves the whole chart or map as a 2D image using XML</li>
-          <li>
-            WebP - an image format that compresses the original image data and
-            represents it with a smaller size
+          <li typeof="sa:ContributorRole" property="schema:author">
+            <span typeof="schema:Person">
+              <meta property="schema:givenName" content="Robert" />
+              <meta property="schema:additionalName" content="Eusebiu" />
+              <meta property="schema:familyName" content="Palade" />
+              <span property="schema:name">Robert Eusebiu Palade</span>
+            </span>
+            <ul>
+              <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                <a href="mailto:robertleonte7@gmail.com" property="schema:email">
+                  palade.robert99@gmail.com
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </section>
-      <section id="bibliography">
-        <h3>Bibliography</h3>
-        <ul>
-          <li>
-            https://stackoverflow.com/questions/23218174/how-do-i-save-export-an-svg-file-after-creating-an-svg-with-d3-js-ie-safari-an
-          </li>
-          <li>
-            //github.com/akulmehta/SaveSVG
-          </li>
-          <li>
-            https://stackoverflow.com/questions/14964035/how-to-export-javascript-array-info-to-csv-on-client-side
-          </li>
-          <li>
+      <section>
+        <h2>License</h2>
+        <a typeof="CreativeWork" property="schema:license" rel="license"
+          href="https://creativecommons.org/licenses/by/4.0/">CC-BY
+        </a>
+      </section>
+      <h2>References</h2>
+      <ol>
+        <li typeof="schema:WebPage" role="doc-biblioentry" resource="https://data.gov.ro/dataset/parc-auto-romania"
+          property="schema:citation" id="fleet">
+          <cite property="schema:name">
+            <a href="https://data.gov.ro/dataset/parc-auto-romania">National Fleet Website</a>
+          </cite>
+        </li>
+        <li typeof="schema:WebPage" role="doc-biblioentry"
+          resource="https://documenter.getpostman.com/view/11218522/SztHYRFq?version=latest" property="schema:citation"
+          id="apidoc">
+          <cite property="schema:name">
+            <a href="https://documenter.getpostman.com/view/11218522/SztHYRFq?version=latest">Apax API Documentation</a>
+          </cite>
+        </li>
+      </ol>
+    </div>
+    <section id="description">
+      <h3><span>1. </span>Description</h3>
+      <p>
+        Apax is a web application that helps users see statistics about cars
+        in the national fleet for the past 5 years. With its help, they can
+        follow the flow control of the numbers on different categories.
+      </p>
+    </section>
+    <section id="database">
+      <h3><span>2. </span>Database</h3>
+      <p>
+        Apax uses a mySQL Database that stores the information available in
+        CSV format on the official site of the fleet, found in References (1).
+      </p>
+      <p>
+        The table used for saving and accessing this information is called
+        <i>masini</i> and contains attributes such as:
+      </p>
+      <ul>
+        <li>
+          judet - describes the name of the county where cars in that
+          registration can be found
+        </li>
+        <li>
+          categorie_nationala - describes the national category cars in that
+          registration are part of
+        </li>
+        <li>
+          categorie_comunitara - describes the national category cars in that
+          registration are part of
+        </li>
+        <li>
+          marca - describes the brand cars in that registration are part of
+        </li>
+      </ul>
+      <figure typeof="sa:image">
+        <img src="../resources/database_example1.png" alt="database" />
+        <figcaption>
+          How the table looks like and some values for each attribute.
+        </figcaption>
+      </figure>
+      <p>
+        The table used for login and register an user is called
+        <i>users</i> and it contains attributes such as:
+      </p>
+
+      <ul>
+        <li>
+          admin - describes if the user is an admin or not( 1- for admin, 0-
+          for a normal user)
+        </li>
+        <li>email - the email that the user registered</li>
+        <li>
+          password - the password that the user registered stored as a hash
+        </li>
+      </ul>
+      <figure typeof="sa:image">
+        <img src="../resources/database_example2.png" alt="database" />
+        <figcaption>
+          How the table looks like and some values for each attribute.
+        </figcaption>
+      </figure>
+    </section>
+    <section id="api">
+      <h3><span>3. </span>API</h3>
+      <p>
+        Our web application makes use of a Rest API that serves information
+        needed from the database mentioned above in JSON format. Mainly, it is
+        base on GET requests, which is specific to the description: allows
+        users to see statistics. Also, in the case of registering and loging in,
+        the implementented services are the POST ones. For more information about the endpoints of
+        the API, you can access the API documentation found in References (2).
+      </p>
+      <p>
+        Getting deeper into details, API has two main components named <b>Model API</b> and <b>Controller API</b>. The
+        first one
+        has the role of querying the proper tables in the database and return data needed by the Controller API. Among
+        the functions
+        that compose Model API, we can enumerate <i>count_cars_county_brand</i>, <i>count_cars_county_nat_categ</i>,
+        <i>count_cars_county_com_categ</i>, each of them used to query the number of cars in a certain county and year
+        that are part of a
+        brand, national category or communitary category. Along with them, there are also some functions that read the
+        name of the brand,
+        national category etc. from a certain county (or all) or year (or all). Each of these methods are used by the
+        Controller API which takes
+        the data and serves it in JSON format to the View Component, better described at <a href="visualisation">Data
+          visualisation</a>.
+      </p>
+    </section>
+    <section id="account">
+      <h3><span>4. </span>Account</h3>
+      <p></p>
+      <section id="login">
+        <h4><span>4.1. </span>Login</h4>
+        <p>
+          If an user wants to access the website he/she has to login firstly.
+          For that, the user has to provide the email and the password that
+          he/she has chosen when she registered. If all these fields are
+          completed, the email is valid and the password has at least 8
+          characters, a verification is made in the database to see if there
+          is an user with the email provided and if the password matches. If
+          all these steps are passed, the user will enter the webpage.
+        </p>
+      </section>
+      <section id="register">
+        <h4><span>4.2. </span>Register</h4>
+        <p>
+          If an user doesn' t have an account, he/ she has to register. For
+          that, the user has to provide a valid email adress and a password
+          which should have at least 8 characters and to confirm the password.
+          If the email is valid and it isn't been used by another user, also
+          if the password has the necessary length and if the confirmPassword
+          field matches with the password, the user is created. A message is
+          shown for this and if there is any error, with any of these fields
+          it shows an error which specifies exactly which is the problem. The
+          password is stored crypted in the database. Both register and login
+          are based on POST requests.
+        </p>
+      </section>
+      <section id="privileges">
+        <h4><span>4.3. </span>Privileges</h4>
+        <p>
+          There are two types of users for this webpage: a normal user and an
+          administrator who can make some changes to the webpage from a
+          dedicated page. We store this difference in the database through a
+          field called "admin", which can be 0 or 1. I store the field admin
+          in local storage and make the verification when somebody logs in.
+        </p>
+        <section id="user">
+          <h5><span>4.3.1 </span>User</h5>
+          <p>
+            A normal user can see the statistics and download them in three
+            diffrent formats: SVG, Webp and CSV.
+          </p>
+        </section>
+        <section id="administrator">
+          <h5><span>4.3.2 </span>Administrator</h5>
+          <p>
+            An administrator can see in addition to all the things which a
+            normal user can see, a page called " Admin page", from where he/
+            she can check or uncheck the statistics which will appear. In this
+            page there is a table with all the statistics for every type of
+            data visualisation, which are checked firstly and if one statistic
+            is unchecked, that statistic won' t appear anymore in the header,
+            so the user can' t access it. First of all, I get all checkboxes
+            and I put them in an HTMLCollection because that's what
+            getElementsByTagName returns. Then I put in an object the key
+            which is the id for every checkbox and the value which is the
+            checked status( true for checked and false for unchecked). For
+            every checkbox input I set the checked attribute depending on the
+            values from the localstorage object (chartsToHide) or if there is
+            no value for that id, it is true by default because we want to
+            show the pages by default. Then for every element, when the
+            checkbox is changed the value from the localstorage will also be
+            changed. If a normal user wants to enter this admin page, he/ she
+            will be redirected to the home page because he/ she doesn't have
+            the rights to access it. For this it is verified in the
+            localstorage if the field "admin" is 0 or 1.
+          </p>
+        </section>
+      </section>
+    </section>
+    <section id="statistics">
+      <h3>Statistics</h3>
+      <p>
+        Apax offers a variety of statistics comparing the numbers of cars
+        present in each of the last 5 years in the national fleet. There are
+        several criterias they can opt for:
+      </p>
+      <ul>
+        <li>Number of cars by county and brand</li>
+        <li>Number of cars by county and national category</li>
+        <li>Number of cars by county and communitary category</li>
+        <li>Number of total cars by county</li>
+      </ul>
+      <p>
+        Moreover, Apax comes with a feature that lets the user see the number
+        of cars for a specific year, in each county. This is also available
+        for each of the relevant attribute described in the list above.
+      </p>
+      <p>
+        For every statistic mentioned above, the application provides a page
+        which the user can access from the navbar
+      </p>
+      <figure typeof="sa:image">
+        <img src="../resources/county_stats.png" alt="county_stats" />
+        <figcaption>Statistics by county for the last 5 years.</figcaption>
+      </figure>
+      <figure typeof="sa:image">
+        <img src="../resources/year_stats.png" alt="county_stats" />
+        <figcaption>Statistics by year for all counties.</figcaption>
+      </figure>
+    </section>
+    <section id="visualisation">
+      <h3>Data Visualisation</h3>
+      <p>
+        The <a href="#statistics">Statistics</a> mentioned above need to have
+        a visualisation that is relevant to the user. That is why Apax comes
+        with three types of charts and one cartographic way of visualisation.
+        The charts are listed bellow as the following:
+      </p>
+
+      <ul>
+        <li>Pie Chart</li>
+      </ul>
+      <figure typeof="sa:image">
+        <img src="../resources/pie_chart.png" alt="pie_chart" />
+      </figure>
+      <ul>
+        <li>Bar Chart</li>
+      </ul>
+      <figure typeof="sa:image">
+        <img src="../resources/bar_chart.png" alt="bar_chart" />
+      </figure>
+      <ul>
+        <li>Line Chart (also known as Connected-Scatter)</li>
+      </ul>
+      <figure typeof="sa:image">
+        <img src="../resources/line_chart.png" alt="line_chart" />
+      </figure>
+
+      <p>
+        In order to implement the statistics, each of this way of data
+        visualisation contains one or two select boxes, with the help of which
+        the user can choose the values for the attributes they want to see.
+        (By default, when the page is opened, the view is generated with the
+        first values of each of the two select boxes.) In the case of charts,
+        the first select button describes the county value, while the second
+        one (if there is) describes the value of the chosen attribute.
+      <figure typeof="sa:image">
+        <img src="../resources/select_boxes_county.png" alt="select_boxes_county" />
+      </figure>
+
+      <p>
+        For the cartographic visualisation, the only difference is that the
+        first select button represents the year value.
+      </p>
+      <figure typeof="sa:image">
+        <img src="../resources/select_boxes_year.png" alt="select_boxes_year" />
+      </figure>
+      <p>
+        Every page that contains a chart and one or two selectboxes is rigurously built, starting with the first selectbox which describes
+        the county or year value, which uses a GET request to take the information needed about the counties. Having that, the second selectbox
+        can be build (also with a GET request), using the first value in the selectbox as a parameter, in order to display the brands,
+        national or communitary category specific to it. Only after those two have been built, the chart can be generated making use of a
+        GET request to an API endpoint that deals with counting cars that respect the two (or one) criterias.
+      </p>
+    </section>
+    <section id="interactivity">
+      <h4>Interactivity</h4>
+      <p>
+        Every data representation has an interactive element, called a
+        tooltip. This is a small box that displays information about the
+        data selected. Also, the colour changing effect when a certain part
+        is selected, increases the feeling of interactive data
+        visualisation.
+      </p>
+      <p>
+        For example, moving the mouse cursor over one of the rectangles in
+        the bar chart will change their colour to a lighter shade and
+        display the number of the cars respecting the two values selected in
+        the selectbox (and the year that is abscissa value for the
+        rectangle).
+      </p>
+      <figure typeof="sa:image">
+        <img src="../resources/bar_chart_interactive.png" alt="bar_chart_interactive" />
+      </figure>
+
+      <p>
+        In the case of line chart, there is no changing colour, but the
+        circle increases its radius, and a tooltip appears with the same
+        information as for the bar chart, once the cursor is over it.
+      </p>
+      <figure typeof="sa:image">
+        <img src="../resources/line_chart_interactive.png" alt="line_chart_interactive" />
+      </figure>
+
+      <p>
+        Pie chart fulfills its interactive aspect, having the colour of the
+        "slices" changed when the cursor is over them, and, also, the
+        tooltip appears, containing the information about the number of
+        cars, and the percentage out of the total number of cars for the
+        last 5 years.
+      </p>
+      <figure typeof="sa:image">
+        <img src="../resources/pie_chart_interactive.png" alt="pie_chart_interactive" />
+      </figure>
+
+      <p>
+        Last but not least, the cartographic visualisation, which is the map
+        of Romania split in counties, possesses the change-colour effect
+        when a certain county is selected, and the tooltip effect, which
+        contains the name of the county and the number of the cars found in
+        that county.
+      </p>
+      <figure typeof="sa:image">
+        <img src="../resources/map_interactive.png" alt="map_interactive" />
+      </figure>
+    </section>
+
+    <section id="updatability">
+      <h4>Updatability</h4>
+      <p>
+        Another quality of Apax's data visualisation is updatability (and
+        the effects that come with it). Every chart or map we have mentioned
+        has this feature. We will say exactly what it is all about in the
+        following order:
+      </p>
+
+      <ul>
+        <li>
+          Bar Chart - the bars go higher or lower, depending on the new
+          values given. Moreover, the y axis updates itself with the
+          correspondent numbers of cars
+        </li>
+        <li>
+          Line Chart - the line, together with the circles, go higher or
+          lower. Also, the y axis updates itself the same way it does at bar
+          chart
+        </li>
+        <li>
+          Pie Chart - the slices change their size, and, usually, their
+          order changes too, from the biggest to the smallest
+        </li>
+        <li>
+          Map - the colour shades of the counties represent a higher or a
+          lower number of cars, compared to the minnimum value. Update means
+          changing the shades of the colour.
+        </li>
+      </ul>
+      As expected, the tooltip for each of these data visualisations is also
+      updated with the new correspondent values. Every update takes place
+      after the user selects the two values and presses the
+      <b>Submit</b> button.
+      <figure typeof="sa:image">
+        <img src="../resources/submit_button.png" alt="submit_button" />
+      </figure>
+    </section>
+    <section id="export">
+      <h3>Data Export</h3>
+      <p>
+        Every way of data visualisation also has the option to export the data
+        in different formats:
+      </p>
+
+      <ul>
+        <li>
+          CSV - the data is written, containing the attributes selected in
+          that specific view and their values
+        </li>
+        <li>SVG - it saves the whole chart or map as a 2D image using XML</li>
+        <li>
+          WebP - an image format that compresses the original image data and
+          represents it with a smaller size
+        </li>
+      </ul>
+    </section>
+    <section id="bibliography">
+      <h3>Bibliography</h3>
+      <ul>
+        <li>
+          <a href="https://stackoverflow.com/questions/23218174/how-do-i-save-export-an-svg-file-after-creating-an-svg-with-d3-js-ie-safari-an">
+            https://stackoverflow.com/questions/23218174/how-do-i-save-export-an-svg-file-after-creating-an-svg-with-d3-js-ie-safari-an</a>
+        </li>
+        <li>
+          github.com/akulmehta/SaveSVG
+        </li>
+        <li>
+          <a href="https://stackoverflow.com/questions/14964035/how-to-export-javascript-array-info-to-csv-on-client-side">
+            https://stackoverflow.com/questions/14964035/how-to-export-javascript-array-info-to-csv-on-client-side</a>
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL">
             https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
-          </li>
-          <li>
-            https://stackoverflow.com/questions/3975499/convert-svg-to-image-jpeg-png-etc-in-the-browser
-          </li>
-          <li>
-            https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
-          </li>
-          <li>
-            https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
-          </li>
-          <li>
-            https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-          </li>
-          <li>
-            https://www.w3jar.com/php-login-and-registration-restful-api/
-          </li>
-          <li>
+          </a>
+        </li>
+        <li>
+          <a href="https://stackoverflow.com/questions/3975499/convert-svg-to-image-jpeg-png-etc-in-the-browser">
+            https://stackoverflow.com/questions/3975499/convert-svg-to-image-jpeg-png-etc-in-the-browser>
+          </a>
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL">
+          https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
+        </a>
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">
+          https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
+        </a>
+        </li>
+        <li>
+         <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/"> 
+         https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+        </a>
+        </li>
+        <li>
+          <a href="https://www.w3jar.com/php-login-and-registration-restful-api/">
+          https://www.w3jar.com/php-login-and-registration-restful-api/
+        </a>
+        </li>
+        <li>
+          <a href="https://tympanus.net/codrops/2012/03/27/login-and-registration-form-with-html5-and-css3/">
             https://tympanus.net/codrops/2012/03/27/login-and-registration-form-with-html5-and-css3/
-          </li>
-          <li>
-            https://unsplash.com/photos/m3m-lnR90uM
-          </li>
-          <li>
-            https://website.education.wisc.edu/~swu28/d3t/concept.html
-          </li>
-          <li>
-            https://www.tutorialspoint.com/d3js/d3js_drawing_charts.htm
-          </li>
-          <li>
-            https://www.tutorialsteacher.com/d3js/create-pie-chart-using-d3js
-          </li>
-          <li>
-            https://medium.com/@kj_schmidt/making-a-simple-scatter-plot-with-d3js-58cc894d7c97
-          </li>
-          <li>
-            https://schuelerzahlen-zuerich.opendata.iwi.unibe.ch/App2/d3geo-2/ch_var/map.js
-          </li>
-          <li>
-            https://schuelerzahlen-zuerich.opendata.iwi.unibe.ch/App2/d3geo-2/ch_var/index.html#pop_foreign/1991
-          </li>
-          <li>
-            https://github.com/ivan-ha/d3-hk-map/blob/development/map.js
-          </li>
-          <li>
-            https://raw.githubusercontent.com/cimi/romania-choropleth/master/app/data/romania-topo.json
-          </li>
-          <li>
-            http://bl.ocks.org/riccardoscalco/6029355
-          </li>
-          <li>
-            https://raw.githubusercontent.com/cimi/romania-choropleth/master/data/romania-geo.json
-          </li>
-          <li>
-            https://www.codeofaninja.com/2017/02/create-simple-rest-api-in-php.html
-          </li>
-          <li>
-            http://bl.ocks.org/rgdonohue/9280446
-          </li>
-          <li>
-            https://bl.ocks.org/d3noob/8952219
-          </li>
-          <li>
-            https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js
-          </li>
-          <li>
-            https://www.d3-graph-gallery.com/graph/connectedscatter_basic.html
-          </li>
-          <li>
-            https://www.d3-graph-gallery.com/graph/barplot_basic.html
-          </li>
-          <li>
-            https://gist.github.com/EtienneR/2f3ab345df502bd3d13e
-          </li>
-          <li>
-            https://bl.ocks.org/d3noob/6f082f0e3b820b6bf68b78f2f7786084
-          </li>
-          <li>
-            https://realpython.com/beautiful-soup-web-scraper-python/
-          </li>
-        </ul>
-      </section>
-    </article>
-  </body>
+          </a>
+        </li>
+        <li>
+          <a href="https://unsplash.com/photos/m3m-lnR90uM">
+          https://unsplash.com/photos/m3m-lnR90uM
+        </a>
+        </li>
+        <li>
+          <a href="https://website.education.wisc.edu/~swu28/d3t/concept.html">
+          https://website.education.wisc.edu/~swu28/d3t/concept.html
+        </a>
+        </li>
+        <li>
+          <a href="https://www.tutorialspoint.com/d3js/d3js_drawing_charts.htm">
+          https://www.tutorialspoint.com/d3js/d3js_drawing_charts.htm
+        </a>
+        </li>
+        <li>
+          <a href="https://www.tutorialsteacher.com/d3js/create-pie-chart-using-d3js">
+          https://www.tutorialsteacher.com/d3js/create-pie-chart-using-d3js
+        </a>
+        </li>
+        <li>
+          <a href="https://medium.com/@kj_schmidt/making-a-simple-scatter-plot-with-d3js-58cc894d7c97">
+          https://medium.com/@kj_schmidt/making-a-simple-scatter-plot-with-d3js-58cc894d7c97
+        </a>
+        </li>
+        <li>
+          <a href="https://schuelerzahlen-zuerich.opendata.iwi.unibe.ch/App2/d3geo-2/ch_var/map.js">
+          https://schuelerzahlen-zuerich.opendata.iwi.unibe.ch/App2/d3geo-2/ch_var/map.js
+        </a>
+        </li>
+        <li>
+          <a href="https://schuelerzahlen-zuerich.opendata.iwi.unibe.ch/App2/d3geo-2/ch_var/index.html#pop_foreign/1991">
+          https://schuelerzahlen-zuerich.opendata.iwi.unibe.ch/App2/d3geo-2/ch_var/index.html#pop_foreign/1991
+        </a>
+        </li>
+        <li>
+          <a href="https://github.com/ivan-ha/d3-hk-map/blob/development/map.js">
+          https://github.com/ivan-ha/d3-hk-map/blob/development/map.js
+        </a>
+        </li>
+        <li>
+          <a href="https://raw.githubusercontent.com/cimi/romania-choropleth/master/app/data/romania-topo.json">
+          https://raw.githubusercontent.com/cimi/romania-choropleth/master/app/data/romania-topo.json
+        </a>
+        </li>
+        <li>
+          <a href="http://bl.ocks.org/riccardoscalco/6029355">
+          http://bl.ocks.org/riccardoscalco/6029355
+        </a>
+        </li>
+        <li>
+          <a href="https://raw.githubusercontent.com/cimi/romania-choropleth/master/data/romania-geo.json">
+          https://raw.githubusercontent.com/cimi/romania-choropleth/master/data/romania-geo.json
+        </a>
+        </li>
+        <li>
+          <a href="https://www.codeofaninja.com/2017/02/create-simple-rest-api-in-php.html">
+          https://www.codeofaninja.com/2017/02/create-simple-rest-api-in-php.html
+        </a>
+        </li>
+        <li>
+          <a href="http://bl.ocks.org/rgdonohue/9280446">
+          http://bl.ocks.org/rgdonohue/9280446
+        </a>
+        </li>
+        <li>
+          <a href="https://bl.ocks.org/d3noob/8952219">
+          https://bl.ocks.org/d3noob/8952219
+        </a>
+        </li>
+        <li>
+          <a href="https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js">
+          https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js
+        </a>
+        </li>
+        <li>
+          <a href="https://www.d3-graph-gallery.com/graph/connectedscatter_basic.html">
+          https://www.d3-graph-gallery.com/graph/connectedscatter_basic.html
+        </a>
+        </li>
+        <li>
+          <a href="https://www.d3-graph-gallery.com/graph/barplot_basic.html">
+          https://www.d3-graph-gallery.com/graph/barplot_basic.html
+        </a>
+        </li>
+        <li>
+          <a href="https://gist.github.com/EtienneR/2f3ab345df502bd3d13e">
+          https://gist.github.com/EtienneR/2f3ab345df502bd3d13e
+        </a>
+        </li>
+        <li>
+          <a href="https://bl.ocks.org/d3noob/6f082f0e3b820b6bf68b78f2f7786084">
+          https://bl.ocks.org/d3noob/6f082f0e3b820b6bf68b78f2f7786084
+        </a>
+        </li>
+        <li>
+          <a href="https://realpython.com/beautiful-soup-web-scraper-python/">
+          https://realpython.com/beautiful-soup-web-scraper-python/
+        </a>
+        </li>
+      </ul>
+    </section>
+  </article>
+</body>
+
 </html>

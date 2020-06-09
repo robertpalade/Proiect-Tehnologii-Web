@@ -42,7 +42,7 @@ function buildAll(data, button1, button2, theUrl) {
   function mouseOverHandler(d, i) {
     var quantity = getNumber(data, d.properties.ID_1 - 1);
     var name = d.properties.VARNAME_1 + "</br>" + quantity;
-    // var name = d.properties.VARNAME_1+ "</br>"  + d.properties.ID_1;
+    d3.select(this).style("colour", "red");
     tooltip.transition().duration(400).style("opacity", 0.9);
     tooltip
       .html(name)

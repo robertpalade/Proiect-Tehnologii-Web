@@ -95,7 +95,7 @@ function buildAll(data, button1, button2, theUrl) {
     .attr("d", valueline)
     .attr("stroke", "#32CD32")
     .attr("stroke-width", 2)
-    .attr("fill", "#f2f2f2");
+    .attr("fill", "#ffffff");
 
   // Add the data points
   var dots = svg

@@ -427,9 +427,9 @@ form {
 .submitButtonAdmin:hover {
   background: #044d9b;
 }
-path:hover {
+/* path:hover {
   fill: #d36f80;
-}
+} */
 
 path {
   position: relative;
@@ -446,6 +446,10 @@ path {
   border-radius: 8px;
   color: white;
   cursor: pointer;
+}
+
+.tooltip:hover {
+  fill: #d36f80;
 }
 
 .tooltip2 {
